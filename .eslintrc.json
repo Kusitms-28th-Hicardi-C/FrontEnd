@@ -1,0 +1,31 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-unused-vars": "error", //사용하지 않은 변수명 없애기
+    "no-multiple-empty-lines": "error", //공백 금지
+    "indent": "off", // 프리티어 충돌로 인한 OFF
+    "no-trailing-spaces": "error", // 쓸데없는 공백 없애기
+    "arrow-parens": ["error", "always"], // arrow-function 인자가 2개 이상이면 괄호 필수
+    "no-multi-spaces": "error", // 스페이스 여러개 금지
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
