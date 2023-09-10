@@ -50,7 +50,7 @@ const SubTitle = styled.div`
 
 const ButtonBox = styled.div`
   display: flex;
-  gap: 1.2rem;
+  gap: 2rem;
 `;
 
 const Button = styled.div`
