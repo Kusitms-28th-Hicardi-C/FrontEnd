@@ -75,7 +75,7 @@ const Login = () => {
     navigate('/');
   };
   const handleSignupClick = () => {
-    navigate('/signup');
+    navigate('/signup/agreement');
   };
 
   return (

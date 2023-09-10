@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+interface ButtonProps {
+  children: React.ReactNode;
+  active?: boolean;
+}
+
 interface ButtonBlock {
   active?: boolean;
 }
