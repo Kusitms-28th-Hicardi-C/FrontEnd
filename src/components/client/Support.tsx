@@ -38,7 +38,7 @@ const Banner = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   font-weight: 800;
   margin-bottom: 0.8rem;
 `;
@@ -59,7 +59,7 @@ const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ theme }) => theme.colors.blue0};
+  color: ${({ theme }) => theme.colors.blue1};
   background: ${({ theme }) => theme.colors.white};
   font-weight: 800;
   border-radius: 50%;

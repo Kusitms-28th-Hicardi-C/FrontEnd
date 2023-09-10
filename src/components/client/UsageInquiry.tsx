@@ -39,7 +39,7 @@ const Banner = styled.div`
 const Title = styled.div`
   color: ${({ theme }) => theme.colors.white};
   font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 800;
 `;
 
 const Box = styled.div`
@@ -69,7 +69,7 @@ const Content = styled.div`
 `;
 
 const BigText = styled.div`
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 700;
 `;
 

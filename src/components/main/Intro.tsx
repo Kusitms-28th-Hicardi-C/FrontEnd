@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-
 import SectionTitle from './SectionTitle';
-import { theme } from '../../styles/theme';
 import intro1 from '../../assets/intro/intro1.png';
+import Button from '../common/Button';
 
 const IntroBlock = styled.section`
   width: 70%;
@@ -24,21 +23,6 @@ const Categories = styled.ul`
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
-
-  li {
-    background-color: ${({ theme }) => theme.colors.white};
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 32px;
-    padding: 0.5rem 1rem;
-    box-shadow: 0px 0px 10px 3px #0000001a;
-    cursor: pointer;
-
-    &.active {
-      background-image: linear-gradient(180deg, #4fd1ff 0%, #20c5ff 100%);
-      color: ${({ theme }) => theme.colors.white};
-    }
-  }
 `;
 
 const Content = styled.div`
@@ -82,12 +66,12 @@ const Intro = () => {
           확실한 침상감시 패치 하이카디
         </SectionTitle>
       </Heading>
-      <Categories theme={theme}>
-        <li className="active">원격 모니터링</li>
-        <li>높은 정확도</li>
-        <li>요양급여 적용</li>
-        <li>넓은 사용범위</li>
-        <li>병원 부담 감소</li>
+      <Categories>
+        <Button active={true}>원격 모니터링</Button>
+        <Button>높은 정확도</Button>
+        <Button>요양급여 적용</Button>
+        <Button>넓은 사용범위</Button>
+        <Button>병원 부담 감소</Button>
       </Categories>
       <Content>
         <ContentText>
