@@ -5,12 +5,6 @@ interface ButtonProps {
   active?: boolean;
 }
 
-const Button = ({ children, active }: ButtonProps) => {
-  return <ButtonStyle active={active}>{children}</ButtonStyle>;
-};
-
-export default Button;
-
 const ButtonStyle = styled.button<{ active?: boolean }>`
   background-color: ${({ theme }) => theme.colors.white};
   font-size: 1rem;
@@ -22,3 +16,9 @@ const ButtonStyle = styled.button<{ active?: boolean }>`
   background-image: ${({ active }) => (active ? 'linear-gradient(180deg, #4fd1ff 0%, #20c5ff 100%)' : 'none')};
   color: ${({ active, theme }) => (active ? theme.colors.white : '#000')};
 `;
+
+const Button = ({ children, active }: ButtonProps) => {
+  return <ButtonStyle active={active}>{children}</ButtonStyle>;
+};
+
+export default Button;

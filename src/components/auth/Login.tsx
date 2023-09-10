@@ -2,39 +2,6 @@ import styled from 'styled-components';
 import Input from '../common/Input';
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
-  const navigate = useNavigate();
-
-  const handleLoginClick = () => {
-    navigate('/');
-  };
-  const handleSignupClick = () => {
-    navigate('/signup');
-  };
-
-  return (
-    <Container>
-      <Title>로그인</Title>
-      <LoginForm>
-        <Input type="text" placeholder="아이디" />
-        <Input type="password" placeholder="비밀번호" />
-      </LoginForm>
-      <ButtonBox>
-        <LoginButton type="submit" onClick={handleLoginClick}>
-          로그인하기
-        </LoginButton>
-        <SignupButton onClick={handleSignupClick}>신규 회원가입</SignupButton>
-      </ButtonBox>
-      <FindBox>
-        <Find>아이디 찾기</Find>
-        <Find>비밀번호 찾기</Find>
-      </FindBox>
-    </Container>
-  );
-};
-
-export default Login;
-
 const Container = styled.div`
   width: 30%;
   display: flex;
@@ -100,3 +67,36 @@ const Find = styled.div`
     text-decoration: underline;
   }
 `;
+
+const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate('/');
+  };
+  const handleSignupClick = () => {
+    navigate('/signup');
+  };
+
+  return (
+    <Container>
+      <Title>로그인</Title>
+      <LoginForm>
+        <Input type="text" placeholder="아이디" />
+        <Input type="password" placeholder="비밀번호" />
+      </LoginForm>
+      <ButtonBox>
+        <LoginButton type="submit" onClick={handleLoginClick}>
+          로그인하기
+        </LoginButton>
+        <SignupButton onClick={handleSignupClick}>신규 회원가입</SignupButton>
+      </ButtonBox>
+      <FindBox>
+        <Find>아이디 찾기</Find>
+        <Find>비밀번호 찾기</Find>
+      </FindBox>
+    </Container>
+  );
+};
+
+export default Login;
