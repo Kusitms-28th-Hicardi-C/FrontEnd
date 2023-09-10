@@ -6,13 +6,15 @@ const colors = {
   blue2: '#20C5FF',
   blue3: '#4FD1FF',
   blue4: '#D3EFFF',
-  blue5: '#F8F9FB',
+  blue5: '#F0F5FF',
 
-  gray1: '#000',
+  gray1: '#515A68',
   gray2: '#F2F4F6',
   gray3: '#666',
   gray4: '#999',
-  gray5: '#F8F9FB',
+  gray5: '#868686',
+  gray6: '#CCCCCC',
+  gray7: '#f2f2f2',
 } as const;
 
 export type ColorsTypes = typeof colors;

@@ -99,7 +99,7 @@ const Title = styled.div`
 `;
 
 const SearchBox = styled.div`
-  background: ${({ theme }) => theme.colors.gray5};
+  background: ${({ theme }) => theme.colors.gray2};
   border-radius: 1rem;
   padding: 4rem;
   display: flex;
