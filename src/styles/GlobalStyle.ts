@@ -1,6 +1,6 @@
-import { css } from '@emotion/react';
+import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyle = css`
+const GlobalStyle = createGlobalStyle`
   * {
     font-family:
       'Pretendard',
@@ -191,6 +191,10 @@ const GlobalStyle = css`
   #root {
     width: 100%;
     height: 100%;
+  }
+
+  i {
+    font-style: normal;
   }
 `;
 
