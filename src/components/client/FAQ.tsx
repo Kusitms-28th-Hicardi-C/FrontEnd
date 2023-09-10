@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import search from '../../assets/icons/search.svg';
 import arrow from '../../assets/client/arrow.svg';
+import Button from '../common/Button';
 
 const questionList: {
   [key: string]: string[];
@@ -55,6 +56,14 @@ const FAQ = () => {
           <img src={search} alt="search" />
         </SearchInputBox>
       </SearchBox>
+
+      <ButtonBox>
+        <Button active={true}>전체</Button>
+        <Button>제품 기능</Button>
+        <Button>이용 방법</Button>
+        <Button>이용 시 주의사항</Button>
+        <Button>의료진 Q&A</Button>
+      </ButtonBox>
 
       {questionList.map((section, sectionIndex) => (
         <QuestionContainer key={sectionIndex}>
@@ -130,6 +139,11 @@ const SearchInput = styled.input`
   border-radius: 3rem;
   font-size: 1.2rem;
   position: relative;
+`;
+
+const ButtonBox = styled.div`
+  display: flex;
+  gap: 1rem;
 `;
 
 const QuestionContainer = styled.div`
