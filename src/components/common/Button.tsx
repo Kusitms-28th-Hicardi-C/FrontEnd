@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-interface ButtonProps {
-  children: React.ReactNode;
+interface ButtonBlock {
   active?: boolean;
 }
 
-const ButtonStyle = styled.button<{ active?: boolean }>`
+const ButtonBlock = styled.button<ButtonBlock>`
   background-color: ${({ theme }) => theme.colors.white};
   font-size: 1rem;
   font-weight: 600;
@@ -17,8 +16,12 @@ const ButtonStyle = styled.button<{ active?: boolean }>`
   color: ${({ active, theme }) => (active ? theme.colors.white : '#000')};
 `;
 
-const Button = ({ children, active }: ButtonProps) => {
-  return <ButtonStyle active={active}>{children}</ButtonStyle>;
+const Button = ({ children, active, ...rest }: ButtonProps) => {
+  return (
+    <ButtonBlock active={active} {...rest}>
+      {children}
+    </ButtonBlock>
+  );
 };
 
 export default Button;
