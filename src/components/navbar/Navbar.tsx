@@ -58,6 +58,8 @@ const IconList = styled.div`
 `;
 
 const IconItem = styled.div`
+  cursor: pointer;
+
   i {
     font-size: 1.25rem;
 
@@ -121,7 +123,7 @@ const Navbar = () => {
             <NavActiveLink to="/products">구매하기</NavActiveLink>
             <NavActiveLink to="/case">사용사례</NavActiveLink>
             <NavActiveLink to="/blog">블로그</NavActiveLink>
-            <NavActiveLink to="support">고객지원</NavActiveLink>
+            <NavActiveLink to="/support">고객지원</NavActiveLink>
           </LinkList>
           <IconList>
             <IconItem>
@@ -131,7 +133,7 @@ const Navbar = () => {
               {isVisibleUserMenu && <Dropdown />}
             </IconItem>
             <IconItem>
-              <i onClick={onUserClick}>
+              <i>
                 <FaSearch />
               </i>
             </IconItem>
