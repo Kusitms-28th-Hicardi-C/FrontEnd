@@ -7,6 +7,10 @@ import { FaUser, FaSearch } from 'react-icons/fa';
 import logo from '../../assets/logo/hicardi-logo.svg';
 import NavActiveLink from '../common/NavActiveLink';
 
+interface DropdownProps {
+  onMenuClick: React.MouseEventHandler<HTMLLIElement>;
+}
+
 const NavbarBlock = styled.nav`
   width: 100%;
   position: fixed;
@@ -88,14 +92,14 @@ const DropdownBlock = styled.ul`
   }
 `;
 
-const Dropdown = () => {
+const Dropdown = ({ onMenuClick }: DropdownProps) => {
   return (
     <DropdownBlock>
-      <li>
+      <li onClick={onMenuClick}>
         <Link to="/login">로그인 / 회원가입</Link>
       </li>
-      <li>장바구니</li>
-      <li>회원정보 수정</li>
+      <li onClick={onMenuClick}>장바구니</li>
+      <li onClick={onMenuClick}>회원정보 수정</li>
     </DropdownBlock>
   );
 };
@@ -109,6 +113,10 @@ const Navbar = () => {
 
   const onUserClick = () => {
     setIsVisibleUserMenu(!isVisibleUserMenu);
+  };
+
+  const onMenuClick = () => {
+    setIsVisibleUserMenu(false);
   };
 
   return (
@@ -130,7 +138,7 @@ const Navbar = () => {
               <i className={isVisibleUserMenu ? 'active' : ''} onClick={onUserClick}>
                 <FaUser />
               </i>
-              {isVisibleUserMenu && <Dropdown />}
+              {isVisibleUserMenu && <Dropdown onMenuClick={onMenuClick} />}
             </IconItem>
             <IconItem>
               <i>
