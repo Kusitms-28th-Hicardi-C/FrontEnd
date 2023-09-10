@@ -8,10 +8,12 @@ import Complete from './components/auth/Complete';
 import MainPage from './pages/MainPage';
 import ClientPage from './pages/ClientPage';
 import ProductListPage from './pages/ProductListPage';
+import Navbar from './components/navbar/Navbar';
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/support" element={<ClientPage />} />
