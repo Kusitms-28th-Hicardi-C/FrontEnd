@@ -33,7 +33,7 @@ const LinkList = styled.div`
   gap: 2rem;
   width: 100%;
 
-  span {
+  a {
     font-weight: 600;
   }
 `;
