@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import SectionTitle from './SectionTitle';
 import SectionDescription from './SectionDescription';
-import { theme } from '../../styles/theme';
 import quotes from '../../assets/signs/quotes.svg';
 import rightArrow from '../../assets/signs/right-arrow.svg';
 
@@ -68,12 +67,12 @@ const MoreLink = styled(Link)`
 
 const Review = () => {
   return (
-    <ReviewBlock theme={theme}>
+    <ReviewBlock>
       <ContentWrapper>
         <SectionTitle>하이카디를 이용한 의료진들의 생생한 후기</SectionTitle>
         <SectionDescription>모니터링 성능을 10%에서 90%까지 개선했어요</SectionDescription>
         <ReviewList>
-          <ReviewItem theme={theme}>
+          <ReviewItem>
             <img src={quotes} alt="따옴표" />
             <p>
               하이카디는 다른 텔레메트리
@@ -88,7 +87,7 @@ const Review = () => {
             </p>
             <span>- 김*중 (임상병리사 10년차) -</span>
           </ReviewItem>
-          <ReviewItem theme={theme}>
+          <ReviewItem>
             <img src={quotes} alt="따옴표" />
             <p>
               하이카디는 다른 텔레메트리
@@ -103,7 +102,7 @@ const Review = () => {
             </p>
             <span>- 김*중 (임상병리사 10년차) -</span>
           </ReviewItem>
-          <ReviewItem theme={theme}>
+          <ReviewItem>
             <img src={quotes} alt="따옴표" />
             <p>
               하이카디는 다른 텔레메트리
