@@ -1,39 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import { FaUser, FaSearch } from 'react-icons/fa';
 
 import logo from '../../assets/logo/hicardi-logo.svg';
-import userIcon from '../../assets/icons/user.svg';
-import searchIcon from '../../assets/icons/search.svg';
-
-const Navbar = () => {
-  return (
-    <>
-      <NavbarBlock>
-        <ContentsWrapper>
-          <Logo to="/">
-            <img src={logo} alt="hicardi-logo" />
-          </Logo>
-          <LinkList>
-            <Link to="/introduce">하이카디</Link>
-            <Link to="/products">구매하기</Link>
-            <Link to="/case">사용사례</Link>
-            <Link to="/blog">블로그</Link>
-            <Link to="support">고객지원</Link>
-          </LinkList>
-          <IconList>
-            <Link to="/user">
-              <img src={userIcon} alt="user-icon" />
-            </Link>
-            <Link to="/search">
-              <img src={searchIcon} alt="search-icon" />
-            </Link>
-          </IconList>
-        </ContentsWrapper>
-      </NavbarBlock>
-      <Spacer />
-    </>
-  );
-};
 
 const NavbarBlock = styled.nav`
   width: 100%;
@@ -75,14 +46,100 @@ const IconList = styled.div`
   align-items: center;
   gap: 2rem;
 
+  div {
+    position: relative;
+  }
+
   img {
     width: 20px;
     height: 20px;
   }
 `;
 
+const IconItem = styled.div`
+  i {
+    font-size: 1.25rem;
+
+    &.active {
+      color: ${({ theme }) => theme.colors.blue2};
+    }
+  }
+`;
+
+const DropdownBlock = styled.ul`
+  position: absolute;
+  top: 40px;
+  left: -70px;
+  width: 150px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 0px 10px 3px #0000001a;
+
+  li {
+    padding: 1rem;
+  }
+
+  li + li {
+    border-top: 1px solid #cccccc;
+  }
+`;
+
+const Dropdown = () => {
+  return (
+    <DropdownBlock>
+      <li>
+        <Link to="/login">로그인 / 회원가입</Link>
+      </li>
+      <li>장바구니</li>
+      <li>회원정보 수정</li>
+    </DropdownBlock>
+  );
+};
+
 const Spacer = styled.div`
   height: 4rem;
 `;
+
+const Navbar = () => {
+  const [isVisibleUserMenu, setIsVisibleUserMenu] = useState(false);
+
+  const onUserClick = () => {
+    setIsVisibleUserMenu(!isVisibleUserMenu);
+  };
+
+  return (
+    <>
+      <NavbarBlock>
+        <ContentsWrapper>
+          <Logo to="/">
+            <img src={logo} alt="hicardi-logo" />
+          </Logo>
+          <LinkList>
+            <Link to="/introduce">하이카디</Link>
+            <Link to="/products">구매하기</Link>
+            <Link to="/case">사용사례</Link>
+            <Link to="/blog">블로그</Link>
+            <Link to="support">고객지원</Link>
+          </LinkList>
+          <IconList>
+            <IconItem>
+              <i className={isVisibleUserMenu ? 'active' : ''} onClick={onUserClick}>
+                <FaUser />
+              </i>
+              {isVisibleUserMenu && <Dropdown />}
+            </IconItem>
+            <IconItem>
+              <i onClick={onUserClick}>
+                <FaSearch />
+              </i>
+            </IconItem>
+          </IconList>
+        </ContentsWrapper>
+      </NavbarBlock>
+      <Spacer />
+    </>
+  );
+};
 
 export default Navbar;
