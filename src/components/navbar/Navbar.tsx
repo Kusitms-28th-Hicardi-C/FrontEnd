@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { FaUser, FaSearch } from 'react-icons/fa';
 
 import logo from '../../assets/logo/hicardi-logo.svg';
+import NavActiveLink from '../common/NavActiveLink';
 
 const NavbarBlock = styled.nav`
   width: 100%;
@@ -116,11 +117,11 @@ const Navbar = () => {
             <img src={logo} alt="hicardi-logo" />
           </Logo>
           <LinkList>
-            <Link to="/introduce">하이카디</Link>
-            <Link to="/products">구매하기</Link>
-            <Link to="/case">사용사례</Link>
-            <Link to="/blog">블로그</Link>
-            <Link to="support">고객지원</Link>
+            <NavActiveLink to="/introduce">하이카디</NavActiveLink>
+            <NavActiveLink to="/products">구매하기</NavActiveLink>
+            <NavActiveLink to="/case">사용사례</NavActiveLink>
+            <NavActiveLink to="/blog">블로그</NavActiveLink>
+            <NavActiveLink to="support">고객지원</NavActiveLink>
           </LinkList>
           <IconList>
             <IconItem>
