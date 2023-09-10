@@ -26,7 +26,7 @@ const Banner = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 2.4rem;
+  font-size: 1.8rem;
   font-weight: 800;
 `;
 

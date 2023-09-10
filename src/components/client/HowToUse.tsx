@@ -32,7 +32,7 @@ const Banner = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 800;
   margin-bottom: 1rem;
 `;

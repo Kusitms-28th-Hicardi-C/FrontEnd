@@ -1,3 +1,4 @@
+import FAQ from '../../components/client/FAQ';
 import HowToUse from '../../components/client/HowToUse';
 import Product from '../../components/client/Product';
 import Support from '../../components/client/Support';
@@ -10,6 +11,7 @@ const ClientPage = () => {
       <UsageInquiry />
       <HowToUse />
       <Product />
+      <FAQ />
     </>
   );
 };
