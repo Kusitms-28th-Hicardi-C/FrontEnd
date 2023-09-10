@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Index from './Index';
 import CheckBox from '../common/CheckBox';
 import Textarea from '../common/Textarea';
+import ButtonBox from './ButtonBox';
 import { useNavigate } from 'react-router-dom';
 
 const Subtitle = styled.div`
@@ -19,34 +20,9 @@ const Text = styled.div`
   padding: 0.8rem 0;
 `;
 
-const ButtonBox = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  margin: 1.5rem 0;
-`;
-
-const Button = styled.button`
-  padding: 1rem 4rem;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  border: none;
-`;
-
-const GrayButton = styled(Button)`
-  background: ${({ theme }) => theme.colors.gray2};
-`;
-
-const BlueButton = styled(Button)`
-  background: ${({ theme }) => theme.colors.blue4};
-`;
-
 const Agreement = () => {
   const navigate = useNavigate();
 
-  const handleCancleClick = () => {
-    navigate(-1);
-  };
   const handleNextClick = () => {
     navigate('/signup/information');
   };
@@ -80,11 +56,7 @@ const Agreement = () => {
         이메일 수신 동의 (선택)
       </Text>
       <Textarea>이용약관</Textarea>
-
-      <ButtonBox>
-        <GrayButton onClick={handleCancleClick}>취소</GrayButton>
-        <BlueButton onClick={handleNextClick}>다음</BlueButton>
-      </ButtonBox>
+      <ButtonBox handleNextClick={handleNextClick} />
     </>
   );
 };
