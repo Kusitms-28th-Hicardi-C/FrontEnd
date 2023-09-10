@@ -69,7 +69,7 @@ const Content = styled.div`
 `;
 
 const BigText = styled.div`
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 700;
 `;
 
