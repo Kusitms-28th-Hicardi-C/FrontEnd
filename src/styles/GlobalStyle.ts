@@ -192,6 +192,10 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
+
+  i {
+    font-style: normal;
+  }
 `;
 
 export default GlobalStyle;
