@@ -28,27 +28,22 @@ const Agreement = () => {
       <Title>전체 동의</Title>
 
       <Text>
-        <CheckBox />
-        이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.
+        <CheckBox>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</CheckBox>
       </Text>
       <Textarea>이용약관</Textarea>
       <Text>
-        <CheckBox />
-        이용약관 동의 (필수)
+        <CheckBox>이용약관 동의 (필수)</CheckBox>
       </Text>
       <Textarea>이용약관</Textarea>
       <Text>
-        <CheckBox />
-        개인정보처리방침 동의 (필수)
+        <CheckBox>개인정보처리방침 동의 (필수)</CheckBox>
       </Text>
       <Textarea>이용약관</Textarea>
       <Text>
-        <CheckBox />
-        쇼핑정보 수신 동의 (선택)
+        <CheckBox>쇼핑정보 수신 동의 (선택)</CheckBox>
       </Text>
       <Text>
-        <CheckBox />
-        이메일 수신 동의 (선택)
+        <CheckBox>이메일 수신 동의 (선택)</CheckBox>
       </Text>
       <Textarea>이용약관</Textarea>
       <ButtonBox handleNextClick={handleNextClick} />

@@ -8,6 +8,7 @@ import Input from '../common/Input/Input';
 import DoubleCheckButton from '../common/Button/DoubleCheckButton';
 import Address from '../common/Input/Address';
 import SubTitle from '../common/Title/SubTitle';
+import Select from '../common/Select';
 
 const ContentBox = styled.div`
   margin-bottom: 5rem;
@@ -32,15 +33,8 @@ const SmallInput = styled(Input)`
   width: 10rem;
 `;
 
-const Select = styled.select`
+const SelectBox = styled(Select)`
   width: 20rem;
-  outline: none;
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.gray6};
-  border-radius: 8px;
-  cursor: pointer;
 `;
 
 const PhoneSelect = styled(Select)`
@@ -157,16 +151,14 @@ const Information = () => {
           <span>-</span> <SmallInput type="text" />
         </Content>
         <Content>
-          <SubTitle>
-            이메일<span>*</span>
-          </SubTitle>
+          <SubTitle>이메일</SubTitle>
           <Input type="text" /> <span>@</span>
-          <Select>
+          <SelectBox>
             <option value="naver.com">naver.com</option>
             <option value="hanmail.net">hanmail.net</option>
             <option value="gmail.com">gmail.com</option>
             <option value="nate.com">nate.com</option>
-          </Select>
+          </SelectBox>
         </Content>
       </ContentBox>
 
