@@ -17,6 +17,7 @@ import CheckPayment from './components/purchase/CheckPayment';
 import Payment from './components/purchase/Payment';
 import OrderComplete from './components/purchase/OrderComplete';
 import PurchaseInformation from './components/purchase/PurchaseInformation';
+import BlogListPage from './pages/BlogListPage';
 
 const Router = () => {
   return (
@@ -32,7 +33,6 @@ const Router = () => {
           <Route path="complete" element={<Complete />} />
         </Route>
         <Route path="/products" element={<ProductListPage />} />
-        <Route path="/product/:productId" element={<ProductDetailPage />} />
         <Route path="/purchase/:productId" element={<PurchasePage />}>
           <Route path="information" element={<PurchaseInformation />} />
           <Route path="checkPayment" element={<CheckPayment />} />
@@ -40,6 +40,8 @@ const Router = () => {
           <Route path="orderComplete" element={<OrderComplete />} />
         </Route>
         <Route path="/support" element={<ClientPage />} />
+        <Route path="/products/:productId" element={<ProductDetailPage />} />
+        <Route path="/blog" element={<BlogListPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

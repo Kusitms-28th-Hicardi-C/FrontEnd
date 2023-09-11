@@ -12,8 +12,9 @@ interface DropdownProps {
 }
 
 const NavbarBlock = styled.nav`
-  width: 100%;
+  width: 100vw;
   position: fixed;
+  z-index: 999;
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
