@@ -18,6 +18,7 @@ import Payment from './components/purchase/Payment';
 import OrderComplete from './components/purchase/OrderComplete';
 import PurchaseInformation from './components/purchase/PurchaseInformation';
 import BlogListPage from './pages/BlogListPage';
+import BlogDetailPage from './pages/BlogDetailPage';
 
 const Router = () => {
   return (
@@ -42,6 +43,7 @@ const Router = () => {
         </Route>
         <Route path="/blog" element={<BlogListPage />} />
         <Route path="/support" element={<ClientPage />} />
+        <Route path="/blog/:postId" element={<BlogDetailPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
