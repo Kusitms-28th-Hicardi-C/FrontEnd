@@ -33,7 +33,8 @@ const Banner = styled.div`
   background: linear-gradient(to bottom, #01a4ff, #00c2ff);
   display: flex;
   flex-direction: column;
-  padding: 5rem 16rem;
+  width: 100%;
+  padding: 5rem 15%;
 `;
 
 const Title = styled.div`

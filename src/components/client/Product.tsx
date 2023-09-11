@@ -18,7 +18,8 @@ export default Product;
 
 const Banner = styled.div`
   background: #f8f9fb;
-  padding: 5rem 16rem;
+  width: 100%;
+  padding: 5rem 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
