@@ -1,24 +1,10 @@
 import styled from 'styled-components';
 import download from '../../assets/client/download.svg';
 
-const Product = () => {
-  return (
-    <Banner>
-      <SubTitle>하이카디에 대해 더 궁금하신가요?</SubTitle>
-      <Title>하이카디 제품 소개서</Title>
-      <Button>
-        <img src={download} alt="download" />
-        다운로드 하기
-      </Button>
-    </Banner>
-  );
-};
-
-export default Product;
-
 const Banner = styled.div`
   background: #f8f9fb;
-  padding: 5rem 16rem;
+  width: 100%;
+  padding: 5rem 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,3 +37,18 @@ const Button = styled.button`
     height: 1.6rem;
   }
 `;
+
+const Product = () => {
+  return (
+    <Banner>
+      <SubTitle>하이카디에 대해 더 궁금하신가요?</SubTitle>
+      <Title>하이카디 제품 소개서</Title>
+      <Button>
+        <img src={download} alt="download" />
+        다운로드 하기
+      </Button>
+    </Banner>
+  );
+};
+
+export default Product;

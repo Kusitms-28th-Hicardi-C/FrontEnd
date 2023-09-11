@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
-import Button from '../common/Button';
+import Button from '../common/Button/Button';
 
 const CategoriesBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 70%;
-  margin: 1rem auto;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const BadgeList = styled.div`

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Input from '../common/Input';
 import { useNavigate } from 'react-router-dom';
+import AuthInput from '../common/Input/AuthInput';
 
 const Container = styled.div`
   width: 30%;
@@ -8,14 +8,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 8rem auto;
   gap: 2rem;
 `;
 
 const Title = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
-  margin-top: 4rem;
 `;
 
 const LoginForm = styled.form`
@@ -82,8 +81,8 @@ const Login = () => {
     <Container>
       <Title>로그인</Title>
       <LoginForm>
-        <Input type="text" placeholder="아이디" />
-        <Input type="password" placeholder="비밀번호" />
+        <AuthInput type="text" placeholder="아이디" />
+        <AuthInput type="password" placeholder="비밀번호" />
       </LoginForm>
       <ButtonBox>
         <LoginButton type="submit" onClick={handleLoginClick}>

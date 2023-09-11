@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface ButtonProps {
   children: React.ReactNode;
   active?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 interface ButtonBlock {
@@ -19,11 +20,12 @@ const ButtonBlock = styled.button<ButtonBlock>`
   cursor: pointer;
   background-image: ${({ active }) => (active ? 'linear-gradient(180deg, #4fd1ff 0%, #20c5ff 100%)' : 'none')};
   color: ${({ active, theme }) => (active ? theme.colors.white : '#000')};
+  white-space: nowrap;
 `;
 
-const Button = ({ children, active, ...rest }: ButtonProps) => {
+const Button = ({ children, active, onClick, ...rest }: ButtonProps) => {
   return (
-    <ButtonBlock active={active} {...rest}>
+    <ButtonBlock active={active} {...rest} onClick={onClick}>
       {children}
     </ButtonBlock>
   );

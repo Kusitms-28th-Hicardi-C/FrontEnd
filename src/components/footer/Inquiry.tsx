@@ -2,24 +2,10 @@ import styled from 'styled-components';
 import hand from '../../assets/client/hand.svg';
 import rightArrow from '../../assets/icons/rightArrow.svg';
 
-const Inquiry = () => {
-  return (
-    <Container>
-      <img src={hand} alt="hand" />
-      <Text>더 스마트한 병원을 위한 솔루션, Hicardi+로 시작하세요</Text>
-      <InquiryButton>
-        문의하기
-        <img src={rightArrow} alt="rightArrow" />
-      </InquiryButton>
-    </Container>
-  );
-};
-
-export default Inquiry;
-
 const Container = styled.div`
   background: ${({ theme }) => theme.colors.blue1};
-  padding: 0rem 12rem;
+  width: 100%;
+  padding: 0 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,3 +39,18 @@ const InquiryButton = styled.button`
     height: 1rem;
   }
 `;
+
+const Inquiry = () => {
+  return (
+    <Container>
+      <img src={hand} alt="hand" />
+      <Text>더 스마트한 병원을 위한 솔루션, Hicardi+로 시작하세요</Text>
+      <InquiryButton>
+        문의하기
+        <img src={rightArrow} alt="rightArrow" />
+      </InquiryButton>
+    </Container>
+  );
+};
+
+export default Inquiry;

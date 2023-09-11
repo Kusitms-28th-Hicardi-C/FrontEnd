@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import search from '../../assets/icons/search.svg';
 import arrow from '../../assets/client/arrow.svg';
-import Button from '../common/Button';
+import Button from '../common/Button/Button';
 
 const questionList: {
   [key: string]: string[];
@@ -87,7 +87,8 @@ const FAQ = () => {
 export default FAQ;
 
 const Container = styled.div`
-  padding: 5rem 16rem;
+  width: 100%;
+  padding: 5rem 15%;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

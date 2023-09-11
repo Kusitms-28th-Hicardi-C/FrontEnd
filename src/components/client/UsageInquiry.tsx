@@ -1,39 +1,11 @@
 import styled from 'styled-components';
 
-const UsageInquiry = () => {
-  return (
-    <Banner>
-      <Title>이용 문의</Title>
-      <Box>
-        <Left>
-          <Content>하이카디에 관해 </Content>
-          <Content>궁금한 점이 있으신가요? </Content>
-        </Left>
-        <Right>
-          <BigText>1:1 문의 남기기</BigText>
-        </Right>
-      </Box>
-      <Box>
-        <Left>
-          <Content>상담원 연결이 필요하신가요?</Content>
-        </Left>
-        <Right>
-          <Content>고객센터 연결</Content>
-          <BigText>080-920-1001</BigText>
-          <SmallText>* 상담가능시간 : 평일 09:00 ~ 17:00</SmallText>
-        </Right>
-      </Box>
-    </Banner>
-  );
-};
-
-export default UsageInquiry;
-
 const Banner = styled.div`
   background: linear-gradient(to bottom, #01a4ff, #00c2ff);
   display: flex;
   flex-direction: column;
-  padding: 5rem 16rem;
+  width: 100%;
+  padding: 5rem 15%;
 `;
 
 const Title = styled.div`
@@ -78,3 +50,32 @@ const SmallText = styled.div`
   text-align: right;
   font-weight: 300;
 `;
+
+const UsageInquiry = () => {
+  return (
+    <Banner>
+      <Title>이용 문의</Title>
+      <Box>
+        <Left>
+          <Content>하이카디에 관해 </Content>
+          <Content>궁금한 점이 있으신가요? </Content>
+        </Left>
+        <Right>
+          <BigText>1:1 문의 남기기</BigText>
+        </Right>
+      </Box>
+      <Box>
+        <Left>
+          <Content>상담원 연결이 필요하신가요?</Content>
+        </Left>
+        <Right>
+          <Content>고객센터 연결</Content>
+          <BigText>080-920-1001</BigText>
+          <SmallText>* 상담가능시간 : 평일 09:00 ~ 17:00</SmallText>
+        </Right>
+      </Box>
+    </Banner>
+  );
+};
+
+export default UsageInquiry;

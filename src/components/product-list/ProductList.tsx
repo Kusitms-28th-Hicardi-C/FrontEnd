@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { postListState } from '../states/posts';
+
+import productList from '../../data/product.json';
+import { product } from '../../interfaces/product';
 
 const ProductListBlock = styled.div`
   width: 70%;
@@ -14,11 +15,13 @@ const ProductListBlock = styled.div`
 
 const ProductItem = styled(Link)`
   border: 1px solid #cfcfcf;
-`;
 
-const GrayBox = styled.div`
-  height: 300px;
-  background-color: #d9d9d9;
+  img {
+    padding: 2rem;
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+  }
 `;
 
 const ContentArea = styled.div`
@@ -50,18 +53,16 @@ const Badge = styled.span`
 `;
 
 const ProductList = () => {
-  const postList = useRecoilValue(postListState);
-
   return (
     <ProductListBlock>
-      {postList.map((post) => (
-        <ProductItem to={`/product/${post.id}`} key={post.id}>
-          <GrayBox></GrayBox>
+      {productList.map((product: product) => (
+        <ProductItem to={`/products/${product.id}`} key={product.id}>
+          <img src={product.imageUrl} alt="" />
           <ContentArea>
-            <Badge>{post.category}</Badge>
-            <h2>{post.name}</h2>
-            <p>{post.description}</p>
-            <b>{post.price.toLocaleString()}원</b>
+            <Badge>{product.category}</Badge>
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+            <b>{product.price.toLocaleString()}원</b>
           </ContentArea>
         </ProductItem>
       ))}
