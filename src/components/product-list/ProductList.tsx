@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { productListState } from '../../states/products';
+
+import { productList } from '../../data/product';
 
 const ProductListBlock = styled.div`
   width: 70%;
@@ -50,8 +50,6 @@ const Badge = styled.span`
 `;
 
 const ProductList = () => {
-  const productList = useRecoilValue(productListState);
-
   return (
     <ProductListBlock>
       {productList.map((product) => (

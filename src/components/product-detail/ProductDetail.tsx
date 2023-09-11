@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
 
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
 
 import Button from '../common/Button';
-import { productListState } from '../../states/products';
 import { product } from '../../interfaces/product';
+import { productList } from '../../data/product';
 
 interface DropdownMenuItemProps {
   onClick: React.MouseEventHandler<HTMLLIElement>;
@@ -91,7 +90,7 @@ const DropdownDefaultItem = styled.li`
 
 const DropdownMenu = styled.div`
   position: absolute;
-  top: 1.25rem;
+  top: 16px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.blue4};
   border-radius: 16px;
@@ -165,7 +164,6 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
   const [product, setProduct] = useState<product | null>(null);
-  const productList = useRecoilValue(productListState);
 
   useEffect(() => {
     if (productId === '') {
@@ -174,7 +172,7 @@ const ProductDetail = () => {
       const index = productList.findIndex((product) => product.id === Number(productId));
       setProduct(productList[index]);
     }
-  }, [productList]);
+  }, []);
 
   return (
     <ProductDetailBlock>
