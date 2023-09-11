@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface ButtonProps {
   children: React.ReactNode;
   active?: boolean;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 interface ButtonBlock {
@@ -22,9 +23,9 @@ const ButtonBlock = styled.button<ButtonBlock>`
   white-space: nowrap;
 `;
 
-const Button = ({ children, active, ...rest }: ButtonProps) => {
+const Button = ({ children, active, onClick, ...rest }: ButtonProps) => {
   return (
-    <ButtonBlock active={active} {...rest}>
+    <ButtonBlock active={active} {...rest} onClick={onClick}>
       {children}
     </ButtonBlock>
   );

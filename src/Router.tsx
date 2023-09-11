@@ -33,15 +33,15 @@ const Router = () => {
           <Route path="complete" element={<Complete />} />
         </Route>
         <Route path="/products" element={<ProductListPage />} />
-        <Route path="/purchase/:productId" element={<PurchasePage />}>
+        <Route path="/products/:productId" element={<ProductDetailPage />} />
+        <Route path="/products/:productId/purchase" element={<PurchasePage />}>
           <Route path="information" element={<PurchaseInformation />} />
           <Route path="checkPayment" element={<CheckPayment />} />
           <Route path="payment" element={<Payment />} />
           <Route path="orderComplete" element={<OrderComplete />} />
         </Route>
-        <Route path="/support" element={<ClientPage />} />
-        <Route path="/products/:productId" element={<ProductDetailPage />} />
         <Route path="/blog" element={<BlogListPage />} />
+        <Route path="/support" element={<ClientPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
