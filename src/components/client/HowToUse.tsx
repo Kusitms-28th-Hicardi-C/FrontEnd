@@ -28,7 +28,8 @@ export default HowToUse;
 const Banner = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 5rem 16rem;
+  width: 100%;
+  padding: 5rem 15%;
 `;
 
 const Title = styled.div`

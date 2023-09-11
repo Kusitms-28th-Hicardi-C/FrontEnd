@@ -11,7 +11,7 @@ const SignupPage = () => {
 };
 
 const Container = styled.div`
-  padding: 2rem 16rem;
+  padding: 2rem 15%;
 `;
 
 const Title = styled.div`

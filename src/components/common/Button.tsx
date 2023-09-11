@@ -19,6 +19,7 @@ const ButtonBlock = styled.button<ButtonBlock>`
   cursor: pointer;
   background-image: ${({ active }) => (active ? 'linear-gradient(180deg, #4fd1ff 0%, #20c5ff 100%)' : 'none')};
   color: ${({ active, theme }) => (active ? theme.colors.white : '#000')};
+  white-space: nowrap;
 `;
 
 const Button = ({ children, active, ...rest }: ButtonProps) => {

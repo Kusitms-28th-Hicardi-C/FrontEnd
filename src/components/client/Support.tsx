@@ -30,11 +30,11 @@ export default Support;
 
 const Banner = styled.div`
   width: 100%;
+  padding: 3rem 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: ${({ theme }) => theme.colors.blue4};
-  padding: 3rem 0;
 `;
 
 const Title = styled.div`

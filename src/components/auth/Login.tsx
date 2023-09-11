@@ -8,14 +8,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 8rem auto;
   gap: 2rem;
 `;
 
 const Title = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
-  margin-top: 4rem;
 `;
 
 const LoginForm = styled.form`

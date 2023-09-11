@@ -19,7 +19,8 @@ export default Inquiry;
 
 const Container = styled.div`
   background: ${({ theme }) => theme.colors.blue1};
-  padding: 0rem 12rem;
+  width: 100%;
+  padding: 0 15%;
   display: flex;
   justify-content: space-between;
   align-items: center;

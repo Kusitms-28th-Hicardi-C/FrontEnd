@@ -9,11 +9,14 @@ import MainPage from './pages/MainPage';
 import ClientPage from './pages/ClientPage';
 import ProductListPage from './pages/ProductListPage';
 import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
+import ScrollTop from './components/common/ScrollTop';
 import ProductDetailPage from './pages/ProductDetailPage';
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <ScrollTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<MainPage />} />
@@ -27,6 +30,7 @@ const Router = () => {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/product/:productId" element={<ProductDetailPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
