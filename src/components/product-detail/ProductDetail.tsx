@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
 
-import Button from '../common/Button';
+import Button from '../common/Button/Button';
 import { product } from '../../interfaces/product';
 import { productList } from '../../data/product';
 

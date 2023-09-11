@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import SectionTitle from './SectionTitle';
 import intro1 from '../../assets/intro/intro1.png';
-import Button from '../common/Button';
+import Button from '../common/Button/Button';
 
 const IntroBlock = styled.section`
   width: 70%;

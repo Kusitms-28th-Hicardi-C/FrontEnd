@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Button from '../common/Button';
+import Button from '../common/Button/Button';
 
 const CategoriesBlock = styled.div`
   display: flex;

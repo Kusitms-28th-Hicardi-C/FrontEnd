@@ -15,8 +15,8 @@ const InputStyle = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.gray4};
 `;
 
-const Input = ({ type, placeholder }: InputProps) => {
+const AuthInput = ({ type, placeholder }: InputProps) => {
   return <InputStyle type={type} placeholder={placeholder} />;
 };
 
-export default Input;
+export default AuthInput;
