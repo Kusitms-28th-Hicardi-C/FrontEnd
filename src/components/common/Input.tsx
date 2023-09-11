@@ -5,12 +5,6 @@ interface InputProps {
   placeholder: string;
 }
 
-const Input = ({ type, placeholder }: InputProps) => {
-  return <InputStyle type={type} placeholder={placeholder} />;
-};
-
-export default Input;
-
 const InputStyle = styled.input`
   width: 100%;
   outline: none;
@@ -20,3 +14,9 @@ const InputStyle = styled.input`
   background: ${({ theme }) => theme.colors.white};
   border: 1px solid ${({ theme }) => theme.colors.gray4};
 `;
+
+const Input = ({ type, placeholder }: InputProps) => {
+  return <InputStyle type={type} placeholder={placeholder} />;
+};
+
+export default Input;

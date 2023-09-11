@@ -3,31 +3,6 @@ import howToUseIcon from '../../assets/client/howToUse.svg';
 import questionMarkIcon from '../../assets/client/questionMark.svg';
 import productIcon from '../../assets/client/product.svg';
 
-const Support = () => {
-  return (
-    <Banner>
-      <Title>고객 지원</Title>
-      <SubTitle>하이카디 사용법 영상과 메뉴얼을 확인하세요.</SubTitle>
-      <ButtonBox>
-        <Button>
-          <img src={howToUseIcon} alt="howToUse" />
-          사용법
-        </Button>
-        <Button>
-          <img src={questionMarkIcon} alt="questionMark" />
-          FAQ
-        </Button>
-        <Button>
-          <img src={productIcon} alt="product" />
-          제품 소개서
-        </Button>
-      </ButtonBox>
-    </Banner>
-  );
-};
-
-export default Support;
-
 const Banner = styled.div`
   width: 100%;
   padding: 3rem 15%;
@@ -67,3 +42,28 @@ const Button = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+const Support = () => {
+  return (
+    <Banner>
+      <Title>고객 지원</Title>
+      <SubTitle>하이카디 사용법 영상과 메뉴얼을 확인하세요.</SubTitle>
+      <ButtonBox>
+        <Button>
+          <img src={howToUseIcon} alt="howToUse" />
+          사용법
+        </Button>
+        <Button>
+          <img src={questionMarkIcon} alt="questionMark" />
+          FAQ
+        </Button>
+        <Button>
+          <img src={productIcon} alt="product" />
+          제품 소개서
+        </Button>
+      </ButtonBox>
+    </Banner>
+  );
+};
+
+export default Support;
