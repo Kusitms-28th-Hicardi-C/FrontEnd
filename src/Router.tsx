@@ -9,6 +9,7 @@ import MainPage from './pages/MainPage';
 import ClientPage from './pages/ClientPage';
 import ProductListPage from './pages/ProductListPage';
 import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
 
 const Router = () => {
   return (
@@ -25,6 +26,7 @@ const Router = () => {
         </Route>
         <Route path="/products" element={<ProductListPage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
