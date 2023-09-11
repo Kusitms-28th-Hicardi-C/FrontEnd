@@ -7,7 +7,9 @@ const CategoriesBlock = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 70%;
-  margin: 1rem auto;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const BadgeList = styled.div`
