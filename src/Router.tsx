@@ -28,7 +28,7 @@ const Router = () => {
           <Route path="complete" element={<Complete />} />
         </Route>
         <Route path="/products" element={<ProductListPage />} />
-        <Route path="/product/:productId" element={<ProductDetailPage />} />
+        <Route path="/products/:productId" element={<ProductDetailPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

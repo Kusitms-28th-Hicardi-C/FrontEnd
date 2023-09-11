@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { postListState } from '../states/posts';
+import { productListState } from '../../states/products';
 
 const ProductListBlock = styled.div`
   width: 70%;
@@ -50,18 +50,18 @@ const Badge = styled.span`
 `;
 
 const ProductList = () => {
-  const postList = useRecoilValue(postListState);
+  const productList = useRecoilValue(productListState);
 
   return (
     <ProductListBlock>
-      {postList.map((post) => (
-        <ProductItem to={`/product/${post.id}`} key={post.id}>
+      {productList.map((product) => (
+        <ProductItem to={`/products/${product.id}`} key={product.id}>
           <GrayBox></GrayBox>
           <ContentArea>
-            <Badge>{post.category}</Badge>
-            <h2>{post.name}</h2>
-            <p>{post.description}</p>
-            <b>{post.price.toLocaleString()}원</b>
+            <Badge>{product.category}</Badge>
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+            <b>{product.price.toLocaleString()}원</b>
           </ContentArea>
         </ProductItem>
       ))}
