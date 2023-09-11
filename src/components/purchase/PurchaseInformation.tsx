@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import Header from '../common/Header';
-import Title from '../common/Title';
+import Header from '../common/Title/Header';
+import Title from '../common/Title/Title';
 import Index from './Index';
-import Radio from '../common/Radio';
+import Radio from '../common/Input/Radio';
 
 const DeliveryAddressBox = styled.div`
   display: flex;

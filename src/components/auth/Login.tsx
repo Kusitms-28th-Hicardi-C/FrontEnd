@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import AuthInput from '../common/input/AuthInput';
+import AuthInput from '../common/Input/AuthInput';
 
 const Container = styled.div`
   width: 30%;
