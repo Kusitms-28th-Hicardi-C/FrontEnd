@@ -1,12 +1,22 @@
 import styled from 'styled-components';
 
-const CheckBoxStyle = styled.input`
+interface CheckBoxProps {
+  children?: React.ReactNode;
+}
+
+const CheckBoxBlock = styled.label`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const Check = styled.input`
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 5px;
   outline: 1px solid ${({ theme }) => theme.colors.gray6};
-  cursor: pointer;
   appearance: none;
+  margin-right: 0.5rem;
 
   &:checked {
     outline: 2px solid ${({ theme }) => theme.colors.blue1};
@@ -29,8 +39,12 @@ const CheckBoxStyle = styled.input`
   }
 `;
 
-const CheckBox = () => {
-  return <CheckBoxStyle type="checkbox" />;
+const CheckBox = ({ children }: CheckBoxProps) => {
+  return (
+    <CheckBoxBlock>
+      <Check type="checkbox" /> {children}
+    </CheckBoxBlock>
+  );
 };
 
 export default CheckBox;
