@@ -29,7 +29,6 @@ const BigInput = styled(AddressInput)<AddressProps>`
       : css`
           width: 20rem;
         `};
-  /* width: ${({ fullWidth }) => (fullWidth ? '100%' : '20rem')}; */
 `;
 
 const BigWhiteInput = styled(Input)<AddressProps>`
@@ -41,7 +40,6 @@ const BigWhiteInput = styled(Input)<AddressProps>`
       : css`
           width: 20rem;
         `};
-  /* width: ${({ fullWidth }) => (fullWidth ? '100%' : '20rem')}; */
 `;
 
 const Address = ({ fullWidth }: AddressProps) => {
