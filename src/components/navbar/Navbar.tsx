@@ -43,6 +43,7 @@ const LinkList = styled.div`
   a {
     font-weight: 600;
   }
+  white-space: nowrap;
 `;
 
 const IconList = styled.div`

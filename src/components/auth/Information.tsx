@@ -2,12 +2,7 @@ import styled from 'styled-components';
 import Index from './Index';
 import { useNavigate } from 'react-router-dom';
 import ButtonBox from './ButtonBox';
-
-const Title = styled.div`
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-`;
+import Title from '../common/Title';
 
 const ContentBox = styled.div`
   margin-bottom: 5rem;
