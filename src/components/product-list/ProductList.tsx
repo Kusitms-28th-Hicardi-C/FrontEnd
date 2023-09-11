@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { productList } from '../../data/product';
+import productList from '../../data/product.json';
+import { product } from '../../interfaces/product';
 
 const ProductListBlock = styled.div`
   width: 70%;
@@ -14,11 +15,13 @@ const ProductListBlock = styled.div`
 
 const ProductItem = styled(Link)`
   border: 1px solid #cfcfcf;
-`;
 
-const GrayBox = styled.div`
-  height: 300px;
-  background-color: #d9d9d9;
+  img {
+    padding: 2rem;
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+  }
 `;
 
 const ContentArea = styled.div`
@@ -52,9 +55,9 @@ const Badge = styled.span`
 const ProductList = () => {
   return (
     <ProductListBlock>
-      {productList.map((product) => (
+      {productList.map((product: product) => (
         <ProductItem to={`/products/${product.id}`} key={product.id}>
-          <GrayBox></GrayBox>
+          <img src={product.imageUrl} alt="" />
           <ContentArea>
             <Badge>{product.category}</Badge>
             <h2>{product.name}</h2>
