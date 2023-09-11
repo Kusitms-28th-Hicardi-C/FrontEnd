@@ -91,7 +91,7 @@ const DropdownDefaultItem = styled.li`
 
 const DropdownMenu = styled.div`
   position: absolute;
-  top: 1.25rem;
+  top: 16px;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.blue4};
   border-radius: 16px;

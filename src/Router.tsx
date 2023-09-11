@@ -12,6 +12,7 @@ import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import ScrollTop from './components/common/ScrollTop';
 import ProductDetailPage from './pages/ProductDetailPage';
+import BlogListPage from './pages/BlogListPage';
 
 const Router = () => {
   return (
@@ -29,6 +30,7 @@ const Router = () => {
         </Route>
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/products/:productId" element={<ProductDetailPage />} />
+        <Route path="/blog" element={<BlogListPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
