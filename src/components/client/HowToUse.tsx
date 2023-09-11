@@ -1,30 +1,6 @@
 import styled from 'styled-components';
 import video from '../../assets/client/video.svg';
 
-const HowToUse = () => {
-  return (
-    <Banner>
-      <Title>사용법</Title>
-      <VideoBox>
-        <Video>
-          <img src={video} alt="video" />
-          <Text>하이카디 착용/연결/작동 방법</Text>
-        </Video>
-        <Video>
-          <img src={video} alt="video" />
-          <Text>하이카디 착용/연결/작동 방법</Text>
-        </Video>
-        <Video>
-          <img src={video} alt="video" />
-          <Text>하이카디 착용/연결/작동 방법</Text>
-        </Video>
-      </VideoBox>
-    </Banner>
-  );
-};
-
-export default HowToUse;
-
 const Banner = styled.div`
   display: flex;
   flex-direction: column;
@@ -60,3 +36,27 @@ const Text = styled.div`
   font-size: 1.2rem;
   font-weight: 800;
 `;
+
+const HowToUse = () => {
+  return (
+    <Banner>
+      <Title>사용법</Title>
+      <VideoBox>
+        <Video>
+          <img src={video} alt="video" />
+          <Text>하이카디 착용/연결/작동 방법</Text>
+        </Video>
+        <Video>
+          <img src={video} alt="video" />
+          <Text>하이카디 착용/연결/작동 방법</Text>
+        </Video>
+        <Video>
+          <img src={video} alt="video" />
+          <Text>하이카디 착용/연결/작동 방법</Text>
+        </Video>
+      </VideoBox>
+    </Banner>
+  );
+};
+
+export default HowToUse;
