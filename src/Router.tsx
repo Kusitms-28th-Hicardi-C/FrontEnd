@@ -11,6 +11,7 @@ import ProductListPage from './pages/ProductListPage';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
 import ScrollTop from './components/common/ScrollTop';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 const Router = () => {
   return (
@@ -27,6 +28,7 @@ const Router = () => {
           <Route path="complete" element={<Complete />} />
         </Route>
         <Route path="/products" element={<ProductListPage />} />
+        <Route path="/product/:productId" element={<ProductDetailPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
