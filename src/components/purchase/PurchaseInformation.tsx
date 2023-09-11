@@ -70,10 +70,6 @@ const BoxContent = styled.div`
   gap: 0.5rem;
 `;
 
-const Description = styled.div`
-  font-size: 1.2rem;
-`;
-
 const Product = styled.div`
   display: flex;
   gap: 2rem;
@@ -87,6 +83,10 @@ const ProductName = styled.div`
 const ProductOption = styled.div`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.gray3};
+`;
+
+const Description = styled.div`
+  font-size: 1.2rem;
 `;
 
 const OrderAmount = styled.div`
