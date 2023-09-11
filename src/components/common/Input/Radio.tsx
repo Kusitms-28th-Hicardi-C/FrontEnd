@@ -17,7 +17,7 @@ const Label = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1.5rem;
+  margin-right: 1rem;
   cursor: pointer;
   white-space: nowrap;
 `;

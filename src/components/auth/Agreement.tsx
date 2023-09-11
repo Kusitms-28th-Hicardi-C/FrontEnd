@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import Index from './Index';
-import CheckBox from '../common/CheckBox';
+import CheckBox from '../common/Input/CheckBox';
 import Textarea from '../common/Textarea';
 import ButtonBox from './ButtonBox';
 import { useNavigate } from 'react-router-dom';
-import Title from '../common/Title';
+import Title from '../common/Title/Title';
 
 const Text = styled.div`
   font-size: 1rem;

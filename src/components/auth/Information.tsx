@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Index from './Index';
 import { useNavigate } from 'react-router-dom';
 import ButtonBox from './ButtonBox';
-import Title from '../common/Title';
-import Radio from '../common/Radio';
-import Input from '../common/input/Input';
+import Title from '../common/Title/Title';
+import Radio from '../common/Input/Radio';
+import Input from '../common/Input/Input';
 import DoubleCheckButton from '../common/Button/DoubleCheckButton';
-import Address from '../common/input/Address';
-import SubTitle from '../common/SubTitle';
+import Address from '../common/Input/Address';
+import SubTitle from '../common/Title/SubTitle';
 
 const ContentBox = styled.div`
   margin-bottom: 5rem;

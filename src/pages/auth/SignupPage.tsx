@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from '../../components/common/Header';
+import Header from '../../components/common/Title/Header';
 
 const Container = styled.div`
   padding: 2rem 15%;

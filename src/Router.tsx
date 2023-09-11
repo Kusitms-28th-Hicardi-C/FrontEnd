@@ -42,8 +42,8 @@ const Router = () => {
           <Route path="orderComplete" element={<OrderComplete />} />
         </Route>
         <Route path="/blog" element={<BlogListPage />} />
-        <Route path="/support" element={<ClientPage />} />
         <Route path="/blog/:postId" element={<BlogDetailPage />} />
+        <Route path="/support" element={<ClientPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
