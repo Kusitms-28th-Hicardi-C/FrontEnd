@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import Index from './Index';
 import { useNavigate } from 'react-router-dom';
 import ButtonBox from './ButtonBox';
-
-const Title = styled.div`
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-`;
+import Title from '../common/Title';
+import Radio from '../common/Radio';
+import Input from '../common/input/Input';
+import DoubleCheckButton from '../common/Button/DoubleCheckButton';
+import Address from '../common/input/Address';
+import SubTitle from '../common/SubTitle';
 
 const ContentBox = styled.div`
   margin-bottom: 5rem;
@@ -19,51 +19,8 @@ const Content = styled.div`
   align-items: center;
   padding: 1.4rem 4rem;
   border-top: 2px solid ${({ theme }) => theme.colors.gray6};
-
   span {
     margin: 0 0.5rem;
-  }
-`;
-
-const SubTitle = styled.div`
-  font-size: 1rem;
-  font-weight: 800;
-  display: flex;
-  width: 12rem;
-
-  span {
-    color: ${({ theme }) => theme.colors.blue2};
-    margin-left: 0.4rem;
-  }
-`;
-
-const Sort = styled.label`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 1.5rem;
-  cursor: pointer;
-  white-space: nowrap;
-`;
-
-const Radio = styled.input`
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-right: 0.5rem;
-  border-radius: 50%;
-`;
-
-const Input = styled.input`
-  width: 20rem;
-  outline: none;
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.gray6};
-
-  &::placeholder {
-    color: ${({ theme }) => theme.colors.gray6};
   }
 `;
 
@@ -73,14 +30,6 @@ const MediumInput = styled(Input)`
 
 const SmallInput = styled(Input)`
   width: 10rem;
-`;
-
-const AddressInput = styled(Input)`
-  background: ${({ theme }) => theme.colors.gray7};
-`;
-
-const ZipCodeInput = styled(AddressInput)`
-  width: 15rem;
 `;
 
 const Select = styled.select`
@@ -98,25 +47,10 @@ const PhoneSelect = styled(Select)`
   width: 8rem;
 `;
 
-const DoubleCheckButton = styled.button`
-  padding: 0.8rem 1rem;
-  background: ${({ theme }) => theme.colors.gray2};
-  margin-left: 1rem;
-  border-radius: 8px;
-  border: none;
-  font-size: 0.9rem;
-`;
-
 const Description = styled.div`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.gray3};
   margin-left: 0.8rem;
-`;
-
-const Address = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 `;
 
 const CommonNumber = [
@@ -153,81 +87,51 @@ const Information = () => {
       <Title>회원인증</Title>
       <ContentBox>
         <Content>
-          <SubTitle>
-            회원인증<span>*</span>
-          </SubTitle>
-          <Sort>
-            <Radio type="radio" checked={true} /> 사업자 회원
-          </Sort>
+          <SubTitle>회원인증</SubTitle>
+          <Radio checked={true} text="사업자 회원" />
         </Content>
         <Content>
-          <SubTitle>
-            사업자구분<span>*</span>
-          </SubTitle>
-          <Sort>
-            <Radio type="radio" checked={true} name="buisnessman" />
-            개인 사업자
-          </Sort>
-          <Sort>
-            <Radio type="radio" name="buisnessman" /> 법인 사업자
-          </Sort>
+          <SubTitle>사업자구분</SubTitle>
+          <Radio checked={true} name="buisnessman" text="개인 사업자" />
+          <Radio name="buisnessman" text="법인 사업자" />
         </Content>
       </ContentBox>
 
       <Title>기본정보</Title>
       <ContentBox>
         <Content>
-          <SubTitle>
-            아이디<span>*</span>
-          </SubTitle>
+          <SubTitle>아이디</SubTitle>
           <Input type="text" placeholder="아이디 입력" />
           <Description>영문 소문자/숫자, 4~16자</Description>
         </Content>
         <Content>
-          <SubTitle>
-            비밀번호<span>*</span>
-          </SubTitle>
+          <SubTitle>비밀번호</SubTitle>
           <Input type="password" placeholder="비밀번호 입력" />
           <Description>영문 대소문자/숫자/특수문자 중 2가지 이상 조합, 10~16자</Description>
         </Content>
         <Content>
-          <SubTitle>
-            비밀번호 확인<span>*</span>
-          </SubTitle>
+          <SubTitle>비밀번호 확인</SubTitle>
           <Input type="password" placeholder="비밀번호 확인 입력" />
         </Content>
         <Content>
-          <SubTitle>
-            대표자 이름<span>*</span>
-          </SubTitle>
+          <SubTitle>대표자 이름</SubTitle>
           <Input type="text" placeholder="이름 입력" />
         </Content>
         <Content>
-          <SubTitle>
-            상호명<span>*</span>
-          </SubTitle>
+          <SubTitle>상호명</SubTitle>
           <Input type="text" />
         </Content>
         <Content>
-          <SubTitle>
-            사업자 번호<span>*</span>
-          </SubTitle>
+          <SubTitle>사업자 번호</SubTitle>
           <MediumInput type="text" />
-          <DoubleCheckButton type="button">중복확인</DoubleCheckButton>
+          <DoubleCheckButton>중복확인</DoubleCheckButton>
         </Content>
+
         <Content>
-          <SubTitle>
-            주소<span>*</span>
-          </SubTitle>
-          <Address>
-            <div>
-              <ZipCodeInput type="text" placeholder="우편번호" />
-              <DoubleCheckButton type="button">중복확인</DoubleCheckButton>
-            </div>
-            <AddressInput type="text" placeholder="기본주소" />
-            <Input type="text" />
-          </Address>
+          <SubTitle>주소</SubTitle>
+          <Address />
         </Content>
+
         <Content>
           <SubTitle>일반전화</SubTitle>
           <PhoneSelect>
@@ -269,34 +173,20 @@ const Information = () => {
       <Title>추가정보</Title>
       <ContentBox>
         <Content>
-          <SubTitle>
-            대표자 성별<span>*</span>
-          </SubTitle>
-          <Sort>
-            <Radio type="radio" name="gender" /> 남자
-          </Sort>
-          <Sort>
-            <Radio type="radio" name="gender" /> 여자
-          </Sort>
+          <SubTitle>대표자 성별</SubTitle>
+          <Radio name="gender" text="남자" />
+          <Radio name="gender" text="여자" />
         </Content>
         <Content>
-          <SubTitle>
-            대표자 생년월일<span>*</span>
-          </SubTitle>
-          <SmallInput /> <span>년</span>
-          <SmallInput /> <span>월</span>
-          <SmallInput /> <span>일</span>
-          <Sort>
-            <Radio type="radio" name="solar" /> 양력
-          </Sort>
-          <Sort>
-            <Radio type="radio" name="solar" /> 음력
-          </Sort>
+          <SubTitle>대표자 생년월일</SubTitle>
+          <SmallInput type="number" /> <span>년</span>
+          <SmallInput type="number" /> <span>월</span>
+          <SmallInput type="number" /> <span>일</span>
+          <Radio name="solar" text="양력" />
+          <Radio name="solar" text="음력" />
         </Content>
         <Content>
-          <SubTitle>
-            요양기관기호<span>*</span>
-          </SubTitle>
+          <SubTitle>요양기관기호</SubTitle>
           <Input type="text" />
         </Content>
       </ContentBox>

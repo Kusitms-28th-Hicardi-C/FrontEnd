@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
 
-import Button from '../common/Button';
+import Button from '../common/Button/Button';
 import { product } from '../../interfaces/product';
 import productList from '../../data/product.json';
 
@@ -165,6 +165,10 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<product | null>(null);
 
+  const handlePurchaseClick = () => {
+    navigate(`purchase/information`);
+  };
+
   useEffect(() => {
     if (productId === '') {
       navigate(-1);
@@ -193,7 +197,9 @@ const ProductDetail = () => {
           총 상품(수량) : <b>0</b>(개)
         </Amount>
         <ButtonGroup>
-          <StyledButton active>구매하기</StyledButton>
+          <StyledButton onClick={handlePurchaseClick} active>
+            구매하기
+          </StyledButton>
           <StyledButton>장바구니 추가</StyledButton>
         </ButtonGroup>
       </ProductContentBottom>

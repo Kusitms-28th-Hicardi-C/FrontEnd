@@ -4,12 +4,7 @@ import CheckBox from '../common/CheckBox';
 import Textarea from '../common/Textarea';
 import ButtonBox from './ButtonBox';
 import { useNavigate } from 'react-router-dom';
-
-const Subtitle = styled.div`
-  font-size: 1.2rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-`;
+import Title from '../common/Title';
 
 const Text = styled.div`
   font-size: 1rem;
@@ -30,7 +25,7 @@ const Agreement = () => {
   return (
     <>
       <Index index={1} />
-      <Subtitle>전체 동의</Subtitle>
+      <Title>전체 동의</Title>
 
       <Text>
         <CheckBox />

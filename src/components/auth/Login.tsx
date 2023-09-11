@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Input from '../common/Input';
 import { useNavigate } from 'react-router-dom';
+import AuthInput from '../common/input/AuthInput';
 
 const Container = styled.div`
   width: 30%;
@@ -81,8 +81,8 @@ const Login = () => {
     <Container>
       <Title>로그인</Title>
       <LoginForm>
-        <Input type="text" placeholder="아이디" />
-        <Input type="password" placeholder="비밀번호" />
+        <AuthInput type="text" placeholder="아이디" />
+        <AuthInput type="password" placeholder="비밀번호" />
       </LoginForm>
       <ButtonBox>
         <LoginButton type="submit" onClick={handleLoginClick}>
