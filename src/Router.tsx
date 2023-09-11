@@ -10,10 +10,12 @@ import ClientPage from './pages/ClientPage';
 import ProductListPage from './pages/ProductListPage';
 import Navbar from './components/navbar/Navbar';
 import Footer from './components/footer/Footer';
+import ScrollTop from './components/common/ScrollTop';
 
 const Router = () => {
   return (
     <BrowserRouter>
+      <ScrollTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<MainPage />} />
