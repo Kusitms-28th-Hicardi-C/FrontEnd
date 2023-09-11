@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { blogList } from '../../data/blog';
+import blogList from '../../data/blog.json';
+import { post } from '../../interfaces/post';
 
 interface BlogItemProps {
   id: number;
@@ -62,7 +63,7 @@ const BlogItemTop = styled.div`
 const BlogItem = ({ id, title, category, imageUrl, date }: BlogItemProps) => {
   return (
     <BlogItemBlock to={`/blog/${id}`}>
-      <img src={require(`../../assets/${imageUrl}`)} alt="블로그 이미지" />
+      <img src={imageUrl} alt="블로그 이미지" />
       <BlogItemText>
         <BlogItemTop>
           <b>{category}</b>
@@ -77,14 +78,14 @@ const BlogItem = ({ id, title, category, imageUrl, date }: BlogItemProps) => {
 const BlogList = () => {
   return (
     <BlogListBlock>
-      {blogList.map((blog) => (
+      {blogList.map((post: post) => (
         <BlogItem
-          key={blog.id}
-          id={blog.id}
-          title={blog.title}
-          category={blog.category}
-          imageUrl={blog.imageUrl}
-          date={blog.date}
+          key={post.id}
+          id={post.id}
+          title={post.title}
+          category={post.category}
+          imageUrl={post.imageUrl}
+          date={post.date}
         />
       ))}
     </BlogListBlock>
