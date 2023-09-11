@@ -1,5 +1,5 @@
-import Header from '../components/blog/Header';
-import BlogList from '../components/blog/BlogList';
+import Header from '../components/blog-list/Header';
+import BlogList from '../components/blog-list/BlogList';
 
 const BlogListPage = () => {
   return (

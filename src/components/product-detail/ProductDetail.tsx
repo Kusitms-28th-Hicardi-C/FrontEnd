@@ -6,7 +6,7 @@ import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
 
 import Button from '../common/Button/Button';
 import { product } from '../../interfaces/product';
-import { productList } from '../../data/product';
+import productList from '../../data/product.json';
 
 interface DropdownMenuItemProps {
   onClick: React.MouseEventHandler<HTMLLIElement>;
@@ -181,7 +181,7 @@ const ProductDetail = () => {
   return (
     <ProductDetailBlock>
       <ProductImage>
-        <img src={require(`../../assets/products/hicardi+.png`)} alt="하이카르디+" />
+        <img src={product?.imageUrl} alt="하이카르디+" />
       </ProductImage>
       <ProductContent>
         <Badge>{product?.category}</Badge>
