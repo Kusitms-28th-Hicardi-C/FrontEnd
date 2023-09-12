@@ -1,5 +1,10 @@
 import styled from 'styled-components';
 
+interface HeaderImageProps {
+  imageUrl: string;
+  alt: string;
+}
+
 const HeaderImageBlock = styled.div`
   width: 100%;
   height: 400px;
@@ -11,10 +16,10 @@ const HeaderImageBlock = styled.div`
   }
 `;
 
-const HeaderImage = () => {
+const HeaderImage = ({ imageUrl, alt }: HeaderImageProps) => {
   return (
     <HeaderImageBlock>
-      <img src="/images/placeholder/placeholder-image1.png" alt="임시 헤더 이미지" />
+      <img src={imageUrl} alt={alt} />
     </HeaderImageBlock>
   );
 };

@@ -1,11 +1,11 @@
 import ArticleList from '../components/news/ArticleList';
-import HeaderImage from '../components/news/HeaderImage';
+import NewsHeaderImage from '../components/news/NewsHeaderImage';
 import Heading from '../components/news/Heading';
 
 const NewsPage = () => {
   return (
     <>
-      <HeaderImage />
+      <NewsHeaderImage />
       <Heading />
       <ArticleList />
     </>
