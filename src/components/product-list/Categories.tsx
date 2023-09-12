@@ -5,7 +5,7 @@ import Button from '../common/Button/Button';
 const CategoriesBlock = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
   width: 70%;
   margin: 0 auto;
   margin-top: 1rem;
@@ -24,9 +24,11 @@ const Badge = styled(Button)`
 `;
 
 const CartButton = styled.button`
-  background-color: #d8d8d8;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
+  background-color: ${({ theme }) => theme.colors.blue3};
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 1.125rem;
   font-weight: 500;
 `;
 
