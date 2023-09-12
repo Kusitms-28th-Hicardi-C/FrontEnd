@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import articleList from '../../data/news.json';
+
 const ArticleListBlock = styled.div`
   width: 50%;
   margin: 0 auto;
@@ -70,62 +72,18 @@ const ArticleList = () => {
       </ArticleTableHead>
       <ArticleTable>
         <ArticleTableBody>
-          <ArticleTableRow to="/news/article/1">
-            <span>1</span>
-            <span>2023.9.8</span>
-            <ArticleTitle>
-              <b>동아ST, 메쥬 ‘하이카디’ 국내 판권 계약 체결</b>
-            </ArticleTitle>
-            <span>약업신문</span>
-          </ArticleTableRow>
-          <ArticleTableRow to="/news/article/1">
-            <span>1</span>
-            <span>2023.9.8</span>
-            <ArticleTitle>
-              <b>동아ST, 메쥬 ‘하이카디’ 국내 판권 계약 체결</b>
-            </ArticleTitle>
-            <span>약업신문</span>
-          </ArticleTableRow>
-          <ArticleTableRow to="/news/article/1">
-            <span>1</span>
-            <span>2023.9.8</span>
-            <ArticleTitle>
-              <b>동아ST, 메쥬 ‘하이카디’ 국내 판권 계약 체결</b>
-            </ArticleTitle>
-            <span>약업신문</span>
-          </ArticleTableRow>
-          <ArticleTableRow to="/news/article/1">
-            <span>1</span>
-            <span>2023.9.8</span>
-            <ArticleTitle>
-              <b>동아ST, 메쥬 ‘하이카디’ 국내 판권 계약 체결</b>
-            </ArticleTitle>
-            <span>약업신문</span>
-          </ArticleTableRow>
-          <ArticleTableRow to="/news/article/1">
-            <span>1</span>
-            <span>2023.9.8</span>
-            <ArticleTitle>
-              <b>동아ST, 메쥬 ‘하이카디’ 국내 판권 계약 체결</b>
-            </ArticleTitle>
-            <span>약업신문</span>
-          </ArticleTableRow>
-          <ArticleTableRow to="/news/article/1">
-            <span>1</span>
-            <span>2023.9.8</span>
-            <ArticleTitle>
-              <b>동아ST, 메쥬 ‘하이카디’ 국내 판권 계약 체결</b>
-            </ArticleTitle>
-            <span>약업신문</span>
-          </ArticleTableRow>
-          <ArticleTableRow to="/news/article/1">
-            <span>1</span>
-            <span>2023.9.8</span>
-            <ArticleTitle>
-              <b>동아ST, 메쥬 ‘하이카디’ 국내 판권 계약 체결</b>
-            </ArticleTitle>
-            <span>약업신문</span>
-          </ArticleTableRow>
+          {articleList.map((article, index) => {
+            return (
+              <ArticleTableRow key={article.id} to={`/news/article/${article.id}`}>
+                <span>{index + 1}</span>
+                <span>{article.date}</span>
+                <ArticleTitle>
+                  <b>{article.title}</b>
+                </ArticleTitle>
+                <span>{article.press}</span>
+              </ArticleTableRow>
+            );
+          })}
         </ArticleTableBody>
       </ArticleTable>
       <Pagination>
