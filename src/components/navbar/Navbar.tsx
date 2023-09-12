@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -7,8 +7,13 @@ import { FaUser, FaSearch } from 'react-icons/fa';
 import logo from '../../assets/logo/hicardi-logo.svg';
 import NavActiveLink from '../common/NavActiveLink';
 
+interface NavIntroSpanProps {
+  active: string;
+}
+
 interface DropdownProps {
-  onMenuClick: React.MouseEventHandler<HTMLLIElement>;
+  top: number;
+  left: number;
 }
 
 const NavbarBlock = styled.nav`
@@ -40,11 +45,21 @@ const LinkList = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
+`;
 
-  a {
-    font-weight: 600;
-  }
-  white-space: nowrap;
+const NavIntroSpan = styled.span<NavIntroSpanProps>`
+  font-weight: 600;
+  cursor: pointer;
+
+  ${(props) =>
+    props.active === '1' &&
+    css`
+      color: #20c5ff;
+    `}
+`;
+
+const IntroWrapper = styled.div`
+  position: relative;
 `;
 
 const IconList = styled.div`
@@ -53,10 +68,6 @@ const IconList = styled.div`
   align-items: center;
   gap: 2rem;
 
-  div {
-    position: relative;
-  }
-
   img {
     width: 20px;
     height: 20px;
@@ -64,6 +75,7 @@ const IconList = styled.div`
 `;
 
 const IconItem = styled.div`
+  position: relative;
   cursor: pointer;
 
   i {
@@ -75,18 +87,33 @@ const IconItem = styled.div`
   }
 `;
 
-const DropdownBlock = styled.ul`
+const Dropdown = styled.ul<DropdownProps>`
   position: absolute;
-  top: 40px;
-  left: -70px;
-  width: 150px;
-  background-color: ${({ theme }) => theme.colors.white};
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
+
   border-radius: 8px;
-  text-align: center;
+  background-color: ${({ theme }) => theme.colors.white};
+  font-weight: 600;
   box-shadow: 0px 0px 10px 3px #0000001a;
 
   li {
     padding: 1rem;
+
+    a {
+      display: inline-block;
+      width: 150px;
+      color: ${({ theme }) => theme.colors.black};
+      padding: 0 0.75rem;
+    }
+
+    &:hover {
+      a {
+        background-color: ${({ theme }) => theme.colors.blue4};
+        color: ${({ theme }) => theme.colors.blue1};
+        border-radius: 16px;
+      }
+    }
   }
 
   li + li {
@@ -94,30 +121,27 @@ const DropdownBlock = styled.ul`
   }
 `;
 
-const Dropdown = ({ onMenuClick }: DropdownProps) => {
-  return (
-    <DropdownBlock>
-      <li onClick={onMenuClick}>
-        <Link to="/login">로그인 / 회원가입</Link>
-      </li>
-      <li onClick={onMenuClick}>장바구니</li>
-      <li onClick={onMenuClick}>회원정보 수정</li>
-    </DropdownBlock>
-  );
-};
-
 const Spacer = styled.div`
   height: 4rem;
 `;
 
 const Navbar = () => {
+  const [isVisibleIntroMenu, setIsVisibleIntroMenu] = useState(false);
   const [isVisibleUserMenu, setIsVisibleUserMenu] = useState(false);
 
-  const onUserClick = () => {
+  const onIntroSpanClick = () => {
+    setIsVisibleIntroMenu(!isVisibleIntroMenu);
+  };
+
+  const onIntroMenuClick = () => {
+    setIsVisibleIntroMenu(!isVisibleIntroMenu);
+  };
+
+  const onUserIconClick = () => {
     setIsVisibleUserMenu(!isVisibleUserMenu);
   };
 
-  const onMenuClick = () => {
+  const onUserMenuClick = () => {
     setIsVisibleUserMenu(false);
   };
 
@@ -129,7 +153,27 @@ const Navbar = () => {
             <img src={logo} alt="hicardi-logo" />
           </Logo>
           <LinkList>
-            <NavActiveLink to="/introduce">하이카디</NavActiveLink>
+            <NavIntroSpan onClick={onIntroSpanClick} active={isVisibleIntroMenu ? '1' : '0'}>
+              <IntroWrapper>
+                하이카디
+                {isVisibleIntroMenu && (
+                  <Dropdown top={40} left={-50}>
+                    <li onClick={onIntroMenuClick}>
+                      <Link to="#">브랜드 소개</Link>
+                    </li>
+                    <li onClick={onIntroMenuClick}>
+                      <Link to="#">심전도 모니터링</Link>
+                    </li>
+                    <li onClick={onIntroMenuClick}>
+                      <Link to="#">홀터 솔루션</Link>
+                    </li>
+                    <li onClick={onIntroMenuClick}>
+                      <Link to="#">뉴스</Link>
+                    </li>
+                  </Dropdown>
+                )}
+              </IntroWrapper>
+            </NavIntroSpan>
             <NavActiveLink to="/products">구매하기</NavActiveLink>
             <NavActiveLink to="/case">사용사례</NavActiveLink>
             <NavActiveLink to="/blog">블로그</NavActiveLink>
@@ -137,10 +181,22 @@ const Navbar = () => {
           </LinkList>
           <IconList>
             <IconItem>
-              <i className={isVisibleUserMenu ? 'active' : ''} onClick={onUserClick}>
+              <i className={isVisibleUserMenu ? 'active' : ''} onClick={onUserIconClick}>
                 <FaUser />
               </i>
-              {isVisibleUserMenu && <Dropdown onMenuClick={onMenuClick} />}
+              {isVisibleUserMenu && (
+                <Dropdown top={40} left={-70}>
+                  <li onClick={onUserMenuClick}>
+                    <Link to="/login">로그인 / 회원가입</Link>
+                  </li>
+                  <li onClick={onUserMenuClick}>
+                    <Link to="#">장바구니</Link>
+                  </li>
+                  <li onClick={onUserMenuClick}>
+                    <Link to="#">회원정보 수정</Link>
+                  </li>
+                </Dropdown>
+              )}
             </IconItem>
             <IconItem>
               <i>
