@@ -104,7 +104,7 @@ const Dropdown = styled.ul<DropdownProps>`
       display: inline-block;
       width: 150px;
       color: ${({ theme }) => theme.colors.black};
-      padding: 0 0.75rem;
+      padding: 0.125rem 0.75rem;
     }
 
     &:hover {
