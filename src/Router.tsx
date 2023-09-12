@@ -1,5 +1,6 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
+
 import LoginPage from './pages/auth/LoginPage';
 import SignupPage from './pages/auth/SignupPage';
 import Agreement from './components/auth/Agreement';
@@ -19,6 +20,7 @@ import OrderComplete from './components/purchase/OrderComplete';
 import PurchaseInformation from './components/purchase/PurchaseInformation';
 import BlogListPage from './pages/BlogListPage';
 import BlogDetailPage from './pages/BlogDetailPage';
+import NewsPage from './pages/NewsPage';
 
 const Router = () => {
   return (
@@ -44,6 +46,7 @@ const Router = () => {
         <Route path="/blog" element={<BlogListPage />} />
         <Route path="/blog/:postId" element={<BlogDetailPage />} />
         <Route path="/support" element={<ClientPage />} />
+        <Route path="/news" element={<NewsPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

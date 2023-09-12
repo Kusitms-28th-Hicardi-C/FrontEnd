@@ -158,18 +158,18 @@ const Navbar = () => {
                 하이카디
                 {isVisibleIntroMenu && (
                   <Dropdown top={40} left={-50}>
-                    <Link to="#" onClick={onIntroMenuClick}>
-                      <span>브랜드 소개</span>
-                    </Link>
-                    <Link to="#" onClick={onIntroMenuClick}>
-                      <span>심전도 모니터링</span>
-                    </Link>
-                    <Link to="#" onClick={onIntroMenuClick}>
-                      <span>홀터 솔루션</span>
-                    </Link>
-                    <Link to="#" onClick={onIntroMenuClick}>
-                      <span>뉴스</span>
-                    </Link>
+                    <li onClick={onIntroMenuClick}>
+                      <Link to="#">브랜드 소개</Link>
+                    </li>
+                    <li onClick={onIntroMenuClick}>
+                      <Link to="#">심전도 모니터링</Link>
+                    </li>
+                    <li onClick={onIntroMenuClick}>
+                      <Link to="#">홀터 솔루션</Link>
+                    </li>
+                    <li onClick={onIntroMenuClick}>
+                      <Link to="/news">뉴스</Link>
+                    </li>
                   </Dropdown>
                 )}
               </IntroWrapper>
