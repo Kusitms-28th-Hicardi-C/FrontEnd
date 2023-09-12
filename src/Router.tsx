@@ -21,6 +21,7 @@ import PurchaseInformation from './components/purchase/PurchaseInformation';
 import BlogListPage from './pages/BlogListPage';
 import BlogDetailPage from './pages/BlogDetailPage';
 import NewsPage from './pages/NewsPage';
+import NewsDetailPage from './pages/NewsDetailPage';
 
 const Router = () => {
   return (
@@ -47,6 +48,7 @@ const Router = () => {
         <Route path="/blog/:postId" element={<BlogDetailPage />} />
         <Route path="/support" element={<ClientPage />} />
         <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/article/:articleId" element={<NewsDetailPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
