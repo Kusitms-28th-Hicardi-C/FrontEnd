@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Index from './Index';
 import { useNavigate } from 'react-router-dom';
 
-const CompleteBox = styled.div`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,20 +10,20 @@ const CompleteBox = styled.div`
   border-radius: 20px;
   padding: 3rem 5rem;
   margin-bottom: 2rem;
-`;
 
-const Content = styled.div`
-  font-size: 1.6rem;
-  margin-bottom: 0.4rem;
+  > div {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
 
-  span {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: ${({ theme }) => theme.colors.blue1};
+    > span {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: ${({ theme }) => theme.colors.blue1};
+    }
   }
 `;
 
-const InformationBox = styled.div`
+const Information = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3rem 5rem;
@@ -32,17 +32,18 @@ const InformationBox = styled.div`
   border-radius: 30px;
   margin-top: 1.5rem;
   gap: 1rem;
-`;
 
-const Information = styled.div`
-  display: flex;
-  font-size: 1.3rem;
+  > div {
+    display: flex;
+    font-size: 1.3rem;
 
-  span {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-right: 1rem;
-    width: 5rem;
+    > span {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-right: 1rem;
+      width: 5rem;
+      white-space: nowrap;
+    }
   }
 `;
 
@@ -71,23 +72,23 @@ const Complete = () => {
   return (
     <>
       <Index index={3} />
-      <CompleteBox>
-        <Content>회원가입이 완료되었습니다</Content>
-        <Content>
+      <Content>
+        <div>회원가입이 완료되었습니다</div>
+        <div>
           <span>이채영</span> 님은 [일반회원] 회원이십니다.
-        </Content>
-        <InformationBox>
-          <Information>
+        </div>
+        <Information>
+          <div>
             <span>아이디</span> hongildong
-          </Information>
-          <Information>
+          </div>
+          <div>
             <span>이름</span>홍길동
-          </Information>
-          <Information>
+          </div>
+          <div>
             <span>이메일</span> hongildong@gmail.com
-          </Information>
-        </InformationBox>
-      </CompleteBox>
+          </div>
+        </Information>
+      </Content>
       <ButtonBox>
         <Button onClick={handleCompleteClick}>가입 완료</Button>
       </ButtonBox>

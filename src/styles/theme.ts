@@ -22,6 +22,7 @@ const colors = {
   box1: '#F8F9FB',
   box2: '#F2F4F6',
   box3: '#D3EFFF',
+  box4: '#F4F5F8',
 } as const;
 
 export type ColorsTypes = typeof colors;
