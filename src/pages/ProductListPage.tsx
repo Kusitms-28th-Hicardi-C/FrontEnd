@@ -1,16 +1,16 @@
 import Categories from '../components/product-list/Categories';
-import GrayWrapper from '../components/product-list/GrayWrapper';
 import Heading from '../components/product-list/Heading';
 import ProductList from '../components/product-list/ProductList';
+import GrayBackground from '../components/common/GrayBackground';
 
 const ProductListPage = () => {
   return (
     <>
-      <GrayWrapper>
+      <GrayBackground>
         <Heading />
         <Categories />
         <ProductList />
-      </GrayWrapper>
+      </GrayBackground>
     </>
   );
 };

@@ -22,6 +22,7 @@ import BlogListPage from './pages/BlogListPage';
 import BlogDetailPage from './pages/BlogDetailPage';
 import NewsPage from './pages/NewsPage';
 import NewsDetailPage from './pages/NewsDetailPage';
+import CartPage from './pages/CartPage';
 
 const Router = () => {
   return (
@@ -49,6 +50,7 @@ const Router = () => {
         <Route path="/support" element={<ClientPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/news/article/:articleId" element={<NewsDetailPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
