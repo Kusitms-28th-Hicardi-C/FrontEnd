@@ -91,16 +91,16 @@ const Dropdown = styled.ul<DropdownProps>`
   position: absolute;
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
-
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   box-shadow: 0px 0px 10px 3px #0000001a;
 
-  li {
+  a {
+    display: block;
     padding: 1rem;
 
-    a {
+    span {
       display: inline-block;
       width: 150px;
       color: ${({ theme }) => theme.colors.black};
@@ -108,7 +108,7 @@ const Dropdown = styled.ul<DropdownProps>`
     }
 
     &:hover {
-      a {
+      span {
         background-color: ${({ theme }) => theme.colors.blue4};
         color: ${({ theme }) => theme.colors.blue1};
         border-radius: 16px;
@@ -158,18 +158,18 @@ const Navbar = () => {
                 하이카디
                 {isVisibleIntroMenu && (
                   <Dropdown top={40} left={-50}>
-                    <li onClick={onIntroMenuClick}>
-                      <Link to="#">브랜드 소개</Link>
-                    </li>
-                    <li onClick={onIntroMenuClick}>
-                      <Link to="#">심전도 모니터링</Link>
-                    </li>
-                    <li onClick={onIntroMenuClick}>
-                      <Link to="#">홀터 솔루션</Link>
-                    </li>
-                    <li onClick={onIntroMenuClick}>
-                      <Link to="#">뉴스</Link>
-                    </li>
+                    <Link to="#" onClick={onIntroMenuClick}>
+                      <span>브랜드 소개</span>
+                    </Link>
+                    <Link to="#" onClick={onIntroMenuClick}>
+                      <span>심전도 모니터링</span>
+                    </Link>
+                    <Link to="#" onClick={onIntroMenuClick}>
+                      <span>홀터 솔루션</span>
+                    </Link>
+                    <Link to="#" onClick={onIntroMenuClick}>
+                      <span>뉴스</span>
+                    </Link>
                   </Dropdown>
                 )}
               </IntroWrapper>
@@ -186,15 +186,15 @@ const Navbar = () => {
               </i>
               {isVisibleUserMenu && (
                 <Dropdown top={40} left={-70}>
-                  <li onClick={onUserMenuClick}>
-                    <Link to="/login">로그인 / 회원가입</Link>
-                  </li>
-                  <li onClick={onUserMenuClick}>
-                    <Link to="#">장바구니</Link>
-                  </li>
-                  <li onClick={onUserMenuClick}>
-                    <Link to="#">회원정보 수정</Link>
-                  </li>
+                  <Link to="/login" onClick={onUserMenuClick}>
+                    <span>로그인 / 회원가입</span>
+                  </Link>
+                  <Link to="#" onClick={onUserMenuClick}>
+                    <span>장바구니</span>
+                  </Link>
+                  <Link to="#" onClick={onUserMenuClick}>
+                    <span>회원정보 수정</span>
+                  </Link>
                 </Dropdown>
               )}
             </IconItem>
