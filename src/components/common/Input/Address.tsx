@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import DoubleCheckButton from '../Button/DoubleCheckButton';
 import Input from './Input';
 
 interface AddressProps {
-  width?: boolean;
+  fullWidth?: boolean;
 }
 
 const AddressStyle = styled.div`
@@ -21,22 +21,36 @@ const SmallInput = styled(AddressInput)`
 `;
 
 const BigInput = styled(AddressInput)<AddressProps>`
-  width: ${({ width }) => (width ? '100%' : '20rem')};
+  ${({ fullWidth }) =>
+    fullWidth
+      ? css`
+          flex: 1;
+        `
+      : css`
+          width: 20rem;
+        `};
 `;
 
 const BigWhiteInput = styled(Input)<AddressProps>`
-  width: ${({ width }) => (width ? '100%' : '20rem')};
+  ${({ fullWidth }) =>
+    fullWidth
+      ? css`
+          flex: 1;
+        `
+      : css`
+          width: 20rem;
+        `};
 `;
 
-const Address = ({ width }: AddressProps) => {
+const Address = ({ fullWidth }: AddressProps) => {
   return (
     <AddressStyle>
       <div>
         <SmallInput type="text" placeholder="우편번호" />
         <DoubleCheckButton>중복확인</DoubleCheckButton>
       </div>
-      <BigInput type="text" placeholder="기본주소" width={width} />
-      <BigWhiteInput type="text" width={width} />
+      <BigInput type="text" placeholder="기본주소" fullWidth={fullWidth} />
+      <BigWhiteInput type="text" fullWidth={fullWidth} />
     </AddressStyle>
   );
 };

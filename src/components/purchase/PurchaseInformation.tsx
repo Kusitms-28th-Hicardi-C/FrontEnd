@@ -28,7 +28,7 @@ const Content = styled.div`
 `;
 
 const WidthInput = styled(Input)`
-  width: 100%;
+  flex: 1;
 `;
 
 const Check = styled.div`
@@ -120,7 +120,7 @@ const PurchaseInformation = () => {
       </Content>
       <Content>
         <SubTitle>주소</SubTitle>
-        <Address width={true} />
+        <Address />
       </Content>
       <Content>
         <SubTitle>휴대전화</SubTitle>
