@@ -168,7 +168,7 @@ const Navbar = () => {
                       <Link to="#">홀터 솔루션</Link>
                     </li>
                     <li onClick={onIntroMenuClick}>
-                      <Link to="#">뉴스</Link>
+                      <Link to="/news">뉴스</Link>
                     </li>
                   </Dropdown>
                 )}

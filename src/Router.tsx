@@ -19,6 +19,7 @@ import OrderComplete from './components/purchase/OrderComplete';
 import PurchaseInformation from './components/purchase/PurchaseInformation';
 import BlogListPage from './pages/BlogListPage';
 import BlogDetailPage from './pages/BlogDetailPage';
+import NewsPage from './pages/NewsPage';
 
 const Router = () => {
   return (
@@ -44,6 +45,7 @@ const Router = () => {
         <Route path="/blog" element={<BlogListPage />} />
         <Route path="/blog/:postId" element={<BlogDetailPage />} />
         <Route path="/support" element={<ClientPage />} />
+        <Route path="/news" element={<NewsPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
