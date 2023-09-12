@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 import Button from '../common/Button/Button';
+import { useRecoilState } from 'recoil';
+import { productCategoryState } from '../../states/product';
+
+interface BadgeProps {
+  type: string;
+  children: React.ReactNode;
+}
 
 const CategoriesBlock = styled.div`
   display: flex;
@@ -19,9 +26,32 @@ const BadgeList = styled.div`
   gap: 1rem;
 `;
 
-const Badge = styled(Button)`
+const BadgeBlock = styled(Button)`
   font-weight: 500;
 `;
+
+const Badge = ({ type, children }: BadgeProps) => {
+  const [category, setCategory] = useRecoilState(productCategoryState);
+
+  return category === type ? (
+    <BadgeBlock
+      onClick={() => {
+        setCategory(type);
+      }}
+      active
+    >
+      {children}
+    </BadgeBlock>
+  ) : (
+    <BadgeBlock
+      onClick={() => {
+        setCategory(type);
+      }}
+    >
+      {children}
+    </BadgeBlock>
+  );
+};
 
 const CartButton = styled.button`
   padding: 0.75rem 1.5rem;
@@ -36,10 +66,10 @@ const Categories = () => {
   return (
     <CategoriesBlock>
       <BadgeList>
-        <Badge active>전체</Badge>
-        <Badge>기기 본체</Badge>
-        <Badge>추가 물품</Badge>
-        <Badge>추가 서비스</Badge>
+        <Badge type="전체">전체</Badge>
+        <Badge type="기기 본체">기기 본체</Badge>
+        <Badge type="추가 용품">추가 용품</Badge>
+        <Badge type="추가 서비스">추가 서비스</Badge>
       </BadgeList>
       <CartButton>장바구니 바로가기</CartButton>
     </CategoriesBlock>

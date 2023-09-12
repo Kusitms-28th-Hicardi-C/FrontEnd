@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import productList from '../../data/product.json';
 import { product } from '../../interfaces/product';
+import { useRecoilValue } from 'recoil';
+import { productCategoryState } from '../../states/product';
 
 const ProductListBlock = styled.div`
   width: 70%;
@@ -66,21 +68,25 @@ const ProductInfoText = styled.div`
 `;
 
 const ProductList = () => {
+  const category = useRecoilValue(productCategoryState);
+
   return (
     <ProductListBlock>
-      {productList.map((product: product) => (
-        <ProductItem to={`/products/${product.id}`} key={product.id}>
-          <img src={product.imageUrl} alt="" />
-          <ContentArea>
-            <ProductInfoText>
-              <Badge>{product.category}</Badge>
-              <h2>{product.name}</h2>
-              <p>{product.description}</p>
-            </ProductInfoText>
-            <b>{product.price.toLocaleString()}원</b>
-          </ContentArea>
-        </ProductItem>
-      ))}
+      {productList
+        .filter((product) => category === '전체' || product.category === category)
+        .map((product: product) => (
+          <ProductItem to={`/products/${product.id}`} key={product.id}>
+            <img src={product.imageUrl} alt={product.name} />
+            <ContentArea>
+              <ProductInfoText>
+                <Badge>{product.category}</Badge>
+                <h2>{product.name}</h2>
+                <p>{product.description}</p>
+              </ProductInfoText>
+              <b>{product.price.toLocaleString()}원</b>
+            </ContentArea>
+          </ProductItem>
+        ))}
     </ProductListBlock>
   );
 };
