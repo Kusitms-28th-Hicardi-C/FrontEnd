@@ -4,6 +4,7 @@ const HeadingBlock = styled.div`
   h1 {
     width: 70%;
     margin: 0 auto;
+    padding-top: 4rem;
     font-size: 2rem;
   }
 `;
