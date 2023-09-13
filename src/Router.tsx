@@ -1,8 +1,8 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 
-import LoginPage from './pages/auth/LoginPage';
-import SignupPage from './pages/auth/SignupPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 import Agreement from './components/auth/Agreement';
 import Information from './components/auth/Information';
 import Complete from './components/auth/Complete';
@@ -24,6 +24,7 @@ import NewsPage from './pages/NewsPage';
 import NewsDetailPage from './pages/NewsDetailPage';
 import ReviewsPage from './pages/ReviewsPage';
 import CartPage from './pages/CartPage';
+import BrandIntroductionPage from './pages/BrandIntroduction';
 
 const Router = () => {
   return (
@@ -53,6 +54,7 @@ const Router = () => {
         <Route path="/news/article/:articleId" element={<NewsDetailPage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/brand" element={<BrandIntroductionPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
