@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import blogList from '../../data/blog.json';
+import blogList from '../../datas/blog.json';
 import { post } from '../../interfaces/post';
 
 interface BlogItemProps {

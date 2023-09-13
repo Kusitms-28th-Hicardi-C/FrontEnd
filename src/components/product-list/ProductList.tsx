@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import productList from '../../data/product.json';
+import productList from '../../datas/product.json';
 import { product } from '../../interfaces/product';
 import { useRecoilValue } from 'recoil';
 import { productCategoryState } from '../../states/product';

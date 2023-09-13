@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import Article from '../common/Article';
 import { article } from '../../interfaces/article';
-import articleList from '../../data/news.json';
+import articleList from '../../datas/news.json';
 
 const NewsDetail = () => {
   const { articleId } = useParams();

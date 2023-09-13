@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { post } from '../../interfaces/post';
-import blogList from '../../data/blog.json';
+import blogList from '../../datas/blog.json';
 
 const BlogDetailBlock = styled.div`
   width: 50%;

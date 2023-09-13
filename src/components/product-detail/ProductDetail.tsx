@@ -6,7 +6,7 @@ import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
 
 import Button from '../common/Button/Button';
 import { product } from '../../interfaces/product';
-import productList from '../../data/product.json';
+import productList from '../../datas/product.json';
 
 interface DropdownMenuItemProps {
   onClick: React.MouseEventHandler<HTMLLIElement>;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import articleList from '../../data/news.json';
+import articleList from '../../datas/news.json';
 
 const ArticleListBlock = styled.div`
   width: 50%;
