@@ -1,8 +1,8 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 
-import LoginPage from './pages/auth/LoginPage';
-import SignupPage from './pages/auth/SignupPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 import Agreement from './components/auth/Agreement';
 import Information from './components/auth/Information';
 import Complete from './components/auth/Complete';
