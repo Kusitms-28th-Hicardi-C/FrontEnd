@@ -25,7 +25,7 @@ const SlidePrevArrow = styled.button`
   }
 `;
 
-const StyledSlider = styled(Slider)`
+const SliderWrapper = styled.div`
   .slick-dots {
     position: absolute;
     bottom: 10%;
@@ -92,28 +92,32 @@ const Banner = () => {
       <SlidePrevArrow type="button" onClick={slideToPrev}>
         <img src="/images/icons/banner-left-arrow.svg" alt="배너 왼쪽 화살표" />
       </SlidePrevArrow>
-      <StyledSlider
-        ref={slickRef}
-        dots={true}
-        infinite={true}
-        speed={300}
-        slidesToShow={1}
-        autoplay={false}
-        arrows={false}
-      >
-        <BannerItem>
-          <img src="/images/banners/banner1.png" alt="banner 1" />
-        </BannerItem>
-        <BannerItem>
-          <img src="/images/banners/banner2.png" alt="banner 2" />
-        </BannerItem>
-        <BannerItem>
-          <img src="/images/banners/banner1.png" alt="banner 3" />
-        </BannerItem>
-        <BannerItem>
-          <img src="/images/banners/banner1.png" alt="banner 3" />
-        </BannerItem>
-      </StyledSlider>
+      <SliderWrapper>
+        <Slider
+          ref={slickRef}
+          dots={true}
+          infinite={true}
+          speed={1000}
+          slidesToShow={1}
+          autoplay={true}
+          autoplaySpeed={5000}
+          arrows={false}
+          pauseOnHover={false}
+        >
+          <BannerItem>
+            <img src="/images/banners/banner1.png" alt="banner 1" />
+          </BannerItem>
+          <BannerItem>
+            <img src="/images/banners/banner2.png" alt="banner 2" />
+          </BannerItem>
+          <BannerItem>
+            <img src="/images/banners/banner1.png" alt="banner 3" />
+          </BannerItem>
+          <BannerItem>
+            <img src="/images/banners/banner1.png" alt="banner 3" />
+          </BannerItem>
+        </Slider>
+      </SliderWrapper>
       <SlideNextArrow type="button" onClick={slideToNext}>
         <img src="/images/icons/banner-right-arrow.svg" alt="배너 오른쪽 화살표" />
       </SlideNextArrow>
