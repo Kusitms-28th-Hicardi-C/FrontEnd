@@ -1,14 +1,20 @@
 import styled from 'styled-components';
 
-const HeadingBlock = styled.h1`
-  width: 70%;
-  margin: 0 auto;
-  font-size: 1.5rem;
-  margin-top: 3rem;
+const HeadingBlock = styled.div`
+  h1 {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 4rem;
+    font-size: 2rem;
+  }
 `;
 
 const Heading = () => {
-  return <HeadingBlock>하이카디 제품 둘러보기</HeadingBlock>;
+  return (
+    <HeadingBlock>
+      <h1>하이카디 제품 둘러보기</h1>
+    </HeadingBlock>
+  );
 };
 
 export default Heading;
