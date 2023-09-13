@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
       'Malgun Gothic',
       sans-serif;
     box-sizing: border-box;
+    outline: none;
   }
 
   svg {
