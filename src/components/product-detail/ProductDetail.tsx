@@ -166,7 +166,11 @@ const ProductDetail = () => {
   const [product, setProduct] = useState<product | null>(null);
 
   const handlePurchaseClick = () => {
-    navigate(`purchase/information`);
+    navigate('purchase/information');
+  };
+
+  const handleCartClick = () => {
+    navigate('/cart');
   };
 
   useEffect(() => {
@@ -200,7 +204,7 @@ const ProductDetail = () => {
           <StyledButton onClick={handlePurchaseClick} active>
             구매하기
           </StyledButton>
-          <StyledButton>장바구니 추가</StyledButton>
+          <StyledButton onClick={handleCartClick}>장바구니 추가</StyledButton>
         </ButtonGroup>
       </ProductContentBottom>
     </ProductDetailBlock>
