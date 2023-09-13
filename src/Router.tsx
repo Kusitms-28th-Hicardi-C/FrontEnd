@@ -24,6 +24,7 @@ import NewsPage from './pages/NewsPage';
 import NewsDetailPage from './pages/NewsDetailPage';
 import ReviewsPage from './pages/ReviewsPage';
 import CartPage from './pages/CartPage';
+import BrandIntroductionPage from './pages/BrandIntroduction';
 
 const Router = () => {
   return (
@@ -53,6 +54,7 @@ const Router = () => {
         <Route path="/news/article/:articleId" element={<NewsDetailPage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/brand" element={<BrandIntroductionPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
