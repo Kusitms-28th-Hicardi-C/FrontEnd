@@ -22,8 +22,9 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem 0 4rem 0;
+  padding: 2rem 0 3rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
+  margin-bottom: 1rem;
 `;
 
 const AdvancedHospitalBox = styled.div`
