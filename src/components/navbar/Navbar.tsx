@@ -189,7 +189,7 @@ const Navbar = () => {
                   <Link to="/login" onClick={onUserMenuClick}>
                     <span>로그인 / 회원가입</span>
                   </Link>
-                  <Link to="#" onClick={onUserMenuClick}>
+                  <Link to="/cart" onClick={onUserMenuClick}>
                     <span>장바구니</span>
                   </Link>
                   <Link to="#" onClick={onUserMenuClick}>
