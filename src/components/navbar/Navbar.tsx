@@ -175,7 +175,7 @@ const Navbar = () => {
               </IntroWrapper>
             </NavIntroSpan>
             <NavActiveLink to="/products">구매하기</NavActiveLink>
-            <NavActiveLink to="/case">사용사례</NavActiveLink>
+            <NavActiveLink to="/reviews">사용사례</NavActiveLink>
             <NavActiveLink to="/blog">블로그</NavActiveLink>
             <NavActiveLink to="/support">고객지원</NavActiveLink>
           </LinkList>
