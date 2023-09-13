@@ -10,8 +10,8 @@ const TitleStyle = styled.div`
   margin-bottom: 1rem;
 `;
 
-const Title = ({ children }: TitleProps) => {
-  return <TitleStyle>{children}</TitleStyle>;
+const Title = ({ children, ...rest }: TitleProps) => {
+  return <TitleStyle {...rest}>{children}</TitleStyle>;
 };
 
 export default Title;

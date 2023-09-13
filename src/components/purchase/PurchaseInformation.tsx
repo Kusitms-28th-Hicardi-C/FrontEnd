@@ -28,7 +28,7 @@ const Content = styled.div`
 `;
 
 const WidthInput = styled(Input)`
-  width: 100%;
+  flex: 1;
 `;
 
 const Check = styled.div`
@@ -70,10 +70,6 @@ const BoxContent = styled.div`
   gap: 0.5rem;
 `;
 
-const Description = styled.div`
-  font-size: 1.2rem;
-`;
-
 const Product = styled.div`
   display: flex;
   gap: 2rem;
@@ -87,6 +83,10 @@ const ProductName = styled.div`
 const ProductOption = styled.div`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.gray3};
+`;
+
+const Description = styled.div`
+  font-size: 1.2rem;
 `;
 
 const OrderAmount = styled.div`
@@ -120,7 +120,7 @@ const PurchaseInformation = () => {
       </Content>
       <Content>
         <SubTitle>주소</SubTitle>
-        <Address width={true} />
+        <Address />
       </Content>
       <Content>
         <SubTitle>휴대전화</SubTitle>

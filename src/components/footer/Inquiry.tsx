@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import hand from '../../assets/client/hand.svg';
 import rightArrow from '../../assets/icons/rightArrow.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   background: ${({ theme }) => theme.colors.blue1};
@@ -41,11 +42,17 @@ const InquiryButton = styled.button`
 `;
 
 const Inquiry = () => {
+  const navigate = useNavigate();
+
+  const handleInquiryClick = () => {
+    navigate('/support');
+  };
+
   return (
     <Container>
       <img src={hand} alt="hand" />
       <Text>더 스마트한 병원을 위한 솔루션, Hicardi+로 시작하세요</Text>
-      <InquiryButton>
+      <InquiryButton onClick={handleInquiryClick}>
         문의하기
         <img src={rightArrow} alt="rightArrow" />
       </InquiryButton>
