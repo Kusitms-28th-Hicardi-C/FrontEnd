@@ -12,8 +12,7 @@ interface NavIntroSpanProps {
 }
 
 interface DropdownProps {
-  top: number;
-  left: number;
+  children: React.ReactNode;
 }
 
 const NavbarBlock = styled.nav`
@@ -67,6 +66,7 @@ const IconList = styled.div`
   justify-content: start;
   align-items: center;
   gap: 2rem;
+  height: 100%;
 
   img {
     width: 20px;
@@ -87,10 +87,8 @@ const IconItem = styled.div`
   }
 `;
 
-const Dropdown = styled.ul<DropdownProps>`
+const DropdownBlock = styled.ul`
   position: absolute;
-  top: ${(props) => props.top}px;
-  left: ${(props) => props.left}px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
@@ -119,6 +117,22 @@ const Dropdown = styled.ul<DropdownProps>`
   li + li {
     border-top: 1px solid #cccccc;
   }
+`;
+
+const Dropdown = ({ children, ...rest }: DropdownProps) => {
+  return <DropdownBlock {...rest}>{children}</DropdownBlock>;
+};
+
+const InfoDropdown = styled(Dropdown)`
+  top: 50px;
+  right: -90px;
+  transform: translateX(-23px);
+`;
+
+const UserDropdown = styled(Dropdown)`
+  top: 50px;
+  right: -90px;
+  transform: translateX(-10px);
 `;
 
 const Spacer = styled.div`
@@ -157,7 +171,7 @@ const Navbar = () => {
               <IntroWrapper>
                 하이카디
                 {isVisibleIntroMenu && (
-                  <Dropdown top={40} left={-50}>
+                  <InfoDropdown>
                     <Link to="#" onClick={onIntroMenuClick}>
                       <span>브랜드 소개</span>
                     </Link>
@@ -170,7 +184,7 @@ const Navbar = () => {
                     <Link to="/news" onClick={onIntroMenuClick}>
                       <span>뉴스</span>
                     </Link>
-                  </Dropdown>
+                  </InfoDropdown>
                 )}
               </IntroWrapper>
             </NavIntroSpan>
@@ -185,7 +199,7 @@ const Navbar = () => {
                 <FaUser />
               </i>
               {isVisibleUserMenu && (
-                <Dropdown top={40} left={-70}>
+                <UserDropdown>
                   <Link to="/login" onClick={onUserMenuClick}>
                     <span>로그인 / 회원가입</span>
                   </Link>
@@ -195,7 +209,7 @@ const Navbar = () => {
                   <Link to="#" onClick={onUserMenuClick}>
                     <span>회원정보 수정</span>
                   </Link>
-                </Dropdown>
+                </UserDropdown>
               )}
             </IconItem>
             <IconItem>
