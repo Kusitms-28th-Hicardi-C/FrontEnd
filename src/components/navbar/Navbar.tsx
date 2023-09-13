@@ -158,7 +158,7 @@ const Navbar = () => {
                 하이카디
                 {isVisibleIntroMenu && (
                   <Dropdown top={40} left={-50}>
-                    <Link to="#" onClick={onIntroMenuClick}>
+                    <Link to="/brand" onClick={onIntroMenuClick}>
                       <span>브랜드 소개</span>
                     </Link>
                     <Link to="#" onClick={onIntroMenuClick}>
