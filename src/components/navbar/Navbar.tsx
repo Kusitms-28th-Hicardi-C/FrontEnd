@@ -12,8 +12,7 @@ interface NavIntroSpanProps {
 }
 
 interface DropdownProps {
-  top: number;
-  left: number;
+  children: React.ReactNode;
 }
 
 const NavbarBlock = styled.nav`
@@ -47,7 +46,7 @@ const LinkList = styled.div`
   width: 100%;
 `;
 
-const NavIntroSpan = styled.span<NavIntroSpanProps>`
+const NavInfoSpan = styled.span<NavIntroSpanProps>`
   font-weight: 600;
   cursor: pointer;
 
@@ -58,7 +57,7 @@ const NavIntroSpan = styled.span<NavIntroSpanProps>`
     `}
 `;
 
-const IntroWrapper = styled.div`
+const InfoWrapper = styled.div`
   position: relative;
 `;
 
@@ -67,6 +66,7 @@ const IconList = styled.div`
   justify-content: start;
   align-items: center;
   gap: 2rem;
+  height: 100%;
 
   img {
     width: 20px;
@@ -87,10 +87,8 @@ const IconItem = styled.div`
   }
 `;
 
-const Dropdown = styled.ul<DropdownProps>`
+const DropdownBlock = styled.ul`
   position: absolute;
-  top: ${(props) => props.top}px;
-  left: ${(props) => props.left}px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
@@ -121,28 +119,83 @@ const Dropdown = styled.ul<DropdownProps>`
   }
 `;
 
+const Dropdown = ({ children, ...rest }: DropdownProps) => {
+  return <DropdownBlock {...rest}>{children}</DropdownBlock>;
+};
+
+const InfoDropdown = styled(Dropdown)`
+  top: 50px;
+  right: -90px;
+  transform: translateX(-23px);
+`;
+
+const UserDropdown = styled(Dropdown)`
+  top: 50px;
+  right: -90px;
+  transform: translateX(-10px);
+`;
+
+const SearchDropdown = styled(Dropdown)`
+  top: 50px;
+  right: -30px;
+  padding: 0.5rem;
+  border-radius: 4px;
+`;
+
+const SearchInput = styled.div`
+  position: relative;
+
+  input {
+    padding: 0.5rem 0;
+    padding-left: 0.75rem;
+    padding-right: 12%;
+    border-radius: 8px;
+    border: 2.5px solid ${({ theme }) => theme.colors.blue1};
+    width: 250px;
+  }
+
+  a {
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    font-size: 0.875rem;
+    color: ${({ theme }) => theme.colors.blue1};
+  }
+`;
+
 const Spacer = styled.div`
   height: 4rem;
 `;
 
 const Navbar = () => {
-  const [isVisibleIntroMenu, setIsVisibleIntroMenu] = useState(false);
+  const [isVisibleInfoMenu, setIsVisibleInfoMenu] = useState(false);
   const [isVisibleUserMenu, setIsVisibleUserMenu] = useState(false);
+  const [isVisibleSearchMenu, setIsVisibleSearchMenu] = useState(false);
 
-  const onIntroSpanClick = () => {
-    setIsVisibleIntroMenu(!isVisibleIntroMenu);
+  const onInfoSpanClick = () => {
+    setIsVisibleInfoMenu(!isVisibleInfoMenu);
   };
 
-  const onIntroMenuClick = () => {
-    setIsVisibleIntroMenu(!isVisibleIntroMenu);
+  const onInfoMenuClick = () => {
+    setIsVisibleInfoMenu(!isVisibleInfoMenu);
   };
 
   const onUserIconClick = () => {
     setIsVisibleUserMenu(!isVisibleUserMenu);
   };
 
+  const onSearchIconClick = () => {
+    setIsVisibleSearchMenu(!isVisibleSearchMenu);
+  };
+
   const onUserMenuClick = () => {
     setIsVisibleUserMenu(false);
+  };
+
+  const onSearchMenuClick = () => {
+    setIsVisibleSearchMenu(false);
   };
 
   return (
@@ -153,27 +206,27 @@ const Navbar = () => {
             <img src={logo} alt="hicardi-logo" />
           </Logo>
           <LinkList>
-            <NavIntroSpan onClick={onIntroSpanClick} active={isVisibleIntroMenu ? '1' : '0'}>
-              <IntroWrapper>
+            <NavInfoSpan onClick={onInfoSpanClick} active={isVisibleInfoMenu ? '1' : '0'}>
+              <InfoWrapper>
                 하이카디
-                {isVisibleIntroMenu && (
-                  <Dropdown top={40} left={-50}>
-                    <Link to="/brand" onClick={onIntroMenuClick}>
+                {isVisibleInfoMenu && (
+                  <InfoDropdown>
+                    <Link to="#" onClick={onInfoMenuClick}>
                       <span>브랜드 소개</span>
                     </Link>
-                    <Link to="#" onClick={onIntroMenuClick}>
+                    <Link to="#" onClick={onInfoMenuClick}>
                       <span>심전도 모니터링</span>
                     </Link>
-                    <Link to="#" onClick={onIntroMenuClick}>
+                    <Link to="#" onClick={onInfoMenuClick}>
                       <span>홀터 솔루션</span>
                     </Link>
-                    <Link to="/news" onClick={onIntroMenuClick}>
+                    <Link to="/news" onClick={onInfoMenuClick}>
                       <span>뉴스</span>
                     </Link>
-                  </Dropdown>
+                  </InfoDropdown>
                 )}
-              </IntroWrapper>
-            </NavIntroSpan>
+              </InfoWrapper>
+            </NavInfoSpan>
             <NavActiveLink to="/products">구매하기</NavActiveLink>
             <NavActiveLink to="/reviews">사용사례</NavActiveLink>
             <NavActiveLink to="/blog">블로그</NavActiveLink>
@@ -185,7 +238,7 @@ const Navbar = () => {
                 <FaUser />
               </i>
               {isVisibleUserMenu && (
-                <Dropdown top={40} left={-70}>
+                <UserDropdown>
                   <Link to="/login" onClick={onUserMenuClick}>
                     <span>로그인 / 회원가입</span>
                   </Link>
@@ -195,13 +248,23 @@ const Navbar = () => {
                   <Link to="#" onClick={onUserMenuClick}>
                     <span>회원정보 수정</span>
                   </Link>
-                </Dropdown>
+                </UserDropdown>
               )}
             </IconItem>
             <IconItem>
-              <i>
+              <i className={isVisibleSearchMenu ? 'active' : ''} onClick={onSearchIconClick}>
                 <FaSearch />
               </i>
+              {isVisibleSearchMenu && (
+                <SearchDropdown>
+                  <SearchInput>
+                    <input type="text" placeholder="키워드를 입력하세요" />
+                    <Link to="/search" onClick={onSearchMenuClick}>
+                      <FaSearch />
+                    </Link>
+                  </SearchInput>
+                </SearchDropdown>
+              )}
             </IconItem>
           </IconList>
         </ContentsWrapper>
