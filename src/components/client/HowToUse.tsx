@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import video from '../../assets/client/video.svg';
+import video1 from '../../assets/client/video1.svg';
+import video2 from '../../assets/client/video2.svg';
+import video3 from '../../assets/client/video3.svg';
 
 const Banner = styled.div`
   display: flex;
@@ -47,16 +49,16 @@ const HowToUse = ({ howToUseRef }: HowToUseProps) => {
       <Title>사용법</Title>
       <VideoBox>
         <Video>
-          <img src={video} alt="video" />
+          <img src={video1} alt="video1" />
           <Text>하이카디 착용/연결/작동 방법</Text>
         </Video>
         <Video>
-          <img src={video} alt="video" />
-          <Text>하이카디 착용/연결/작동 방법</Text>
+          <img src={video2} alt="video2" />
+          <Text>데모장비 세팅법</Text>
         </Video>
         <Video>
-          <img src={video} alt="video" />
-          <Text>하이카디 착용/연결/작동 방법</Text>
+          <img src={video3} alt="video3" />
+          <Text>하이카디 홀터 사용법</Text>
         </Video>
       </VideoBox>
     </Banner>
