@@ -3,6 +3,10 @@ import search from '../../assets/icons/search.svg';
 import arrow from '../../assets/client/arrow.svg';
 import Button from '../common/Button/Button';
 
+interface FAQProps {
+  faqRef: React.RefObject<HTMLDivElement>;
+}
+
 const questionList: {
   [key: string]: string[];
 }[] = [
@@ -41,50 +45,6 @@ const questionList: {
     ],
   },
 ];
-
-const FAQ = () => {
-  return (
-    <Container>
-      <Title>FAQ</Title>
-      <SearchBox>
-        <SearchContentBox>
-          <SearchContent>자주 묻는 질문을 </SearchContent>
-          <SearchContent>정리했어요 </SearchContent>
-        </SearchContentBox>
-        <SearchInputBox>
-          <SearchInput placeholder="키워드를 입력하세요" />
-          <img src={search} alt="search" />
-        </SearchInputBox>
-      </SearchBox>
-
-      <ButtonBox>
-        <Button active={true}>전체</Button>
-        <Button>제품 기능</Button>
-        <Button>이용 방법</Button>
-        <Button>이용 시 주의사항</Button>
-        <Button>의료진 Q&A</Button>
-      </ButtonBox>
-
-      {questionList.map((section, sectionIndex) => (
-        <QuestionContainer key={sectionIndex}>
-          <QuestionTitle>{Object.keys(section)[0]}</QuestionTitle>
-          <QuestionBox>
-            {section[Object.keys(section)[0]].map((question, questionIndex) => (
-              <Question key={questionIndex}>
-                <div>
-                  <span>Q.</span> {question}
-                </div>
-                <img src={arrow} alt="arrow" />
-              </Question>
-            ))}
-          </QuestionBox>
-        </QuestionContainer>
-      ))}
-    </Container>
-  );
-};
-
-export default FAQ;
 
 const Container = styled.div`
   width: 100%;
@@ -189,3 +149,47 @@ const Question = styled.li`
     font-weight: 800;
   }
 `;
+
+const FAQ = ({ faqRef }: FAQProps) => {
+  return (
+    <Container ref={faqRef}>
+      <Title>FAQ</Title>
+      <SearchBox>
+        <SearchContentBox>
+          <SearchContent>자주 묻는 질문을 </SearchContent>
+          <SearchContent>정리했어요 </SearchContent>
+        </SearchContentBox>
+        <SearchInputBox>
+          <SearchInput placeholder="키워드를 입력하세요" />
+          <img src={search} alt="search" />
+        </SearchInputBox>
+      </SearchBox>
+
+      <ButtonBox>
+        <Button active={true}>전체</Button>
+        <Button>제품 기능</Button>
+        <Button>이용 방법</Button>
+        <Button>이용 시 주의사항</Button>
+        <Button>의료진 Q&A</Button>
+      </ButtonBox>
+
+      {questionList.map((section, sectionIndex) => (
+        <QuestionContainer key={sectionIndex}>
+          <QuestionTitle>{Object.keys(section)[0]}</QuestionTitle>
+          <QuestionBox>
+            {section[Object.keys(section)[0]].map((question, questionIndex) => (
+              <Question key={questionIndex}>
+                <div>
+                  <span>Q.</span> {question}
+                </div>
+                <img src={arrow} alt="arrow" />
+              </Question>
+            ))}
+          </QuestionBox>
+        </QuestionContainer>
+      ))}
+    </Container>
+  );
+};
+
+export default FAQ;

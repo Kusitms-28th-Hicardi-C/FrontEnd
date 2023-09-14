@@ -37,9 +37,13 @@ const Text = styled.div`
   font-weight: 800;
 `;
 
-const HowToUse = () => {
+interface HowToUseProps {
+  howToUseRef: React.RefObject<HTMLDivElement>;
+}
+
+const HowToUse = ({ howToUseRef }: HowToUseProps) => {
   return (
-    <Banner>
+    <Banner ref={howToUseRef}>
       <Title>사용법</Title>
       <VideoBox>
         <Video>
