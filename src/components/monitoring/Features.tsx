@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import featureList from '../../data/halter-feature.json';
+import featureList from '../../data/feature.json';
 
 const Container = styled.div`
   display: flex;
@@ -22,6 +22,7 @@ const FeatureBox = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
+  width: 100%;
 `;
 
 const Feature = styled.div`
@@ -30,7 +31,7 @@ const Feature = styled.div`
   justify-content: center;
   gap: 0.5rem;
   align-items: flex-start;
-  padding: 2rem;
+  padding: 2rem 3.5rem;
   width: 100%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
