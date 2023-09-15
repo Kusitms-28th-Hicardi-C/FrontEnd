@@ -2,6 +2,11 @@ import styled from 'styled-components';
 import search from '../../assets/icons/search.svg';
 import arrow from '../../assets/client/arrow.svg';
 import Button from '../common/Button/Button';
+import { useState } from 'react';
+
+interface FAQProps {
+  faqRef: React.RefObject<HTMLDivElement>;
+}
 
 const questionList: {
   [key: string]: string[];
@@ -42,56 +47,11 @@ const questionList: {
   },
 ];
 
-const FAQ = () => {
-  return (
-    <Container>
-      <Title>FAQ</Title>
-      <SearchBox>
-        <SearchContentBox>
-          <SearchContent>자주 묻는 질문을 </SearchContent>
-          <SearchContent>정리했어요 </SearchContent>
-        </SearchContentBox>
-        <SearchInputBox>
-          <SearchInput placeholder="키워드를 입력하세요" />
-          <img src={search} alt="search" />
-        </SearchInputBox>
-      </SearchBox>
-
-      <ButtonBox>
-        <Button active={true}>전체</Button>
-        <Button>제품 기능</Button>
-        <Button>이용 방법</Button>
-        <Button>이용 시 주의사항</Button>
-        <Button>의료진 Q&A</Button>
-      </ButtonBox>
-
-      {questionList.map((section, sectionIndex) => (
-        <QuestionContainer key={sectionIndex}>
-          <QuestionTitle>{Object.keys(section)[0]}</QuestionTitle>
-          <QuestionBox>
-            {section[Object.keys(section)[0]].map((question, questionIndex) => (
-              <Question key={questionIndex}>
-                <div>
-                  <span>Q.</span> {question}
-                </div>
-                <img src={arrow} alt="arrow" />
-              </Question>
-            ))}
-          </QuestionBox>
-        </QuestionContainer>
-      ))}
-    </Container>
-  );
-};
-
-export default FAQ;
-
 const Container = styled.div`
   width: 100%;
-  padding: 5rem 15%;
+  padding: 4rem 15%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 `;
 
 const Title = styled.div`
@@ -99,12 +59,21 @@ const Title = styled.div`
   font-weight: 800;
 `;
 
+const SearchTop = styled.div`
+  position: sticky;
+  top: 4rem;
+  z-index: 1;
+  background: ${({ theme }) => theme.colors.white};
+  padding-bottom: 0.5rem;
+`;
+
 const SearchBox = styled.div`
   background: ${({ theme }) => theme.colors.gray2};
   border-radius: 1rem;
-  padding: 4rem;
+  padding: 2rem 4rem;
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 `;
 
 const SearchContentBox = styled.div`
@@ -115,7 +84,7 @@ const SearchContentBox = styled.div`
 `;
 
 const SearchContent = styled.div`
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 `;
 
 const SearchInputBox = styled.div`
@@ -135,15 +104,16 @@ const SearchInput = styled.input`
   width: 100%;
   border: none;
   outline: none;
-  padding: 1.2rem 1.6rem;
+  padding: 1rem 1.6rem;
   background: ${({ theme }) => theme.colors.white};
   border-radius: 3rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   position: relative;
 `;
 
 const ButtonBox = styled.div`
   display: flex;
+  margin-top: 1rem;
   gap: 1rem;
 `;
 
@@ -189,3 +159,65 @@ const Question = styled.li`
     font-weight: 800;
   }
 `;
+
+const FAQ = ({ faqRef }: FAQProps) => {
+  const [selectedSection, setSelectedSection] = useState('전체');
+
+  const handleSectionClick = (sectionName: string) => {
+    setSelectedSection(sectionName);
+  };
+
+  return (
+    <Container ref={faqRef}>
+      <Title>FAQ</Title>
+      <SearchTop>
+        <SearchBox>
+          <SearchContentBox>
+            <SearchContent>자주 묻는 질문을 </SearchContent>
+            <SearchContent>정리했어요 </SearchContent>
+          </SearchContentBox>
+          <SearchInputBox>
+            <SearchInput placeholder="키워드를 입력하세요" />
+            <img src={search} alt="search" />
+          </SearchInputBox>
+        </SearchBox>
+
+        <ButtonBox>
+          <Button active={selectedSection === '전체'} onClick={() => handleSectionClick('전체')}>
+            전체
+          </Button>
+          {questionList.map((section, sectionIndex) => (
+            <Button
+              key={sectionIndex}
+              active={selectedSection === Object.keys(section)[0]}
+              onClick={() => handleSectionClick(Object.keys(section)[0])}
+            >
+              {Object.keys(section)[0]}
+            </Button>
+          ))}
+        </ButtonBox>
+      </SearchTop>
+
+      {questionList.map((section, sectionIndex) => {
+        const sectionName = Object.keys(section)[0];
+        return selectedSection === '전체' || selectedSection === sectionName ? (
+          <QuestionContainer key={sectionIndex}>
+            <QuestionTitle>{sectionName}</QuestionTitle>
+            <QuestionBox>
+              {section[sectionName].map((question, questionIndex) => (
+                <Question key={questionIndex}>
+                  <div>
+                    <span>Q.</span> {question}
+                  </div>
+                  <img src={arrow} alt="arrow" />
+                </Question>
+              ))}
+            </QuestionBox>
+          </QuestionContainer>
+        ) : null;
+      })}
+    </Container>
+  );
+};
+
+export default FAQ;
