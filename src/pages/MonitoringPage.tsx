@@ -1,6 +1,7 @@
 import Explanation from '../components/monitoring/Explanation';
 import MonitoringHeaderImage from '../components/monitoring/MonitoringHeaderImage';
 import Patient from '../components/monitoring/Patient';
+import Process from '../components/monitoring/Process';
 import Solve from '../components/monitoring/Solve';
 
 const MonitoringPage = () => {
@@ -10,6 +11,7 @@ const MonitoringPage = () => {
       <Patient />
       <Solve />
       <Explanation />
+      <Process />
     </>
   );
 };
