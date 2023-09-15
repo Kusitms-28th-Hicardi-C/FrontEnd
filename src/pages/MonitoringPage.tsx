@@ -1,3 +1,4 @@
+import Benefit from '../components/halter/Benefit';
 import CoreFunction from '../components/monitoring/CoreFunction';
 import Explanation from '../components/monitoring/Explanation';
 import Features from '../components/monitoring/Features';
@@ -16,6 +17,7 @@ const MonitoringPage = () => {
       <Process />
       <CoreFunction />
       <Features />
+      <Benefit />
     </>
   );
 };
