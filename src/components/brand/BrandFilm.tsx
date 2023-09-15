@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Title from '../common/Title/Title';
-import film from '../../assets/brand/film.svg';
 
 const BrandFilmBlock = styled.div`
   width: 70%;
@@ -10,6 +9,7 @@ const BrandFilmBlock = styled.div`
 
   img {
     width: 100%;
+    cursor: pointer;
   }
 `;
 
@@ -17,7 +17,7 @@ const BrandFilm = () => {
   return (
     <BrandFilmBlock>
       <Title>브랜드 필름</Title>
-      <img src={film} alt="브랜드 필름" />
+      <img src="/images/brand/brandfilm.svg" alt="브랜드 필름" />
     </BrandFilmBlock>
   );
 };
