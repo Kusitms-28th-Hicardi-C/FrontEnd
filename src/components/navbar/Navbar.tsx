@@ -20,17 +20,15 @@ const NavbarBlock = styled.nav`
 `;
 
 const ContentsWrapper = styled.div`
-  width: 900px;
+  width: 70%;
   height: 4rem;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 3rem;
 
   @media screen and (max-width: 992px) {
     width: 700px;
-    gap: 1.5rem;
   }
 
   @media screen and (max-width: 768px) {
@@ -40,11 +38,16 @@ const ContentsWrapper = styled.div`
 `;
 
 const MobileMenuItem = styled.div`
+  display: none;
   height: 100%;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 64px;
+  }
 `;
 
 const MobileMenuIcon = styled.div`
@@ -96,9 +99,11 @@ const LinkList = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
+  margin-left: 3rem;
 
   @media screen and (max-width: 992px) {
     justify-content: center;
+    margin-left: 0;
   }
 
   @media screen and (max-width: 768px) {
@@ -113,7 +118,6 @@ const NavInfoItem = styled.div`
 `;
 
 const IconList = styled.div`
-  width: 64px;
   height: 100%;
   display: flex;
   justify-content: start;
