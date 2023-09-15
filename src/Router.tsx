@@ -24,7 +24,7 @@ import NewsPage from './pages/NewsPage';
 import NewsDetailPage from './pages/NewsDetailPage';
 import ReviewsPage from './pages/ReviewsPage';
 import CartPage from './pages/CartPage';
-import BrandIntroductionPage from './pages/BrandIntroduction';
+import BrandIntroductionPage from './pages/BrandIntroductionPage';
 import HicardiHalterPage from './pages/HicardiHalterPage';
 import SearchPage from './pages/SearchPage';
 
