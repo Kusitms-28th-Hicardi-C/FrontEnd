@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Title from '../common/Title/Title';
 import { useState } from 'react';
-import reviews from '../../assets/reviews/reviews.svg';
 
 interface CategoryProps {
   isActive: boolean;
@@ -84,7 +83,7 @@ const CustomerReviews = () => {
         </Category>
       </CategoryBox>
       <ContentBox>
-        <img src={reviews} alt="리뷰" />
+        <img src={''} alt="리뷰" />
         <Content>
           <div>제목일이삼사오육칠</div>
           <ul>
