@@ -6,7 +6,7 @@ import { post } from '../../interfaces/post';
 import blogList from '../../data/blog.json';
 
 const BlogDetailBlock = styled.div`
-  width: 50%;
+  max-width: 700px;
   margin: 0 auto;
   padding: 3rem;
 
@@ -14,6 +14,10 @@ const BlogDetailBlock = styled.div`
     margin-bottom: 0.5rem;
     font-size: 2rem;
     text-align: center;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.5rem;
+    }
   }
 
   h5 {
@@ -39,6 +43,11 @@ const BlogDetailBlock = styled.div`
   p {
     text-align: start;
     margin-bottom: 1.5rem;
+  }
+
+  @media screen and (max-width: 992px) {
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
 `;
 
