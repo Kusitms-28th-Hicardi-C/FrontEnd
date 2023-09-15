@@ -25,6 +25,7 @@ import NewsDetailPage from './pages/NewsDetailPage';
 import ReviewsPage from './pages/ReviewsPage';
 import CartPage from './pages/CartPage';
 import BrandIntroductionPage from './pages/BrandIntroduction';
+import HicardiHalterPage from './pages/HicardiHalterPage';
 import SearchPage from './pages/SearchPage';
 
 const Router = () => {
@@ -56,6 +57,7 @@ const Router = () => {
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/brand" element={<BrandIntroductionPage />} />
+        <Route path="/halter" element={<HicardiHalterPage />} />
         <Route path="/search" element={<SearchPage />} />
       </Routes>
       <Footer />

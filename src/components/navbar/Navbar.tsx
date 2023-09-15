@@ -236,6 +236,10 @@ const SearchInput = styled.div`
     font-size: 0.875rem;
     color: ${({ theme }) => theme.colors.blue1};
   }
+
+  i {
+    color: ${({ theme }) => theme.colors.blue1};
+  }
 `;
 
 const Spacer = styled.div`
@@ -286,7 +290,7 @@ const Navbar = () => {
             {isVisibleMobileInfoMenu && (
               <MobileInfoDropdown mobile={true}>
                 <Link
-                  to="#"
+                  to="/brand"
                   onClick={() => {
                     setIsVisibleMobileMenu(false);
                     setIsVisibleMobileInfoMenu(false);
@@ -295,7 +299,7 @@ const Navbar = () => {
                   <span>브랜드 소개</span>
                 </Link>
                 <Link
-                  to="#"
+                  to="/monitoring"
                   onClick={() => {
                     setIsVisibleMobileMenu(false);
                     setIsVisibleMobileInfoMenu(false);
@@ -304,7 +308,7 @@ const Navbar = () => {
                   <span>심전도 모니터링</span>
                 </Link>
                 <Link
-                  to="#"
+                  to="/halter"
                   onClick={() => {
                     setIsVisibleMobileMenu(false);
                     setIsVisibleMobileInfoMenu(false);
@@ -340,13 +344,13 @@ const Navbar = () => {
               <span>하이카디</span>
               {isVisibleInfoMenu && (
                 <InfoDropdown>
-                  <Link to="#">
+                  <Link to="/brand">
                     <span>브랜드 소개</span>
                   </Link>
-                  <Link to="#">
+                  <Link to="/monitoring">
                     <span>심전도 모니터링</span>
                   </Link>
-                  <Link to="#">
+                  <Link to="/halter">
                     <span>홀터 솔루션</span>
                   </Link>
                   <Link to="/news">
@@ -379,8 +383,8 @@ const Navbar = () => {
                 </UserDropdown>
               )}
             </IconItem>
-            <IconItem onClick={() => setIsVisibleSearchMenu(!isVisibleSearchMenu)}>
-              <i>
+            <IconItem>
+              <i onClick={() => setIsVisibleSearchMenu(!isVisibleSearchMenu)}>
                 <FaSearch />
               </i>
               {isVisibleSearchMenu && (
@@ -392,11 +396,20 @@ const Navbar = () => {
                       value={searchInput}
                       onChange={(e) => setSearchInput(e.target.value)}
                     />
-                    <Link to={`/search?query=${searchInput}`} onClick={() => setSearchInput('')}>
+                    <Link
+                      to={`/search?query=${searchInput}`}
+                      onClick={() => {
+                        setSearchInput('');
+                        setIsVisibleSearchMenu(!isVisibleSearchMenu);
+                      }}
+                    >
                       <FaSearch />
                     </Link>
                   </SearchInput>
                 </SearchDropdown>
+              )}
+              {isVisibleSearchMenu && (
+                <FullScreen onClick={() => setIsVisibleSearchMenu(!isVisibleSearchMenu)}></FullScreen>
               )}
             </IconItem>
           </IconList>
