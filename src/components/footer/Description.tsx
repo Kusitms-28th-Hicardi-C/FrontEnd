@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Logo from '../../assets/logo/hicardi-white-logo.svg';
 
 const Container = styled.div`
   display: flex;
@@ -37,7 +36,7 @@ const Company = styled.div`
 const Description = () => {
   return (
     <Container>
-      <LogoImg src={Logo} alt="logo" />
+      <LogoImg src="/images/logo/hicardi-white-logo.svg" alt="logo" />
       <Company>
         <p>
           사업자등록번호 <span>204-86-40112</span>
