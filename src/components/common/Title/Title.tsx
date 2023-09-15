@@ -5,7 +5,7 @@ interface TitleProps {
 }
 
 const TitleStyle = styled.div`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 800;
   margin-bottom: 1rem;
 `;
