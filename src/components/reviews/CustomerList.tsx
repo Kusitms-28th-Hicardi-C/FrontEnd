@@ -37,18 +37,28 @@ const AdvancedHospitalBox = styled.div`
 
 const HospitalBox = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
 `;
 
-const Box = styled.div`
+const Box = styled.img`
   width: 100%;
   height: 4rem;
-  background: ${({ theme }) => theme.colors.gray6};
+  justify-self: center;
+  align-self: center;
 `;
 
 const CustomerList = () => {
   const [active, setActive] = useState(0);
+
+  const advancedHospitalList = [];
+  for (let i = 1; i <= 7; i++) {
+    advancedHospitalList.push(`/images/reviews/advancedHospital/advanced${i}.svg`);
+  }
+  const hospitalList: string[] = [];
+  for (let i = 1; i <= 24; i++) {
+    hospitalList.push(`/images/reviews/hospital/hospital${i}.svg`);
+  }
 
   const handleOptionClick = (index: number) => {
     setActive(index);
@@ -73,13 +83,9 @@ const CustomerList = () => {
         <Content>
           <GrayTitle>상급종합병원</GrayTitle>
           <AdvancedHospitalBox>
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
+            {advancedHospitalList.map((advancedHospital: string, idx: number) => (
+              <Box src={advancedHospital} key={idx} alt="advancedHospital" />
+            ))}
           </AdvancedHospitalBox>
         </Content>
       )}
@@ -88,25 +94,9 @@ const CustomerList = () => {
         <Content>
           <GrayTitle>종합병원</GrayTitle>
           <HospitalBox>
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
-            <Box />
+            {hospitalList.map((hospital: string, idx: number) => (
+              <Box src={hospital} key={idx} alt="hospital" />
+            ))}
           </HospitalBox>
         </Content>
       )}
