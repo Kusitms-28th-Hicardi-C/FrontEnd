@@ -291,7 +291,7 @@ const Navbar = () => {
                   <span>브랜드 소개</span>
                 </Link>
                 <Link
-                  to="#"
+                  to="/monitoring"
                   onClick={() => {
                     setIsVisibleMobileMenu(false);
                     setIsVisibleMobileInfoMenu(false);
@@ -336,13 +336,13 @@ const Navbar = () => {
               <span>하이카디</span>
               {isVisibleInfoMenu && (
                 <InfoDropdown>
-                  <Link to="#">
+                  <Link to="/brand">
                     <span>브랜드 소개</span>
                   </Link>
-                  <Link to="#">
+                  <Link to="/monitoring">
                     <span>심전도 모니터링</span>
                   </Link>
-                  <Link to="#">
+                  <Link to="/halter">
                     <span>홀터 솔루션</span>
                   </Link>
                   <Link to="/news">

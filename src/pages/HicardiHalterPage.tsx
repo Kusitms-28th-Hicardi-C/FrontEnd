@@ -1,3 +1,4 @@
+import Features from '../components/halter/Features';
 import HalterHeaderImage from '../components/halter/HalterHeaderImage';
 import PlusList from '../components/halter/PlusList';
 import Process from '../components/halter/Process';
@@ -12,6 +13,7 @@ const HicardiHalterPage = () => {
       <SideEffect />
       <Solve />
       <Process />
+      <Features />
     </>
   );
 };
