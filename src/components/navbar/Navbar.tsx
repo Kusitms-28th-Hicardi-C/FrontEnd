@@ -9,6 +9,7 @@ import NavActiveLink from '../common/NavActiveLink';
 
 interface DropdownProps {
   children: React.ReactNode;
+  mobile?: boolean;
 }
 
 const NavbarBlock = styled.nav`
@@ -19,13 +20,68 @@ const NavbarBlock = styled.nav`
 `;
 
 const ContentsWrapper = styled.div`
+  width: 900px;
+  height: 4rem;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 3rem;
-  width: 70%;
-  height: 4rem;
-  margin: 0 auto;
+
+  @media screen and (max-width: 992px) {
+    width: 700px;
+    gap: 1.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 0 2rem;
+  }
+`;
+
+const MobileMenuItem = styled.div`
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const MobileMenuIcon = styled.div`
+  display: none;
+  height: 1rem;
+  cursor: pointer;
+  z-index: 999;
+
+  img {
+    height: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    width: 64px;
+  }
+`;
+
+const Dropdown = ({ children, mobile, ...rest }: DropdownProps) => {
+  const isMobile = Boolean(mobile);
+
+  return (
+    <>
+      {!isMobile && <FullScreen></FullScreen>}
+      <DropdownBlock {...rest}>{children}</DropdownBlock>
+    </>
+  );
+};
+
+const MobileDropdown = styled(Dropdown)`
+  top: 105%;
+  left: 0;
+`;
+
+const MobileInfoDropdown = styled(Dropdown)`
+  top: 105%;
+  left: 190px;
 `;
 
 const Logo = styled(Link)`
@@ -40,6 +96,14 @@ const LinkList = styled.div`
   align-items: center;
   gap: 2rem;
   width: 100%;
+
+  @media screen and (max-width: 992px) {
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavInfoItem = styled.div`
@@ -49,11 +113,12 @@ const NavInfoItem = styled.div`
 `;
 
 const IconList = styled.div`
+  width: 64px;
+  height: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 2rem;
-  height: 100%;
 
   img {
     width: 20px;
@@ -117,25 +182,22 @@ const DropdownBlock = styled.ul`
   }
 `;
 
-const Dropdown = ({ children, ...rest }: DropdownProps) => {
-  return (
-    <>
-      <FullScreen></FullScreen>
-      <DropdownBlock {...rest}>{children}</DropdownBlock>
-    </>
-  );
-};
-
 const InfoDropdown = styled(Dropdown)`
   top: 50px;
-  right: -90px;
-  transform: translateX(-23px);
+  right: -67px;
+
+  @media screen and (max-width: 768px) {
+    right: -60px;
+  }
 `;
 
 const UserDropdown = styled(Dropdown)`
   top: 50px;
-  right: -90px;
-  transform: translateX(-10px);
+  right: -80px;
+
+  @media screen and (max-width: 768px) {
+    right: -60px;
+  }
 `;
 
 const SearchDropdown = styled(Dropdown)`
@@ -143,6 +205,10 @@ const SearchDropdown = styled(Dropdown)`
   right: -30px;
   padding: 0.5rem;
   border-radius: 4px;
+
+  @media screen and (max-width: 768px) {
+    right: -10px;
+  }
 `;
 
 const SearchInput = styled.div`
@@ -176,12 +242,92 @@ const Navbar = () => {
   const [isVisibleInfoMenu, setIsVisibleInfoMenu] = useState(false);
   const [isVisibleUserMenu, setIsVisibleUserMenu] = useState(false);
   const [isVisibleSearchMenu, setIsVisibleSearchMenu] = useState(false);
+  const [isVisibleMobileMenu, setIsVisibleMobileMenu] = useState(false);
+  const [isVisibleMobileInfoMenu, setIsVisibleMobileInfoMenu] = useState(false);
+
   const [searchInput, setSearchInput] = useState('');
 
   return (
     <>
       <NavbarBlock>
         <ContentsWrapper>
+          <MobileMenuItem>
+            <MobileMenuIcon
+              onClick={() => {
+                setIsVisibleMobileMenu(!isVisibleMobileMenu);
+                setIsVisibleMobileInfoMenu(false);
+              }}
+            >
+              <img src="/images/icons/hamburger.svg" alt="햄버거 아이콘" />
+            </MobileMenuIcon>
+            {isVisibleMobileMenu && (
+              <MobileDropdown mobile={true}>
+                <Link to="#" onClick={() => setIsVisibleMobileInfoMenu(!isVisibleMobileInfoMenu)}>
+                  <span>하이카디</span>
+                </Link>
+                <Link to="/products" onClick={() => setIsVisibleMobileMenu(!isVisibleMobileMenu)}>
+                  <span>구매하기</span>
+                </Link>
+                <Link to="/reviews" onClick={() => setIsVisibleMobileMenu(!isVisibleMobileMenu)}>
+                  <span>사용사례</span>
+                </Link>
+                <Link to="/blog" onClick={() => setIsVisibleMobileMenu(!isVisibleMobileMenu)}>
+                  <span>블로그</span>
+                </Link>
+                <Link to="/support" onClick={() => setIsVisibleMobileMenu(!isVisibleMobileMenu)}>
+                  <span>고객지원</span>
+                </Link>
+              </MobileDropdown>
+            )}
+            {isVisibleMobileInfoMenu && (
+              <MobileInfoDropdown mobile={true}>
+                <Link
+                  to="#"
+                  onClick={() => {
+                    setIsVisibleMobileMenu(false);
+                    setIsVisibleMobileInfoMenu(false);
+                  }}
+                >
+                  <span>브랜드 소개</span>
+                </Link>
+                <Link
+                  to="#"
+                  onClick={() => {
+                    setIsVisibleMobileMenu(false);
+                    setIsVisibleMobileInfoMenu(false);
+                  }}
+                >
+                  <span>심전도 모니터링</span>
+                </Link>
+                <Link
+                  to="#"
+                  onClick={() => {
+                    setIsVisibleMobileMenu(false);
+                    setIsVisibleMobileInfoMenu(false);
+                  }}
+                >
+                  <span>홀터 솔루션</span>
+                </Link>
+                <Link
+                  to="/news"
+                  onClick={() => {
+                    setIsVisibleMobileMenu(false);
+                    setIsVisibleMobileInfoMenu(false);
+                  }}
+                >
+                  <span>뉴스</span>
+                </Link>
+              </MobileInfoDropdown>
+            )}
+            {isVisibleMobileMenu && (
+              <FullScreen
+                onClick={() => {
+                  setIsVisibleMobileMenu(false);
+                  setIsVisibleMobileInfoMenu(false);
+                }}
+              ></FullScreen>
+            )}
+          </MobileMenuItem>
           <Logo to="/">
             <img src={logo} alt="hicardi-logo" />
           </Logo>
