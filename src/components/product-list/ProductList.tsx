@@ -13,6 +13,15 @@ const ProductListBlock = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const ProductItem = styled(Link)`
@@ -27,6 +36,22 @@ const ProductItem = styled(Link)`
     width: 100%;
     height: 300px;
     object-fit: contain;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+
+    img {
+      max-width: 50%;
+      padding-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    img {
+      max-width: 40%;
+      padding-right: 0;
+    }
   }
 `;
 
@@ -44,6 +69,11 @@ const ContentArea = styled.div`
     font-size: 2rem;
     font-weight: 700;
     color: ${({ theme }) => theme.colors.blue1};
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 3rem;
+    padding-left: 1rem;
   }
 `;
 
