@@ -1,3 +1,4 @@
+import Benefit from '../components/halter/Benefit';
 import Features from '../components/halter/Features';
 import HalterHeaderImage from '../components/halter/HalterHeaderImage';
 import PlusList from '../components/halter/PlusList';
@@ -14,6 +15,7 @@ const HicardiHalterPage = () => {
       <Solve />
       <Process />
       <Features />
+      <Benefit />
     </>
   );
 };
