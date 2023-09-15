@@ -173,30 +173,7 @@ const Navbar = () => {
   const [isVisibleInfoMenu, setIsVisibleInfoMenu] = useState(false);
   const [isVisibleUserMenu, setIsVisibleUserMenu] = useState(false);
   const [isVisibleSearchMenu, setIsVisibleSearchMenu] = useState(false);
-
-  const onInfoSpanClick = () => {
-    setIsVisibleInfoMenu(!isVisibleInfoMenu);
-  };
-
-  const onInfoMenuClick = () => {
-    setIsVisibleInfoMenu(!isVisibleInfoMenu);
-  };
-
-  const onUserIconClick = () => {
-    setIsVisibleUserMenu(!isVisibleUserMenu);
-  };
-
-  const onSearchIconClick = () => {
-    setIsVisibleSearchMenu(!isVisibleSearchMenu);
-  };
-
-  const onUserMenuClick = () => {
-    setIsVisibleUserMenu(false);
-  };
-
-  const onSearchMenuClick = () => {
-    setIsVisibleSearchMenu(false);
-  };
+  const [searchInput, setSearchInput] = useState('');
 
   return (
     <>
@@ -206,21 +183,46 @@ const Navbar = () => {
             <img src={logo} alt="hicardi-logo" />
           </Logo>
           <LinkList>
-            <NavInfoSpan onClick={onInfoSpanClick} active={isVisibleInfoMenu ? '1' : '0'}>
+            <NavInfoSpan
+              onClick={() => {
+                setIsVisibleInfoMenu(!isVisibleInfoMenu);
+              }}
+              active={isVisibleInfoMenu ? '1' : '0'}
+            >
               <InfoWrapper>
                 하이카디
                 {isVisibleInfoMenu && (
                   <InfoDropdown>
-                    <Link to="#" onClick={onInfoMenuClick}>
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        setIsVisibleInfoMenu(!isVisibleInfoMenu);
+                      }}
+                    >
                       <span>브랜드 소개</span>
                     </Link>
-                    <Link to="#" onClick={onInfoMenuClick}>
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        setIsVisibleInfoMenu(!isVisibleInfoMenu);
+                      }}
+                    >
                       <span>심전도 모니터링</span>
                     </Link>
-                    <Link to="#" onClick={onInfoMenuClick}>
+                    <Link
+                      to="#"
+                      onClick={() => {
+                        setIsVisibleInfoMenu(!isVisibleInfoMenu);
+                      }}
+                    >
                       <span>홀터 솔루션</span>
                     </Link>
-                    <Link to="/news" onClick={onInfoMenuClick}>
+                    <Link
+                      to="/news"
+                      onClick={() => {
+                        setIsVisibleInfoMenu(!isVisibleInfoMenu);
+                      }}
+                    >
                       <span>뉴스</span>
                     </Link>
                   </InfoDropdown>
@@ -234,32 +236,68 @@ const Navbar = () => {
           </LinkList>
           <IconList>
             <IconItem>
-              <i className={isVisibleUserMenu ? 'active' : ''} onClick={onUserIconClick}>
+              <i
+                className={isVisibleUserMenu ? 'active' : ''}
+                onClick={() => {
+                  setIsVisibleUserMenu(!isVisibleUserMenu);
+                }}
+              >
                 <FaUser />
               </i>
               {isVisibleUserMenu && (
                 <UserDropdown>
-                  <Link to="/login" onClick={onUserMenuClick}>
+                  <Link
+                    to="/login"
+                    onClick={() => {
+                      setIsVisibleUserMenu(false);
+                    }}
+                  >
                     <span>로그인 / 회원가입</span>
                   </Link>
-                  <Link to="/cart" onClick={onUserMenuClick}>
+                  <Link
+                    to="/cart"
+                    onClick={() => {
+                      setIsVisibleUserMenu(false);
+                    }}
+                  >
                     <span>장바구니</span>
                   </Link>
-                  <Link to="#" onClick={onUserMenuClick}>
+                  <Link
+                    to="#"
+                    onClick={() => {
+                      setIsVisibleUserMenu(false);
+                    }}
+                  >
                     <span>회원정보 수정</span>
                   </Link>
                 </UserDropdown>
               )}
             </IconItem>
             <IconItem>
-              <i className={isVisibleSearchMenu ? 'active' : ''} onClick={onSearchIconClick}>
+              <i
+                className={isVisibleSearchMenu ? 'active' : ''}
+                onClick={() => {
+                  setIsVisibleSearchMenu(!isVisibleSearchMenu);
+                }}
+              >
                 <FaSearch />
               </i>
               {isVisibleSearchMenu && (
                 <SearchDropdown>
                   <SearchInput>
-                    <input type="text" placeholder="키워드를 입력하세요" />
-                    <Link to="/search" onClick={onSearchMenuClick}>
+                    <input
+                      type="text"
+                      placeholder="키워드를 입력하세요"
+                      value={searchInput}
+                      onChange={(e) => setSearchInput(e.target.value)}
+                    />
+                    <Link
+                      to={`/search?query=${searchInput}`}
+                      onClick={() => {
+                        setIsVisibleSearchMenu(false);
+                        setSearchInput('');
+                      }}
+                    >
                       <FaSearch />
                     </Link>
                   </SearchInput>
