@@ -4,11 +4,11 @@ import HeaderSearch from '../common/HeaderSearch';
 
 const Header = () => {
   const [searchParams] = useSearchParams();
-  const search = searchParams.get('search');
+  const query = searchParams.get('query');
 
   return (
     <>
-      <HeaderSearch searchRange="all" value={search ? search : ''} />
+      <HeaderSearch searchRange="all" value={query ? query : ''} />
     </>
   );
 };

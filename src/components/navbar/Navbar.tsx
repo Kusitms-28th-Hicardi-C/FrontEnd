@@ -292,7 +292,7 @@ const Navbar = () => {
                       onChange={(e) => setSearchInput(e.target.value)}
                     />
                     <Link
-                      to={`/search?search=${searchInput}`}
+                      to={`/search?query=${searchInput}`}
                       onClick={() => {
                         setIsVisibleSearchMenu(false);
                         setSearchInput('');
