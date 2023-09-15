@@ -35,7 +35,7 @@ const ButtonBox = styled.div`
   gap: 3rem;
 `;
 
-const Button = styled.button`
+const CircleButton = styled.button`
   width: 12rem;
   height: 12rem;
   display: flex;
@@ -43,6 +43,7 @@ const Button = styled.button`
   align-items: center;
   color: ${({ theme }) => theme.colors.blue1};
   background: ${({ theme }) => theme.colors.white};
+  font-size: 1.1rem;
   font-weight: 800;
   border-radius: 50%;
   padding: 1rem;
@@ -63,18 +64,18 @@ const Support = ({ howToUseRef, faqRef, productRef }: SupportProps) => {
       <Title>고객 지원</Title>
       <SubTitle>하이카디 사용법 영상과 메뉴얼을 확인하세요.</SubTitle>
       <ButtonBox>
-        <Button onClick={() => handleMoveScroll(howToUseRef)}>
+        <CircleButton onClick={() => handleMoveScroll(howToUseRef)}>
           <img src={howToUseIcon} alt="howToUse" />
           사용법
-        </Button>
-        <Button onClick={() => handleMoveScroll(faqRef)}>
+        </CircleButton>
+        <CircleButton onClick={() => handleMoveScroll(faqRef)}>
           <img src={questionMarkIcon} alt="questionMark" />
           FAQ
-        </Button>
-        <Button onClick={() => handleMoveScroll(productRef)}>
+        </CircleButton>
+        <CircleButton onClick={() => handleMoveScroll(productRef)}>
           <img src={productIcon} alt="product" />
           제품 소개서
-        </Button>
+        </CircleButton>
       </ButtonBox>
     </Banner>
   );
