@@ -49,10 +49,9 @@ const questionList: {
 
 const Container = styled.div`
   width: 100%;
-  padding: 5rem 15%;
+  padding: 4rem 15%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 `;
 
 const Title = styled.div`
@@ -120,7 +119,7 @@ const ButtonBox = styled.div`
 
 const QuestionContainer = styled.div`
   display: flex;
-  padding: 0.5rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray1};
   &:last-child {
     border-bottom: none;
@@ -170,8 +169,8 @@ const FAQ = ({ faqRef }: FAQProps) => {
 
   return (
     <Container ref={faqRef}>
+      <Title>FAQ</Title>
       <SearchTop>
-        <Title>FAQ</Title>
         <SearchBox>
           <SearchContentBox>
             <SearchContent>자주 묻는 질문을 </SearchContent>
