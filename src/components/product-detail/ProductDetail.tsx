@@ -20,14 +20,36 @@ const ProductDetailBlock = styled.div`
   width: 50%;
   margin: 0 auto;
   margin-bottom: 3rem;
+
+  @media screen and (max-width: 1200px) {
+    width: 60%;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 80%;
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const ProductImage = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
+
   img {
-    width: 300px;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 800px) {
+    justify-content: center;
+
+    img {
+      width: 300px;
+    }
   }
 `;
 
