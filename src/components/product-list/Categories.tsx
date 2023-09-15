@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
+import { BsCart4 } from 'react-icons/bs';
 
 import Button from '../common/Button/Button';
 import { useRecoilState } from 'recoil';
@@ -10,13 +13,17 @@ interface BadgeProps {
 }
 
 const CategoriesBlock = styled.div`
+  width: 70%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: end;
-  width: 70%;
-  margin: 0 auto;
   margin-top: 1rem;
   margin-bottom: 2rem;
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const BadgeList = styled.div`
@@ -24,6 +31,14 @@ const BadgeList = styled.div`
   justify-content: start;
   align-items: center;
   gap: 1rem;
+
+  @media screen and (max-width: 600px) {
+    gap: 0.5rem;
+  }
+
+  @media screen and (max-width: 550px) {
+    gap: 0.25rem;
+  }
 `;
 
 const BadgeBlock = styled(Button)`
@@ -53,13 +68,35 @@ const Badge = ({ type, children }: BadgeProps) => {
   );
 };
 
-const CartButton = styled.button`
+const CartButton = styled(Link)`
+  display: block;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.blue3};
-  color: ${({ theme }) => theme.colors.white};
+
   font-size: 1.125rem;
-  font-weight: 500;
+
+  span {
+    color: ${({ theme }) => theme.colors.white};
+    font-weight: 500;
+  }
+
+  i {
+    color: ${({ theme }) => theme.colors.white};
+    display: none;
+  }
+
+  @media screen and (max-width: 992px) {
+    padding: 0.75rem 0.75rem;
+
+    span {
+      display: none;
+    }
+
+    i {
+      display: inline;
+    }
+  }
 `;
 
 const Categories = () => {
@@ -71,7 +108,12 @@ const Categories = () => {
         <Badge type="추가 용품">추가 용품</Badge>
         <Badge type="추가 서비스">추가 서비스</Badge>
       </BadgeList>
-      <CartButton>장바구니 바로가기</CartButton>
+      <CartButton to="/cart">
+        <span>장바구니 바로가기</span>
+        <i>
+          <BsCart4 />
+        </i>
+      </CartButton>
     </CategoriesBlock>
   );
 };
