@@ -8,7 +8,7 @@ const Container = styled.div`
   background: ${({ theme }) => theme.colors.blue4};
 `;
 
-const ProcessTitle = styled.div`
+const InformationTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -25,14 +25,14 @@ const Title = styled.div`
   text-align: center;
 `;
 
-const ProcessBlock = styled.div`
+const InformationBlock = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 2rem;
 `;
 
-const ProcessBox = styled.div`
+const InformationBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,48 +63,48 @@ const Description = styled.div`
 const Solve = () => {
   return (
     <Container>
-      <ProcessTitle>
+      <InformationTitle>
         <Title>이제, 하이카디가 해결할게요!</Title>
         <p>
           HiCardi는 <span>5가지 환자 모니터링 정보</span>를 제공해요.
         </p>
-      </ProcessTitle>
-      <ProcessBlock>
-        <ProcessBox>
+      </InformationTitle>
+      <InformationBlock>
+        <InformationBox>
           <CircleBackground>
             <img src="/images/monitoring/solve1.svg" alt="solve1" />
           </CircleBackground>
           심전도(ECG)
-        </ProcessBox>
+        </InformationBox>
 
-        <ProcessBox>
+        <InformationBox>
           <CircleBackground>
             <img src="/images/monitoring/solve2.svg" alt="solve2" />
           </CircleBackground>
           심박수
-        </ProcessBox>
+        </InformationBox>
 
-        <ProcessBox>
+        <InformationBox>
           <CircleBackground>
             <img src="/images/monitoring/solve3.svg" alt="solve3" />
           </CircleBackground>
           호흡
-        </ProcessBox>
+        </InformationBox>
 
-        <ProcessBox>
+        <InformationBox>
           <CircleBackground>
             <img src="/images/monitoring/solve4.svg" alt="solve4" />
           </CircleBackground>
           피부온도
-        </ProcessBox>
+        </InformationBox>
 
-        <ProcessBox>
+        <InformationBox>
           <CircleBackground>
             <img src="/images/monitoring/solve5.svg" alt="solve5" />
           </CircleBackground>
           피부온도
-        </ProcessBox>
-      </ProcessBlock>
+        </InformationBox>
+      </InformationBlock>
       <Description>*피부온도와 활동상태는 의료기기 기능이 아닙니다.</Description>
     </Container>
   );
