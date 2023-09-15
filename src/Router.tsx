@@ -27,6 +27,7 @@ import CartPage from './pages/CartPage';
 import BrandIntroductionPage from './pages/BrandIntroductionPage';
 import HicardiHalterPage from './pages/HicardiHalterPage';
 import SearchPage from './pages/SearchPage';
+import MonitoringPage from './pages/MonitoringPage';
 
 const Router = () => {
   return (
@@ -59,6 +60,7 @@ const Router = () => {
         <Route path="/brand" element={<BrandIntroductionPage />} />
         <Route path="/halter" element={<HicardiHalterPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/monitoring" element={<MonitoringPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
