@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -6,10 +6,6 @@ import { FaUser, FaSearch } from 'react-icons/fa';
 
 import logo from '../../assets/logo/hicardi-logo.svg';
 import NavActiveLink from '../common/NavActiveLink';
-
-interface NavIntroSpanProps {
-  active: string;
-}
 
 interface DropdownProps {
   children: React.ReactNode;
@@ -46,18 +42,9 @@ const LinkList = styled.div`
   width: 100%;
 `;
 
-const NavInfoSpan = styled.span<NavIntroSpanProps>`
+const NavInfoItem = styled.div`
   font-weight: 600;
   cursor: pointer;
-
-  ${(props) =>
-    props.active === '1' &&
-    css`
-      color: #20c5ff;
-    `}
-`;
-
-const InfoWrapper = styled.div`
   position: relative;
 `;
 
@@ -87,8 +74,19 @@ const IconItem = styled.div`
   }
 `;
 
+const FullScreen = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+`;
+
 const DropdownBlock = styled.ul`
   position: absolute;
+  z-index: 150;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
@@ -120,7 +118,12 @@ const DropdownBlock = styled.ul`
 `;
 
 const Dropdown = ({ children, ...rest }: DropdownProps) => {
-  return <DropdownBlock {...rest}>{children}</DropdownBlock>;
+  return (
+    <>
+      <FullScreen></FullScreen>
+      <DropdownBlock {...rest}>{children}</DropdownBlock>
+    </>
+  );
 };
 
 const InfoDropdown = styled(Dropdown)`
@@ -183,103 +186,51 @@ const Navbar = () => {
             <img src={logo} alt="hicardi-logo" />
           </Logo>
           <LinkList>
-            <NavInfoSpan
-              onClick={() => {
-                setIsVisibleInfoMenu(!isVisibleInfoMenu);
-              }}
-              active={isVisibleInfoMenu ? '1' : '0'}
-            >
-              <InfoWrapper>
-                하이카디
-                {isVisibleInfoMenu && (
-                  <InfoDropdown>
-                    <Link
-                      to="#"
-                      onClick={() => {
-                        setIsVisibleInfoMenu(!isVisibleInfoMenu);
-                      }}
-                    >
-                      <span>브랜드 소개</span>
-                    </Link>
-                    <Link
-                      to="#"
-                      onClick={() => {
-                        setIsVisibleInfoMenu(!isVisibleInfoMenu);
-                      }}
-                    >
-                      <span>심전도 모니터링</span>
-                    </Link>
-                    <Link
-                      to="#"
-                      onClick={() => {
-                        setIsVisibleInfoMenu(!isVisibleInfoMenu);
-                      }}
-                    >
-                      <span>홀터 솔루션</span>
-                    </Link>
-                    <Link
-                      to="/news"
-                      onClick={() => {
-                        setIsVisibleInfoMenu(!isVisibleInfoMenu);
-                      }}
-                    >
-                      <span>뉴스</span>
-                    </Link>
-                  </InfoDropdown>
-                )}
-              </InfoWrapper>
-            </NavInfoSpan>
+            <NavInfoItem onClick={() => setIsVisibleInfoMenu(!isVisibleInfoMenu)}>
+              <span>하이카디</span>
+              {isVisibleInfoMenu && (
+                <InfoDropdown>
+                  <Link to="#">
+                    <span>브랜드 소개</span>
+                  </Link>
+                  <Link to="#">
+                    <span>심전도 모니터링</span>
+                  </Link>
+                  <Link to="#">
+                    <span>홀터 솔루션</span>
+                  </Link>
+                  <Link to="/news">
+                    <span>뉴스</span>
+                  </Link>
+                </InfoDropdown>
+              )}
+            </NavInfoItem>
             <NavActiveLink to="/products">구매하기</NavActiveLink>
             <NavActiveLink to="/reviews">사용사례</NavActiveLink>
             <NavActiveLink to="/blog">블로그</NavActiveLink>
             <NavActiveLink to="/support">고객지원</NavActiveLink>
           </LinkList>
           <IconList>
-            <IconItem>
-              <i
-                className={isVisibleUserMenu ? 'active' : ''}
-                onClick={() => {
-                  setIsVisibleUserMenu(!isVisibleUserMenu);
-                }}
-              >
+            <IconItem onClick={() => setIsVisibleUserMenu(!isVisibleUserMenu)}>
+              <i>
                 <FaUser />
               </i>
               {isVisibleUserMenu && (
                 <UserDropdown>
-                  <Link
-                    to="/login"
-                    onClick={() => {
-                      setIsVisibleUserMenu(false);
-                    }}
-                  >
+                  <Link to="/login">
                     <span>로그인 / 회원가입</span>
                   </Link>
-                  <Link
-                    to="/cart"
-                    onClick={() => {
-                      setIsVisibleUserMenu(false);
-                    }}
-                  >
+                  <Link to="/cart">
                     <span>장바구니</span>
                   </Link>
-                  <Link
-                    to="#"
-                    onClick={() => {
-                      setIsVisibleUserMenu(false);
-                    }}
-                  >
+                  <Link to="#">
                     <span>회원정보 수정</span>
                   </Link>
                 </UserDropdown>
               )}
             </IconItem>
-            <IconItem>
-              <i
-                className={isVisibleSearchMenu ? 'active' : ''}
-                onClick={() => {
-                  setIsVisibleSearchMenu(!isVisibleSearchMenu);
-                }}
-              >
+            <IconItem onClick={() => setIsVisibleSearchMenu(!isVisibleSearchMenu)}>
+              <i>
                 <FaSearch />
               </i>
               {isVisibleSearchMenu && (
@@ -291,13 +242,7 @@ const Navbar = () => {
                       value={searchInput}
                       onChange={(e) => setSearchInput(e.target.value)}
                     />
-                    <Link
-                      to={`/search?query=${searchInput}`}
-                      onClick={() => {
-                        setIsVisibleSearchMenu(false);
-                        setSearchInput('');
-                      }}
-                    >
+                    <Link to={`/search?query=${searchInput}`} onClick={() => setSearchInput('')}>
                       <FaSearch />
                     </Link>
                   </SearchInput>
