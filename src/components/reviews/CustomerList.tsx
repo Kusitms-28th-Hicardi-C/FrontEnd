@@ -11,18 +11,37 @@ const CustomerListBlock = styled.div`
 const ButtonBox = styled.div`
   display: flex;
   gap: 0.8rem;
+  margin-bottom: 1.5rem;
+`;
+
+const TitleBox = styled.div`
+  display: flex;
+  gap: 0.8rem;
+  margin: 4rem 0 1rem 0;
+`;
+
+const CustomerTitle = styled.div`
+  font-size: 1.8rem;
+  font-weight: 700;
+`;
+
+const TitleDescription = styled.div`
+  font-size: 1rem;
+  font-weight: 400;
+  color: ${({ theme }) => theme.colors.gray4};
 `;
 
 const GrayTitle = styled(Title)`
-  color: ${({ theme }) => theme.colors.gray6};
-  font-size: 1.1rem;
+  color: ${({ theme }) => theme.colors.gray3};
+  font-size: 1.3rem;
+  font-weight: 400;
 `;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem 0 3rem 0;
+  padding: 2rem 0 5rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
   margin-bottom: 1rem;
 `;
@@ -66,7 +85,10 @@ const CustomerList = () => {
 
   return (
     <CustomerListBlock>
-      <Title>고객사 목록</Title>
+      <TitleBox>
+        <CustomerTitle>고객사 목록</CustomerTitle>
+        <TitleDescription>* 2023. 8.기준</TitleDescription>
+      </TitleBox>
       <ButtonBox>
         <Button active={active === 0} onClick={() => handleOptionClick(0)}>
           전체
