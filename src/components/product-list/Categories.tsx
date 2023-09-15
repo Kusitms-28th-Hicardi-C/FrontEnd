@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import { BsCart4 } from 'react-icons/bs';
 
@@ -67,18 +68,21 @@ const Badge = ({ type, children }: BadgeProps) => {
   );
 };
 
-const CartButton = styled.button`
+const CartButton = styled(Link)`
+  display: block;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.blue3};
-  color: ${({ theme }) => theme.colors.white};
+
   font-size: 1.125rem;
 
   span {
+    color: ${({ theme }) => theme.colors.white};
     font-weight: 500;
   }
 
   i {
+    color: ${({ theme }) => theme.colors.white};
     display: none;
   }
 
@@ -104,7 +108,7 @@ const Categories = () => {
         <Badge type="추가 용품">추가 용품</Badge>
         <Badge type="추가 서비스">추가 서비스</Badge>
       </BadgeList>
-      <CartButton>
+      <CartButton to="/cart">
         <span>장바구니 바로가기</span>
         <i>
           <BsCart4 />
