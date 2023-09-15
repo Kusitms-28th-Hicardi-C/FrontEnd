@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import download from '../../assets/client/download.svg';
 
+interface ProductProps {
+  productRef: React.RefObject<HTMLDivElement>;
+}
+
 const Banner = styled.div`
   background: #f8f9fb;
   width: 100%;
@@ -38,9 +42,9 @@ const Button = styled.button`
   }
 `;
 
-const Product = () => {
+const Product = ({ productRef }: ProductProps) => {
   return (
-    <Banner>
+    <Banner ref={productRef}>
       <SubTitle>하이카디에 대해 더 궁금하신가요?</SubTitle>
       <Title>하이카디 제품 소개서</Title>
       <Button>
