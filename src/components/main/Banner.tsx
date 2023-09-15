@@ -13,18 +13,6 @@ const BannerBlock = styled.div`
   }
 `;
 
-const SlidePrevArrow = styled.button`
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%);
-  z-index: 5;
-
-  img {
-    width: 30px;
-  }
-`;
-
 const SliderWrapper = styled.div`
   .slick-dots {
     position: absolute;
@@ -54,18 +42,6 @@ const SliderWrapper = styled.div`
   }
 `;
 
-const SlideNextArrow = styled.button`
-  position: absolute;
-  top: 50%;
-  right: 10%;
-  transform: translateY(-50%);
-  z-index: 5;
-
-  img {
-    width: 30px;
-  }
-`;
-
 const BannerItem = styled.div`
   img {
     width: 100%;
@@ -75,23 +51,8 @@ const BannerItem = styled.div`
 const Banner = () => {
   const slickRef = useRef<Slider>(null);
 
-  const slideToPrev = () => {
-    if (slickRef.current) {
-      slickRef.current.slickPrev();
-    }
-  };
-
-  const slideToNext = () => {
-    if (slickRef.current) {
-      slickRef.current.slickNext();
-    }
-  };
-
   return (
     <BannerBlock>
-      <SlidePrevArrow type="button" onClick={slideToPrev}>
-        <img src="/images/icons/banner-left-arrow.svg" alt="배너 왼쪽 화살표" />
-      </SlidePrevArrow>
       <SliderWrapper>
         <Slider
           ref={slickRef}
@@ -105,19 +66,19 @@ const Banner = () => {
           pauseOnHover={false}
         >
           <BannerItem>
-            <img src="/images/banners/banner1.png" alt="banner 1" />
+            <img src="/images/banners/banner1.svg" alt="banner 1" />
           </BannerItem>
           <BannerItem>
-            <img src="/images/banners/banner2.png" alt="banner 2" />
+            <img src="/images/banners/banner2.svg" alt="banner 2" />
           </BannerItem>
           <BannerItem>
-            <img src="/images/banners/banner3.png" alt="banner 3" />
+            <img src="/images/banners/banner3.svg" alt="banner 3" />
+          </BannerItem>
+          <BannerItem>
+            <img src="/images/banners/banner4.svg" alt="banner 3" />
           </BannerItem>
         </Slider>
       </SliderWrapper>
-      <SlideNextArrow type="button" onClick={slideToNext}>
-        <img src="/images/icons/banner-right-arrow.svg" alt="배너 오른쪽 화살표" />
-      </SlideNextArrow>
     </BannerBlock>
   );
 };

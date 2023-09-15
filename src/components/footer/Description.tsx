@@ -57,7 +57,7 @@ const Description = () => {
           의료기기판매업번호 <span>제2003-3050034-00003호</span>
         </p>
       </Company>
-      <Company>copyright 2023 회사명. All rights reserved</Company>
+      <Company>Copyright 2023 DongA ST Inc. All rights reserved</Company>
     </Container>
   );
 };
