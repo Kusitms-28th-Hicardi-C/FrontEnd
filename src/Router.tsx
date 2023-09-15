@@ -24,9 +24,10 @@ import NewsPage from './pages/NewsPage';
 import NewsDetailPage from './pages/NewsDetailPage';
 import ReviewsPage from './pages/ReviewsPage';
 import CartPage from './pages/CartPage';
-import BrandIntroductionPage from './pages/BrandIntroduction';
+import BrandIntroductionPage from './pages/BrandIntroductionPage';
 import HicardiHalterPage from './pages/HicardiHalterPage';
 import SearchPage from './pages/SearchPage';
+import MonitoringPage from './pages/MonitoringPage';
 
 const Router = () => {
   return (
@@ -59,6 +60,7 @@ const Router = () => {
         <Route path="/brand" element={<BrandIntroductionPage />} />
         <Route path="/halter" element={<HicardiHalterPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/monitoring" element={<MonitoringPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

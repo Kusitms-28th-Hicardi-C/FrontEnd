@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import featureList from '../../data/feature.json';
+import featureList from '../../data/halter-feature.json';
 
 const Container = styled.div`
   display: flex;

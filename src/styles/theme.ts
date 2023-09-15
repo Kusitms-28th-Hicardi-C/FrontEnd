@@ -25,6 +25,11 @@ const colors = {
   box4: '#F4F5F8',
   box5: '#F9FCFF',
   box6: '#DEE6ED',
+
+  process1: '#0194FF',
+  process2: '#49B3FF',
+  process3: '#90D1FF',
+  process4: '#BDE4FF',
 } as const;
 
 export type ColorsTypes = typeof colors;
