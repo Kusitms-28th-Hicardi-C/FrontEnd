@@ -20,6 +20,19 @@ const HeadingBlock = styled.div`
     padding: 0.25rem 1rem;
     border-radius: 16px;
   }
+
+  @media screen and (max-width: 1200px) {
+    width: 60%;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 70%;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 80%;
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const Heading = () => {

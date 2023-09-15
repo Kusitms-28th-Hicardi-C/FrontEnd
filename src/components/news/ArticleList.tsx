@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import articleList from '../../data/news.json';
+import Pagination from '../common/Pagination';
 
 const ArticleListBlock = styled.div`
   width: 50%;
@@ -49,18 +50,6 @@ const ArticleTitle = styled.span`
   }
 `;
 
-const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  text-align: center;
-
-  img {
-    height: 1rem;
-  }
-`;
-
 const ArticleList = () => {
   return (
     <ArticleListBlock>
@@ -86,11 +75,7 @@ const ArticleList = () => {
           })}
         </ArticleTableBody>
       </ArticleTable>
-      <Pagination>
-        <img src="/images/icons/left-arrow.svg" alt="왼쪽 화살표" />
-        <span>1 / 5</span>
-        <img src="/images/icons/right-arrow.svg" alt="오른쪽 화살표" />
-      </Pagination>
+      <Pagination />
     </ArticleListBlock>
   );
 };
