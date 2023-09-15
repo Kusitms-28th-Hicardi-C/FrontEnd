@@ -111,10 +111,7 @@ const Banner = () => {
             <img src="/images/banners/banner2.png" alt="banner 2" />
           </BannerItem>
           <BannerItem>
-            <img src="/images/banners/banner1.png" alt="banner 3" />
-          </BannerItem>
-          <BannerItem>
-            <img src="/images/banners/banner1.png" alt="banner 3" />
+            <img src="/images/banners/banner3.png" alt="banner 3" />
           </BannerItem>
         </Slider>
       </SliderWrapper>
