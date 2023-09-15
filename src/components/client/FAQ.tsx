@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import search from '../../assets/icons/search.svg';
 import arrow from '../../assets/client/arrow.svg';
 import Button from '../common/Button/Button';
+import { useState } from 'react';
 
 interface FAQProps {
   faqRef: React.RefObject<HTMLDivElement>;
@@ -64,7 +65,7 @@ const SearchTop = styled.div`
   top: 4rem;
   z-index: 1;
   background: ${({ theme }) => theme.colors.white};
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 `;
 
 const SearchBox = styled.div`
@@ -119,7 +120,7 @@ const ButtonBox = styled.div`
 
 const QuestionContainer = styled.div`
   display: flex;
-  padding: 2rem 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray1};
   &:last-child {
     border-bottom: none;
@@ -161,6 +162,12 @@ const Question = styled.li`
 `;
 
 const FAQ = ({ faqRef }: FAQProps) => {
+  const [selectedSection, setSelectedSection] = useState('전체');
+
+  const handleSectionClick = (sectionName: string) => {
+    setSelectedSection(sectionName);
+  };
+
   return (
     <Container ref={faqRef}>
       <SearchTop>
@@ -177,29 +184,39 @@ const FAQ = ({ faqRef }: FAQProps) => {
         </SearchBox>
 
         <ButtonBox>
-          <Button active={true}>전체</Button>
-          <Button>제품 기능</Button>
-          <Button>이용 방법</Button>
-          <Button>이용 시 주의사항</Button>
-          <Button>의료진 Q&A</Button>
+          <Button active={selectedSection === '전체'} onClick={() => handleSectionClick('전체')}>
+            전체
+          </Button>
+          {questionList.map((section, sectionIndex) => (
+            <Button
+              key={sectionIndex}
+              active={selectedSection === Object.keys(section)[0]}
+              onClick={() => handleSectionClick(Object.keys(section)[0])}
+            >
+              {Object.keys(section)[0]}
+            </Button>
+          ))}
         </ButtonBox>
       </SearchTop>
 
-      {questionList.map((section, sectionIndex) => (
-        <QuestionContainer key={sectionIndex}>
-          <QuestionTitle>{Object.keys(section)[0]}</QuestionTitle>
-          <QuestionBox>
-            {section[Object.keys(section)[0]].map((question, questionIndex) => (
-              <Question key={questionIndex}>
-                <div>
-                  <span>Q.</span> {question}
-                </div>
-                <img src={arrow} alt="arrow" />
-              </Question>
-            ))}
-          </QuestionBox>
-        </QuestionContainer>
-      ))}
+      {questionList.map((section, sectionIndex) => {
+        const sectionName = Object.keys(section)[0];
+        return selectedSection === '전체' || selectedSection === sectionName ? (
+          <QuestionContainer key={sectionIndex}>
+            <QuestionTitle>{sectionName}</QuestionTitle>
+            <QuestionBox>
+              {section[sectionName].map((question, questionIndex) => (
+                <Question key={questionIndex}>
+                  <div>
+                    <span>Q.</span> {question}
+                  </div>
+                  <img src={arrow} alt="arrow" />
+                </Question>
+              ))}
+            </QuestionBox>
+          </QuestionContainer>
+        ) : null;
+      })}
     </Container>
   );
 };
