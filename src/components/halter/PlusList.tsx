@@ -14,7 +14,7 @@ const PlusListTitle = styled.div`
   margin-bottom: 2rem;
 
   p {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 800;
   }
 `;

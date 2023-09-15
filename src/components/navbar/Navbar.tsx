@@ -282,7 +282,7 @@ const Navbar = () => {
             {isVisibleMobileInfoMenu && (
               <MobileInfoDropdown mobile={true}>
                 <Link
-                  to="#"
+                  to="/brand"
                   onClick={() => {
                     setIsVisibleMobileMenu(false);
                     setIsVisibleMobileInfoMenu(false);
@@ -300,7 +300,7 @@ const Navbar = () => {
                   <span>심전도 모니터링</span>
                 </Link>
                 <Link
-                  to="#"
+                  to="/halter"
                   onClick={() => {
                     setIsVisibleMobileMenu(false);
                     setIsVisibleMobileInfoMenu(false);
