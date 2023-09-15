@@ -7,7 +7,6 @@ interface HeaderImageProps {
 
 const HeaderImageBlock = styled.div`
   width: 100%;
-  height: 400px;
   margin-bottom: 2rem;
 
   img {
