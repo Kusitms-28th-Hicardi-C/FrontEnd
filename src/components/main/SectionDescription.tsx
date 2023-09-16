@@ -11,6 +11,11 @@ const SectionDescriptionBlock = styled.p`
   b {
     font-weight: 700;
   }
+
+  @media screen and (max-width: 440px) {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
 `;
 
 const SectionDescription = ({ children }: SectionDescriptionProps) => {

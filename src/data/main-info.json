@@ -1,0 +1,37 @@
+[
+  {
+    "title": "원격 모니터링",
+    "text": ["심박수부터 호흡, 수면까지 "],
+    "boldText": ["환자 데이터 실시간 연속 측정"],
+    "imageUrl": "/images/main/info-image1.png",
+    "mobileImageUrl": "/images/main/mobile-info-image1.png"
+  },
+  {
+    "title": "높은 정확도",
+    "text": ["단순 기록과 수집을 넘어, ", "인공지능 데이터 분석과 질병 예측까지"],
+    "boldText": ["9개의 임상시험을 통과한 검증된 솔루션"],
+    "imageUrl": "/images/main/info-image2.png",
+    "mobileImageUrl": "/images/main/mobile-info-image2.png"
+  },
+  {
+    "title": "건강 보험 적용",
+    "text": ["1차 의료 기관, 비전문과도 활용 가능한"],
+    "boldText": ["심전도 침상감시로 수가 청구가 가능한", "국내 유일 디지털 헬스케어 기기"],
+    "imageUrl": "/images/main/info-image3.png",
+    "mobileImageUrl": "/images/main/mobile-info-image3.png"
+  },
+  {
+    "title": "넓은 사용범위",
+    "text": ["영유아에게도 사용 가능한 모니터링"],
+    "boldText": ["다양한 진료과에 활용되어 의료 사각지대 해결"],
+    "imageUrl": "/images/main/info-image4.png",
+    "mobileImageUrl": "/images/main/mobile-info-image4.png"
+  },
+  {
+    "title": "병원 부담 감소",
+    "text": ["728개 병상 동시 모니터링"],
+    "boldText": ["한정된 의료 인력을 대체"],
+    "imageUrl": "/images/main/info-image5.png",
+    "mobileImageUrl": "/images/main/mobile-info-image5.png"
+  }
+]
