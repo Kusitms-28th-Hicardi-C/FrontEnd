@@ -68,11 +68,11 @@ const Solve = () => {
             <p>장기간 검사가 가능해 더 높은 데이터 정확성</p>
           </SolveSmallText>
         </SolveTextBox>
-        <img src="/images/halter/solve.svg" alt="solve" />
+        <img src="/images/halter/solve1.svg" alt="solve1" />
       </SolveBox>
 
       <SolveBox>
-        <img src="/images/halter/solve.svg" alt="solve" />
+        <img src="/images/halter/solve2.svg" alt="solve2" />
         <SolveTextBox>
           <SolveBigText>
             <p>부정맥 지식이 없어도 괜찮아요</p>
@@ -104,7 +104,7 @@ const Solve = () => {
             <p>환자를 생각한 가벼운 의료기기</p>
           </SolveSmallText>
         </SolveTextBox>
-        <img src="/images/halter/solve.svg" alt="solve" />
+        <img src="/images/halter/solve3.svg" alt="solve3" />
       </SolveBox>
     </Container>
   );

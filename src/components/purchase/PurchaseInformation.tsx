@@ -131,7 +131,7 @@ const PurchaseInformation = () => {
         <WidthInput type="number" placeholder="" />
       </Content>
       <Check>
-        <CheckBox /> 기본 배송지로 저장
+        <CheckBox> 기본 배송지로 저장</CheckBox>
       </Check>
 
       <Title>주문상품</Title>
