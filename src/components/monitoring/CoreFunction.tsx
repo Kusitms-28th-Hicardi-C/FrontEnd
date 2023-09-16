@@ -31,6 +31,9 @@ const ContentBox = styled.div`
 const ContentTitle = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
+  span {
+    color: ${({ theme }) => theme.colors.blue2};
+  }
 `;
 
 const Content = styled.div`
@@ -72,7 +75,9 @@ const CoreFunction = () => {
         <ContentBox>
           <img src="/images/monitoring/core-function1.svg" alt="core-function1" />
           <ContentText>
-            <ContentTitle>웨어러블 스마트 패치</ContentTitle>
+            <ContentTitle>
+              <span>웨어러블</span> 스마트 패치
+            </ContentTitle>
             <Content>
               <p>
                 • HiCardi® 시스템의 핵심으로, 부정맥(15가지), 심전도(ECG), 호흡, 피부온과 같은 환자의 생리학적 데이터를
@@ -90,7 +95,9 @@ const CoreFunction = () => {
         <ContentBox>
           <img src="/images/monitoring/core-function2.svg" alt="core-function2" />
           <ContentText>
-            <ContentTitle>스마트뷰 환자상태 모니터링</ContentTitle>
+            <ContentTitle>
+              <span>스마트뷰</span> 환자상태 모니터링
+            </ContentTitle>
             <Content>
               <p>• 모바일 앱으로, 언제 어디서나 환자의 실시간 상태를 모니터링</p>
               <p>
@@ -107,7 +114,9 @@ const CoreFunction = () => {
         <ContentBox>
           <img src="/images/monitoring/core-function3.svg" alt="core-function3" />
           <ContentText>
-            <ContentTitle>라이브 스튜디오 중앙 모니터링</ContentTitle>
+            <ContentTitle>
+              <span>라이브 스튜디오</span> 중앙 모니터링
+            </ContentTitle>
             <Content>
               <p>• 모바일 앱으로, 언제 어디서나 환자의 실시간 상태를 모니터링</p>
               <p>
