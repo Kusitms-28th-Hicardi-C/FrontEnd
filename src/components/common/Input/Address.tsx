@@ -27,7 +27,7 @@ const BigInput = styled(AddressInput)<AddressProps>`
           flex: 1;
         `
       : css`
-          width: 20rem;
+          width: 35rem;
         `};
 `;
 
@@ -38,7 +38,7 @@ const BigWhiteInput = styled(Input)<AddressProps>`
           flex: 1;
         `
       : css`
-          width: 20rem;
+          width: 35rem;
         `};
 `;
 
@@ -47,7 +47,7 @@ const Address = ({ fullWidth }: AddressProps) => {
     <AddressStyle>
       <div>
         <SmallInput type="text" placeholder="우편번호" />
-        <DoubleCheckButton>중복확인</DoubleCheckButton>
+        <DoubleCheckButton>주소검색</DoubleCheckButton>
       </div>
       <BigInput type="text" placeholder="기본주소" fullWidth={fullWidth} />
       <BigWhiteInput type="text" fullWidth={fullWidth} />

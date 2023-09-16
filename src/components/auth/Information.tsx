@@ -123,7 +123,7 @@ const Information = () => {
 
         <Content>
           <SubTitle>주소</SubTitle>
-          <Address fullWidth />
+          <Address />
         </Content>
 
         <Content>
