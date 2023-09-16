@@ -4,7 +4,6 @@ import CheckBox from '../common/Input/CheckBox';
 import Textarea from '../common/Textarea';
 import ButtonBox from './ButtonBox';
 import { useNavigate } from 'react-router-dom';
-import Title from '../common/Title/Title';
 
 const Text = styled.div`
   font-size: 1rem;
@@ -25,11 +24,11 @@ const Agreement = () => {
   return (
     <>
       <Index index={1} />
-      <Title>전체 동의</Title>
+      {/* <Title>전체 동의</Title>
 
       <Text>
         <CheckBox>이용약관 및 개인정보수집 및 이용, 쇼핑정보 수신(선택)에 모두 동의합니다.</CheckBox>
-      </Text>
+      </Text> */}
       <Text>
         <CheckBox>이용약관 동의 (필수)</CheckBox>
       </Text>

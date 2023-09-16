@@ -10,7 +10,7 @@ const IndexBox = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  padding: 2.5rem 0;
+  padding: 2.5rem 0 2rem 0;
   img {
     width: 0.6rem;
   }
