@@ -126,6 +126,7 @@ const Question = styled.li`
 const Answer = styled.div`
   font-size: 1.2rem;
   padding: 1rem 0;
+  line-height: 1.4;
 `;
 
 interface FAQItem {
