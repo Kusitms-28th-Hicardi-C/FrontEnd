@@ -3,49 +3,11 @@ import search from '../../assets/icons/search.svg';
 import arrow from '../../assets/client/arrow.svg';
 import Button from '../common/Button/Button';
 import { useState } from 'react';
+import faqList from '../../data/faq.json';
 
 interface FAQProps {
   faqRef: React.RefObject<HTMLDivElement>;
 }
-
-const questionList: {
-  [key: string]: string[];
-}[] = [
-  {
-    '제품 기능': [
-      '하이카디 패치는 무엇을 탐지해 낼 수 있나요?',
-      '하이카디 패치의 배터리는 최대 며칠동안 착용할 수 있나요?',
-      '하이카디 패치를 착용하고 샤워할 수 있나요?',
-      '하이카디 패치를 착용 후 일상 활동을 해도 될까요?',
-      '하이카디 패치와 스마트폰 간의 연결은 어떻게 이루어지며 연결 범위는 어느 정도인가요?',
-    ],
-  },
-  {
-    '이용 방법': [
-      '하이카디 패치는 어떻게 착용해야 하나요?',
-      '배터리는 어떻게 교체하나요?',
-      '패치에 부착된 전극은 얼마나 부착하고 있어야 하나요?',
-    ],
-  },
-  {
-    '이용 시 주의사항': [
-      '하이카디 패치가 떨어지거나 제대로 작동하지 않으면 어떻게 합니까?',
-      '하이카디 패치를 착용하는 도중 너무 가렵거나 따가움을 느끼면 어떻게 해야 하나요?',
-      '하이카디 패치를 착용하는 동안 주의해야 할 사항들은 무엇이 있을까요?',
-      '하이카디 패치를 착용하고 커피나 술을 마실 수 있나요?',
-      '하이카디 패치를 착용하고 공항 검색대를 통과할 수 있나요?',
-      '하이카디 패치를 착용하는 동안 운동을 할 수 있습니까?',
-      '하이카디 패치와 함께 AppleWatch를 착용하여 같이 사용할 수 있나요?',
-    ],
-  },
-  {
-    '의료진 Q&A': [
-      '하이카디 패치의 전원을 켜는 방법과 부착 후 패치가 작동하는지 확인할 수 있는 방법은 무엇입니까?',
-      '배터리는 어떻게 교체하나요?',
-      '패치에 부착된 전극은 얼마나 부착하고 있어야 하나요?',
-    ],
-  },
-];
 
 const Container = styled.div`
   width: 100%;
@@ -157,14 +119,34 @@ const Question = styled.li`
   span {
     color: ${({ theme }) => theme.colors.blue1};
     font-weight: 800;
+    margin-right: 0.5rem;
   }
 `;
 
+const Answer = styled.div`
+  font-size: 1.2rem;
+  padding: 1rem 0;
+`;
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 const FAQ = ({ faqRef }: FAQProps) => {
   const [selectedSection, setSelectedSection] = useState('전체');
+  const [expandedQuestions, setExpandedQuestions] = useState<number[]>([]);
 
   const handleSectionClick = (sectionName: string) => {
     setSelectedSection(sectionName);
+  };
+
+  const handleQuestionClick = (questionIndex: number) => {
+    if (expandedQuestions.includes(questionIndex)) {
+      setExpandedQuestions(expandedQuestions.filter((index) => index !== questionIndex));
+    } else {
+      setExpandedQuestions([...expandedQuestions, questionIndex]);
+    }
   };
 
   return (
@@ -186,7 +168,7 @@ const FAQ = ({ faqRef }: FAQProps) => {
           <Button active={selectedSection === '전체'} onClick={() => handleSectionClick('전체')}>
             전체
           </Button>
-          {questionList.map((section, sectionIndex) => (
+          {faqList.map((section, sectionIndex) => (
             <Button
               key={sectionIndex}
               active={selectedSection === Object.keys(section)[0]}
@@ -198,23 +180,32 @@ const FAQ = ({ faqRef }: FAQProps) => {
         </ButtonBox>
       </SearchTop>
 
-      {questionList.map((section, sectionIndex) => {
+      {faqList.map((section, sectionIndex) => {
         const sectionName = Object.keys(section)[0];
-        return selectedSection === '전체' || selectedSection === sectionName ? (
-          <QuestionContainer key={sectionIndex}>
-            <QuestionTitle>{sectionName}</QuestionTitle>
-            <QuestionBox>
-              {section[sectionName].map((question, questionIndex) => (
-                <Question key={questionIndex}>
-                  <div>
-                    <span>Q.</span> {question}
-                  </div>
-                  <img src={arrow} alt="arrow" />
-                </Question>
-              ))}
-            </QuestionBox>
-          </QuestionContainer>
-        ) : null;
+        if (selectedSection === '전체' || selectedSection === sectionName) {
+          const sectionData = Object.values(section)[0];
+          return (
+            <QuestionContainer key={sectionIndex}>
+              <QuestionTitle>{sectionName}</QuestionTitle>
+              <QuestionBox>
+                {sectionData.map((item: FAQItem, itemIndex: number) => (
+                  <>
+                    <Question key={itemIndex} onClick={() => handleQuestionClick(itemIndex)}>
+                      <div>
+                        <span>Q.</span>
+                        {item.question}
+                      </div>
+                      <img src={arrow} alt="arrow" />
+                    </Question>
+                    {expandedQuestions.includes(itemIndex) && <Answer>{item.answer}</Answer>}
+                  </>
+                ))}
+              </QuestionBox>
+            </QuestionContainer>
+          );
+        } else {
+          return null;
+        }
       })}
     </Container>
   );
