@@ -135,17 +135,22 @@ interface FAQItem {
 
 const FAQ = ({ faqRef }: FAQProps) => {
   const [selectedSection, setSelectedSection] = useState('전체');
-  const [expandedQuestions, setExpandedQuestions] = useState<number[]>([]);
+  const [expandedQuestions, setExpandedQuestions] = useState<{ [key: string]: number[] }>({});
 
   const handleSectionClick = (sectionName: string) => {
     setSelectedSection(sectionName);
   };
-
-  const handleQuestionClick = (questionIndex: number) => {
-    if (expandedQuestions.includes(questionIndex)) {
-      setExpandedQuestions(expandedQuestions.filter((index) => index !== questionIndex));
+  const handleQuestionClick = (sectionName: string, questionIndex: number) => {
+    if (expandedQuestions[sectionName]?.includes(questionIndex)) {
+      setExpandedQuestions({
+        ...expandedQuestions,
+        [sectionName]: expandedQuestions[sectionName].filter((index) => index !== questionIndex),
+      });
     } else {
-      setExpandedQuestions([...expandedQuestions, questionIndex]);
+      setExpandedQuestions({
+        ...expandedQuestions,
+        [sectionName]: [...(expandedQuestions[sectionName] || []), questionIndex],
+      });
     }
   };
 
@@ -190,14 +195,14 @@ const FAQ = ({ faqRef }: FAQProps) => {
               <QuestionBox>
                 {sectionData.map((item: FAQItem, itemIndex: number) => (
                   <>
-                    <Question key={itemIndex} onClick={() => handleQuestionClick(itemIndex)}>
+                    <Question key={itemIndex} onClick={() => handleQuestionClick(sectionName, itemIndex)}>
                       <div>
                         <span>Q.</span>
                         {item.question}
                       </div>
                       <img src={arrow} alt="arrow" />
                     </Question>
-                    {expandedQuestions.includes(itemIndex) && <Answer>{item.answer}</Answer>}
+                    {expandedQuestions[sectionName]?.includes(itemIndex) && <Answer>{item.answer}</Answer>}
                   </>
                 ))}
               </QuestionBox>
