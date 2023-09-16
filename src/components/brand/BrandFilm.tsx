@@ -5,7 +5,6 @@ const BrandFilmBlock = styled.div`
   width: 70%;
   margin: 0 auto 2rem auto;
   padding-bottom: 2rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray1};
 
   img {
     width: 100%;
