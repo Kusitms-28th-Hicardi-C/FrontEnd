@@ -44,6 +44,12 @@ const ReviewItem = styled.li`
   border-radius: 16px;
   padding: 1.5rem 3rem;
   box-shadow: 24px 24px 41px 8px #0000001a;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 
   img {
     height: 1rem;
@@ -154,7 +160,7 @@ const Review = () => {
 
           <MoreLink to="/reviews">
             <span>자세히 보기</span>
-            <img src="/images/icons/black-right-arrow-sm.png" alt="오른쪽 화살표" />
+            <img src="/images/icons/right-arrow.svg" alt="오른쪽 화살표" />
           </MoreLink>
         </ReviewList>
       </ContentWrapper>
