@@ -50,25 +50,25 @@ const Process = () => {
       </ProcessTitle>
       <ProcessBlock>
         <ProcessBox>
-          <img src="/images/halter/process.svg" alt="process1" /> 앱 설치하기
+          <img src="/images/halter/process1.svg" alt="process1" /> 앱 설치하기
         </ProcessBox>
         <img src="/images/halter/arrow.svg" alt="arrow" />
 
         <ProcessBox>
-          <img src="/images/halter/process.svg" alt="process2" />
+          <img src="/images/halter/process2.svg" alt="process2" />
           부착 및 연결
         </ProcessBox>
         <img src="/images/halter/arrow.svg" alt="arrow" />
 
         <ProcessBox>
-          <img src="/images/halter/process.svg" alt="process3" />
+          <img src="/images/halter/process3.svg" alt="process3" />
           검사하기
         </ProcessBox>
         <img src="/images/halter/arrow.svg" alt="arrow" />
 
         <ProcessBox>
           <SpeechBubbleImage src="/images/halter/speech-bubble.svg" alt="process4" />
-          <img src="/images/halter/process.svg" alt="process4" /> 판독결과지 확인
+          <img src="/images/halter/process4.svg" alt="process4" /> 판독결과지 확인
         </ProcessBox>
       </ProcessBlock>
     </Container>
