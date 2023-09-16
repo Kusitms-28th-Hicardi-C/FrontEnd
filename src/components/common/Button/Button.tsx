@@ -21,11 +21,15 @@ const ButtonBlock = styled.button<ButtonBlock>`
   background-image: ${({ active }) => (active ? 'linear-gradient(180deg, #4fd1ff 0%, #20c5ff 100%)' : 'none')};
   color: ${({ active, theme }) => (active ? theme.colors.white : '#000')};
   white-space: nowrap;
+
+  @media screen and (max-width: 700px) {
+    font-size: 0.875rem;
+  }
 `;
 
 const Button = ({ children, active, onClick, ...rest }: ButtonProps) => {
   return (
-    <ButtonBlock active={active} {...rest} onClick={onClick}>
+    <ButtonBlock active={Boolean(active)} {...rest} onClick={onClick}>
       {children}
     </ButtonBlock>
   );

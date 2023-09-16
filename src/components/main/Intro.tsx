@@ -1,62 +1,143 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { useState } from 'react';
+
 import SectionTitle from './SectionTitle';
-import intro1 from '../../assets/intro/intro1.png';
 import Button from '../common/Button/Button';
+import mainInfoList from '../../data/main-info.json';
+
+interface ContentProps {
+  mobileImageUrl: string;
+}
 
 const IntroBlock = styled.section`
-  width: 70%;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding-top: 3rem;
 `;
 
 const Heading = styled.div`
-  h2 {
-    font-size: 1.5rem;
-    text-align: center;
-    line-height: 1.5;
-  }
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const Categories = styled.ul`
+  width: 70%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
+
+  @media screen and (max-width: 700px) {
+    gap: 0.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 90%;
+    flex-wrap: wrap;
+  }
 `;
 
-const Content = styled.div`
+const MobileBlueWrapper = styled.div`
+  @media screen and (max-width: 700px) {
+    background-color: ${({ theme }) => theme.colors.blue4};
+  }
+`;
+
+const Content = styled.div<ContentProps>`
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 5rem;
   margin: 0 auto;
   margin-top: 3rem;
 
+  @media screen and (max-width: 700px) {
+    height: 300px;
+    ${(props) => css`
+      background-image: url(${props.mobileImageUrl});
+    `}
+
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+
   img {
-    width: 400px;
+    width: 50%;
+
+    @media screen and (max-width: 700px) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 568px) {
+    margin-top: 1rem;
   }
 `;
 
 const ContentText = styled.div`
-  h3 {
-    color: ${({ theme }) => theme.colors.blue1};
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+
+  .content-text-inner {
+    display: inline-block;
+
+    h3 {
+      width: 100%;
+      color: ${({ theme }) => theme.colors.blue1};
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+
+      @media screen and (max-width: 1000px) {
+        font-size: 2rem;
+      }
+
+      @media screen and (max-width: 568px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .description {
+      width: 100%;
+      text-align: center;
+
+      p {
+        display: inline-block;
+        text-align: start;
+        font-size: 1.5rem;
+
+        b {
+          font-weight: 700;
+        }
+
+        @media screen and (max-width: 1000px) {
+          font-size: 1.25rem;
+        }
+
+        @media screen and (max-width: 568px) {
+          font-size: 1rem;
+        }
+      }
+    }
   }
 
-  p {
-    font-size: 1.25rem;
+  @media screen and (max-width: 700px) {
+    width: 100%;
+    justify-content: start;
+    padding-left: 3rem;
+  }
 
-    b {
-      font-weight: 700;
-    }
+  @media screen and (max-width: 420px) {
+    padding-left: 2rem;
   }
 `;
 
 const Intro = () => {
+  const [categoryIndex, setCategoryIndex] = useState(1);
+  const categories = ['원격 모니터링', '높은 정확도', '요양급여 적용', '넓은 사용범위', '병원 부담 감소'];
+
   return (
     <IntroBlock>
       <Heading>
@@ -67,23 +148,60 @@ const Intro = () => {
         </SectionTitle>
       </Heading>
       <Categories>
-        <Button active={true}>원격 모니터링</Button>
-        <Button>높은 정확도</Button>
-        <Button>요양급여 적용</Button>
-        <Button>넓은 사용범위</Button>
-        <Button>병원 부담 감소</Button>
+        {categories.map((category, index) => {
+          if (categories.indexOf(category) === categoryIndex) {
+            return (
+              <Button
+                key={index}
+                active={true}
+                onClick={() => {
+                  setCategoryIndex(index);
+                }}
+              >
+                {category}
+              </Button>
+            );
+          }
+          return (
+            <Button
+              key={index}
+              onClick={() => {
+                setCategoryIndex(index);
+              }}
+            >
+              {category}
+            </Button>
+          );
+        })}
       </Categories>
-      <Content>
-        <ContentText>
-          <h3>원격 모니터링</h3>
-          <p>
-            심박수부터 호흡, 수면까지
-            <br />
-            <b>환자 데이터 실시간 연속 측정</b>
-          </p>
-        </ContentText>
-        <img src={intro1} alt="원격 모니터링" />
-      </Content>
+      <MobileBlueWrapper>
+        <Content mobileImageUrl={mainInfoList[categoryIndex].mobileImageUrl}>
+          <ContentText>
+            <div className="content-text-inner">
+              <h3>{mainInfoList[categoryIndex].title}</h3>
+              <div className="description">
+                <p>
+                  {mainInfoList[categoryIndex].text.map((line) => (
+                    <>
+                      {line}
+                      <br />
+                    </>
+                  ))}
+                  <b>
+                    {mainInfoList[categoryIndex].boldText.map((line) => (
+                      <>
+                        {line}
+                        <br />
+                      </>
+                    ))}
+                  </b>
+                </p>
+              </div>
+            </div>
+          </ContentText>
+          <img src={mainInfoList[categoryIndex].imageUrl} alt={mainInfoList[categoryIndex].title} />
+        </Content>
+      </MobileBlueWrapper>
     </IntroBlock>
   );
 };
