@@ -8,8 +8,10 @@ const TextareaStyle = styled.textarea`
   width: 100%;
   height: 10rem;
   border: 1px solid ${({ theme }) => theme.colors.gray6};
-  padding: 0.8rem;
+  padding: 1.2rem;
   margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
 
   &:focus {
     outline: none;

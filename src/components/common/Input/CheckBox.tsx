@@ -20,11 +20,11 @@ const Check = styled.input`
 
   &:checked {
     outline: 2px solid ${({ theme }) => theme.colors.blue1};
-  }
-  &:checked::before {
-    content: '';
-    background-image: url('../../assets/auth/checked.svg');
-    background-size: 100% 100%;
+    background-image: url('/images/icons/check.svg');
+    background-size: 1.2rem;
+    background-position: center;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     background-repeat: no-repeat;
     background-position: center;
   }
