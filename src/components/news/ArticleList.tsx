@@ -5,9 +5,18 @@ import articleList from '../../data/news.json';
 import Pagination from '../common/Pagination';
 
 const ArticleListBlock = styled.div`
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   padding-bottom: 5rem;
+
+  @media screen and (max-width: 992px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 0 2rem;
+  }
 `;
 
 const ArticleTable = styled.div`

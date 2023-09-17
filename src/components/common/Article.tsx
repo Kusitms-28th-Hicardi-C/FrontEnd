@@ -46,6 +46,16 @@ const ArticleBlock = styled.div`
     text-align: start;
     margin-bottom: 1.5rem;
   }
+
+  @media screen and (max-width: 992px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 0 2rem;
+    padding-top: 2rem;
+  }
 `;
 
 const SmallTextAndLink = styled.div`

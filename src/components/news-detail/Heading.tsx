@@ -5,7 +5,7 @@ const HeadingBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   padding-bottom: 1rem;
   border-bottom: 2px solid ${({ theme }) => theme.colors.gray1};
@@ -22,6 +22,16 @@ const HeadingBlock = styled.div`
     color: ${({ theme }) => theme.colors.gray3};
     font-size: 0.875rem;
     font-weight: 500;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 90%;
+    padding: 0 0.5rem;
+    padding-bottom: 1rem;
   }
 `;
 

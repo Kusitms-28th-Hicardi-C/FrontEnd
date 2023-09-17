@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import styled, { css } from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import { FaUser, FaSearch } from 'react-icons/fa';
 
@@ -10,6 +10,10 @@ import NavActiveLink from '../common/NavActiveLink';
 interface DropdownProps {
   children: React.ReactNode;
   mobile?: boolean;
+}
+
+interface NavInfoSpanProps {
+  active?: string;
 }
 
 const NavbarBlock = styled.nav`
@@ -115,6 +119,16 @@ const NavInfoItem = styled.div`
   font-weight: 600;
   cursor: pointer;
   position: relative;
+`;
+
+const NavInfoSpan = styled.span<NavInfoSpanProps>`
+  ${(props) => {
+    if (props.active === 'true') {
+      return css`
+        color: #20c5ff;
+      `;
+    }
+  }}
 `;
 
 const IconList = styled.div`
@@ -255,6 +269,23 @@ const Navbar = () => {
 
   const [searchInput, setSearchInput] = useState('');
 
+  const location = useLocation();
+  const [navInfoIsActive, setNavInfoIsActive] = useState(false);
+
+  useEffect(() => {
+    if (location.pathname.indexOf('/brand') === 0) {
+      setNavInfoIsActive(true);
+    } else if (location.pathname.indexOf('/mornitoring') === 0) {
+      setNavInfoIsActive(true);
+    } else if (location.pathname.indexOf('/halter') === 0) {
+      setNavInfoIsActive(true);
+    } else if (location.pathname.indexOf('/news') === 0) {
+      setNavInfoIsActive(true);
+    } else {
+      setNavInfoIsActive(false);
+    }
+  }, [location]);
+
   return (
     <>
       <NavbarBlock>
@@ -299,7 +330,7 @@ const Navbar = () => {
                   <span>브랜드 소개</span>
                 </Link>
                 <Link
-                  to="/monitoring"
+                  to="/mornitoring"
                   onClick={() => {
                     setIsVisibleMobileMenu(false);
                     setIsVisibleMobileInfoMenu(false);
@@ -341,13 +372,13 @@ const Navbar = () => {
           </Logo>
           <LinkList>
             <NavInfoItem onClick={() => setIsVisibleInfoMenu(!isVisibleInfoMenu)}>
-              <span>하이카디</span>
+              <NavInfoSpan active={navInfoIsActive ? 'true' : 'false'}>하이카디</NavInfoSpan>
               {isVisibleInfoMenu && (
                 <InfoDropdown>
                   <Link to="/brand">
                     <span>브랜드 소개</span>
                   </Link>
-                  <Link to="/monitoring">
+                  <Link to="/mornitoring">
                     <span>심전도 모니터링</span>
                   </Link>
                   <Link to="/halter">
