@@ -19,15 +19,28 @@ const Inquiry = styled.img`
   transform: translateY(2.5rem);
   cursor: pointer;
 
-  &:hover {
-    transform: translateY(2.2rem);
-    transition: all 0.5s ease-in-out;
+  @media screen and (max-width: 960px) {
+    width: 8rem;
+    transform: translateY(2rem);
+  }
+
+  @media screen and (max-width: 850px) {
+    transform: translateY(2rem);
+    width: 6rem;
   }
 `;
 
 const ScrollUp = styled.img`
   width: 5rem;
   cursor: pointer;
+
+  @media screen and (max-width: 960px) {
+    width: 4rem;
+  }
+
+  @media screen and (max-width: 850px) {
+    width: 3rem;
+  }
 `;
 
 const Floating = () => {
