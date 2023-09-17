@@ -99,9 +99,6 @@ const Article = ({ title, content, subtitle, imageUrl, date, press, type }: Arti
         </SmallText>
       )}
       <img src={imageUrl} alt="블로그 이미지" />
-      <h2>1. 문장 단락 A</h2>
-      <p>{content}</p>
-      <h2>2. 문장 단락 B</h2>
       <p>{content}</p>
     </ArticleBlock>
   );

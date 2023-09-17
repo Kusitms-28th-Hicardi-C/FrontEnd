@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import blogList from '../../data/blog.json';
 import { post } from '../../interfaces/post';
+import { useState } from 'react';
+import Button from '../common/Button/Button';
 // import { useBlogList } from '../../hooks/blog/useBlogList';
 
 interface BlogItemProps {
@@ -13,17 +15,42 @@ interface BlogItemProps {
   date: string;
 }
 
+const Container = styled.div`
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 2rem;
+
+  @media screen and (max-width: 992px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 0 2rem;
+    padding-top: 2rem;
+  }
+`;
+
+const Categories = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+
+  @media screen and (max-width: 600px) {
+    gap: 0.5rem;
+  }
+
+  @media screen and (max-width: 550px) {
+    gap: 0.25rem;
+  }
+`;
+
 const BlogListBlock = styled.header`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
-  width: 70%;
-  margin: 0 auto;
   padding: 2rem 0;
-
-  @media screen and (max-width: 768px) {
-    width: 90%;
-  }
 `;
 
 const BlogItemBlock = styled(Link)`
@@ -39,21 +66,42 @@ const BlogItemBlock = styled(Link)`
     }
   }
 
-  img {
-    width: 100%;
-    height: 300px;
-    border-radius: 24px;
-    overflow: hidden;
-    object-fit: cover;
-  }
-
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     grid-column: auto / span 6;
     flex-direction: row;
+  }
+`;
 
+const BlogImage = styled.div`
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 32px;
+  }
+
+  @media screen and (max-width: 992px) {
     img {
-      width: 50%;
-      height: auto;
+      width: 100%;
+      height: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      object-fit: cover;
+    }
+
+    @media screen and (max-width: 992px) {
+      img {
+        width: 300px;
+      }
+    }
+
+    @media screen and (max-width: 727px) {
+      height: 200px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 `;
@@ -101,7 +149,9 @@ const BlogItemTop = styled.div`
 const BlogItem = ({ id, title, category, imageUrl, date }: BlogItemProps) => {
   return (
     <BlogItemBlock to={`/blog/${id}`}>
-      <img src={imageUrl} alt="블로그 이미지" />
+      <BlogImage>
+        <img src={imageUrl} alt="블로그 이미지" />
+      </BlogImage>
       <BlogItemText>
         <BlogItemTop>
           <b>{category}</b>
@@ -117,22 +167,53 @@ const BlogItem = ({ id, title, category, imageUrl, date }: BlogItemProps) => {
 };
 
 const BlogList = () => {
-  // const { blogLists } = useBlogList();
-  // console.log(blogLists);
+  const [activeCategory, setActiveCategory] = useState('전체');
+  const categoriesData = ['전체', '사용방법', '기능소개'];
 
   return (
-    <BlogListBlock>
-      {blogList.map((post: post) => (
-        <BlogItem
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          category={post.category}
-          imageUrl={post.imageUrl}
-          date={post.date}
-        />
-      ))}
-    </BlogListBlock>
+    <Container>
+      <Categories>
+        {categoriesData.map((category) => {
+          if (category === activeCategory) {
+            return (
+              <Button
+                key={category}
+                onClick={() => {
+                  setActiveCategory(category);
+                }}
+                active
+              >
+                {category}
+              </Button>
+            );
+          }
+          return (
+            <Button
+              key={category}
+              onClick={() => {
+                setActiveCategory(category);
+              }}
+            >
+              {category}
+            </Button>
+          );
+        })}
+      </Categories>
+      <BlogListBlock>
+        {blogList
+          .filter((blog) => blog.category === activeCategory || activeCategory === '전체')
+          .map((post: post) => (
+            <BlogItem
+              key={post.id}
+              id={post.id}
+              title={post.title}
+              category={post.category}
+              imageUrl={post.imageUrl}
+              date={post.date}
+            />
+          ))}
+      </BlogListBlock>
+    </Container>
   );
 };
 
