@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   display: flex;
@@ -7,7 +10,7 @@ const Container = styled.div`
   gap: 2rem;
 `;
 
-const ExplanationBox = styled.div`
+const ExplanationBox = styled(motion.div)`
   display: flex;
   justify-content: center;
   img {
@@ -44,9 +47,18 @@ const ExplanationSmallText = styled(ExplanationText)`
 `;
 
 const Explanation = () => {
+  const animationRefs = [];
+  const refs = [];
+
+  for (let i = 0; i < 3; i++) {
+    const { ref, animation } = useObserver();
+    animationRefs.push(animation);
+    refs.push(ref);
+  }
+
   return (
     <Container>
-      <ExplanationBox>
+      <ExplanationBox ref={refs[0]} animate={animationRefs[0]} variants={ContainerAnimation}>
         <ExplanationTextBox>
           <ExplanationBigText>
             <p>
@@ -64,7 +76,7 @@ const Explanation = () => {
         <img src="/images/monitoring/explanation1.svg" alt="explanation1" />
       </ExplanationBox>
 
-      <ExplanationBox>
+      <ExplanationBox ref={refs[1]} animate={animationRefs[1]} variants={ContainerAnimation}>
         <img src="/images/monitoring/explanation2.svg" alt="explanation2" />
         <ExplanationTextBox>
           <ExplanationBigText>
@@ -79,7 +91,7 @@ const Explanation = () => {
         </ExplanationTextBox>
       </ExplanationBox>
 
-      <ExplanationBox>
+      <ExplanationBox ref={refs[2]} animate={animationRefs[2]} variants={ContainerAnimation}>
         <ExplanationTextBox>
           <ExplanationBigText>
             <p>더 넓은 활용도로</p>
