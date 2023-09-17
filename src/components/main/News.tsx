@@ -15,6 +15,7 @@ const NewsBlock = styled.section`
 const StyledSectionTitle = styled(SectionTitle)`
   color: ${({ theme }) => theme.colors.blue2};
   margin-bottom: 0.5rem;
+  font-weight: 600;
 `;
 
 const StyledSectionDescription = styled(SectionDescription)`

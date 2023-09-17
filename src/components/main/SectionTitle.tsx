@@ -7,7 +7,7 @@ interface SectionTitleProps {
 const SectionTitleBlock = styled.h2`
   text-align: center;
   font-size: 1.7rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.5;
   margin-bottom: 0.5rem;
 
