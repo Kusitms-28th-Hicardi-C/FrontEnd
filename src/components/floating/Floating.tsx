@@ -16,12 +16,12 @@ const FloatingBox = styled.div`
 
 const Inquiry = styled.img`
   width: 10rem;
-  transform: translateY(2rem);
+  transform: translateY(2.5rem);
   cursor: pointer;
 
   &:hover {
-    transform: translateY(1.8rem);
-    transition: all 0.2s ease-in-out;
+    transform: translateY(2.2rem);
+    transition: all 0.5s ease-in-out;
   }
 `;
 
