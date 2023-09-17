@@ -30,7 +30,7 @@ const SupportImages = styled(motion.div)`
   text-align: center;
   > img {
     &:hover {
-      transform: translateY(-2.2rem);
+      transform: translateY(-2rem);
       transition: transform 0.8s ease-in-out;
     }
   }
@@ -99,7 +99,7 @@ const Support = () => {
         <div className="spacer"></div>
         <div className="more-link-wrapper">
           <Link to="/reviews" className="more-link">
-            + 더 알아보기
+            + 더 많은 제휴기관 보기
           </Link>
         </div>
       </SupportImages>
