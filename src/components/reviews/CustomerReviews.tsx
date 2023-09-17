@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 interface CategoryProps {
   isActive: boolean;
@@ -72,7 +74,7 @@ const ContentText = styled.div`
   }
 `;
 
-const ContentContainer = styled.div`
+const ContentContainer = styled(motion.div)`
   display: flex;
   gap: 4rem;
 `;
@@ -101,7 +103,7 @@ const CustomerReviews = () => {
 
       <ContentBox>
         {active === 0 && (
-          <ContentContainer>
+          <ContentContainer initial="hidden" animate="visible" variants={TextAnimation} key={0}>
             <img src="/images/reviews/seoul.svg" alt="서울삼성병원 A원장" />
             <Content>
               <p>하이카디로 응급상황 실시간 확인이 용이해졌어요!</p>
@@ -122,7 +124,7 @@ const CustomerReviews = () => {
         )}
 
         {active === 1 && (
-          <ContentContainer>
+          <ContentContainer initial="hidden" animate="visible" variants={TextAnimation} key={1}>
             <img src="/images/reviews/korea.svg" alt="고대안암병원 가나다 원장" />
             <Content>
               <p>스마트 병원 완성, 하이카디로 시도하세요!</p>
@@ -141,7 +143,7 @@ const CustomerReviews = () => {
         )}
 
         {active === 2 && (
-          <ContentContainer>
+          <ContentContainer initial="hidden" animate="visible" variants={TextAnimation} key={2}>
             <img src="/images/reviews/chungnam.svg" alt="충남대병원 라마바 간호사" />
             <Content>
               <p>간호사 수가 부족한 병동, 하이카디가 제격입니다</p>
