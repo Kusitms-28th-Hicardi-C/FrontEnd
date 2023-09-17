@@ -70,7 +70,7 @@ const ReviewItem = styled.li`
   }
 
   p {
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 1rem;
     white-space: nowrap;
   }

@@ -11,6 +11,7 @@ const BrandFilmBlock = styled.div`
     cursor: pointer;
   }
 `;
+
 const BrandFilm = () => {
   return (
     <BrandFilmBlock>
