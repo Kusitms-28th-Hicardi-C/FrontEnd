@@ -5,6 +5,8 @@ import blogList from '../../data/blog.json';
 import { post } from '../../interfaces/post';
 import { useState } from 'react';
 import Button from '../common/Button/Button';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 // import { useBlogList } from '../../hooks/blog/useBlogList';
 
 interface BlogItemProps {
@@ -46,7 +48,7 @@ const Categories = styled.div`
   }
 `;
 
-const BlogListBlock = styled.header`
+const BlogListBlock = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
@@ -199,7 +201,7 @@ const BlogList = () => {
           );
         })}
       </Categories>
-      <BlogListBlock>
+      <BlogListBlock initial="hidden" animate="visible" variants={TextAnimation} key={activeCategory}>
         {blogList
           .filter((blog) => blog.category === activeCategory || activeCategory === '전체')
           .map((post: post) => (

@@ -16,17 +16,17 @@ const Container = styled.div`
 
   @media screen and (max-width: 1020px) {
     width: 70%;
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   @media screen and (max-width: 992px) {
     width: 700px;
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   @media screen and (max-width: 768px) {
     width: 100%;
-    padding: 2rem;
+    padding: 1rem 0;
   }
 
   @media screen and (max-width: 620px) {
@@ -36,8 +36,8 @@ const Container = styled.div`
 `;
 
 const FooterImage = styled.div`
-  width: 250px;
-  height: 300px;
+  width: 150px;
+  height: 200px;
 
   img {
     width: 100%;
@@ -55,8 +55,9 @@ const FooterImage = styled.div`
 `;
 
 const Text = styled.div`
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 800;
+  line-height: 1.5;
   color: ${({ theme }) => theme.colors.white};
   transform: translateX(-3rem);
 
