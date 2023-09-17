@@ -52,7 +52,7 @@ const Content = styled.div<ContentProps>`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  margin-top: 3rem;
+  margin-top: 1rem;
 
   @media screen and (max-width: 700px) {
     height: 300px;
@@ -65,7 +65,8 @@ const Content = styled.div<ContentProps>`
   }
 
   img {
-    width: 50%;
+    width: 45%;
+    margin-right: 5%;
 
     @media screen and (max-width: 700px) {
       display: none;
@@ -79,8 +80,9 @@ const Content = styled.div<ContentProps>`
 
 const ContentText = styled(motion.div)`
   display: flex;
-  justify-content: center;
-  width: 50%;
+  justify-content: flex-start;
+  width: 100%;
+  margin-left: 15%;
 
   .content-text-inner {
     display: inline-block;
@@ -88,9 +90,9 @@ const ContentText = styled(motion.div)`
     h3 {
       width: 100%;
       color: ${({ theme }) => theme.colors.blue1};
-      font-size: 3rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
 
       @media screen and (max-width: 1000px) {
         font-size: 2rem;
@@ -108,7 +110,8 @@ const ContentText = styled(motion.div)`
       p {
         display: inline-block;
         text-align: start;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
+        line-height: 1.4;
 
         b {
           font-weight: 700;

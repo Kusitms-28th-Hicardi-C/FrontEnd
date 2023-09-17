@@ -1,10 +1,12 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { TextAnimation } from '../../styles/animation';
 
 interface WhiteBoxProps {
   children: React.ReactNode;
 }
 
-const SectionBlock = styled.div`
+const SectionBlock = styled(motion.div)`
   padding: 2rem;
 `;
 
@@ -17,7 +19,7 @@ const WhiteBoxBlock = styled.div`
 
 const WhiteBox = ({ children }: WhiteBoxProps) => {
   return (
-    <SectionBlock>
+    <SectionBlock initial="hidden" animate="visible" variants={TextAnimation}>
       <WhiteBoxBlock>{children}</WhiteBoxBlock>
     </SectionBlock>
   );

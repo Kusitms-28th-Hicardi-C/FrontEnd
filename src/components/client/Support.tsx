@@ -73,13 +73,13 @@ const Support = ({ howToUseRef, faqRef, productRef }: SupportProps) => {
           <img src={howToUseIcon} alt="howToUse" />
           사용법
         </CircleButton>
-        <CircleButton onClick={() => handleMoveScroll(faqRef)}>
-          <img src={questionMarkIcon} alt="questionMark" />
-          FAQ
-        </CircleButton>
         <CircleButton onClick={() => handleMoveScroll(productRef)}>
           <img src={productIcon} alt="product" />
           제품 소개서
+        </CircleButton>
+        <CircleButton onClick={() => handleMoveScroll(faqRef)}>
+          <img src={questionMarkIcon} alt="questionMark" />
+          FAQ
         </CircleButton>
       </ButtonBox>
     </Banner>
