@@ -14,3 +14,8 @@ export interface Signup {
   birthDate: string;
   YKIHO: string;
 }
+
+export interface Login {
+  loginId: string;
+  password: string;
+}
