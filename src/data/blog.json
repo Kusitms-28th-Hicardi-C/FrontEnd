@@ -1,72 +1,72 @@
 [
   {
     "id": 1,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "홀터 라이브스튜디오 이용 방법",
+    "category": "사용방법",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage1.png",
     "date": "2022.11.21"
   },
   {
     "id": 2,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "하이카디 데모장비 세팅방법",
+    "category": "사용방법",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage2.png",
     "date": "2022.11.21"
   },
   {
     "id": 3,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "하이카디에 대한 모든 것! 하이카디 QNA",
+    "category": "기능소개",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage3.png",
     "date": "2022.11.21"
   },
   {
     "id": 4,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "하이카디를 착용하고 샤워 할 수 있을까요?",
+    "category": "기능소개",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage4.png",
     "date": "2022.11.21"
   },
   {
     "id": 5,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "하이카디 홀터 VS. GE홀터 전격 비교",
+    "category": "기능소개",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage5.png",
     "date": "2022.11.21"
   },
   {
     "id": 6,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "간호사를 위한 홀터 사용설명서",
+    "category": "사용방법",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage6.png",
     "date": "2022.11.21"
   },
   {
     "id": 7,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "환자들을 위한 홀터 사용설명서",
+    "category": "사용방법",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage7.png",
     "date": "2022.11.21"
   },
   {
     "id": 8,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "하이카디의 수명은 어떻게 되나요?",
+    "category": "기능소개",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage8.png",
     "date": "2022.11.21"
   },
   {
     "id": 9,
-    "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "title": "Event log에는 어떤 이벤트가 기록될까요?",
+    "category": "기능소개",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage9.png",
     "date": "2022.11.21"
   },
   {
     "id": 10,
     "title": "하이카디 발주 프로세스 및 홀터장비 신고방법",
-    "category": "정보공유",
-    "imageUrl": "/images/blog/thumbnail.jpg",
+    "category": "사용방법",
+    "imageUrl": "https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/blogImage10.png",
     "date": "2022.11.21"
   }
 ]

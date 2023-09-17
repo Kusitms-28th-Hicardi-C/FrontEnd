@@ -42,7 +42,7 @@ const NewsList = styled.div`
   }
 `;
 
-const NewsItem = styled.div`
+const NewsItem = styled.a`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 1.5rem;
   border-radius: 16px;
@@ -120,26 +120,26 @@ const News = () => {
       <StyledSectionTitle>언론에 소개된 Hicardi+</StyledSectionTitle>
       <StyledSectionDescription>하이카디 보도자료를 만나보세요</StyledSectionDescription>
       <NewsList>
-        <NewsItem>
+        <NewsItem href="https://www.news1.kr/articles/5133530" target="_blank">
           <NewsImage>
             <img src="/images/main/news1.png" alt="언론보도 이미지 1" />
           </NewsImage>
           <Badge>보도자료</Badge>
           <h2>원주 의료기기사 ㈜메쥬, 전남대 병원에 하이카디 공급</h2>
         </NewsItem>
-        <NewsItem>
+        <NewsItem href="http://www.bizwnews.com/news/articleView.html?idxno=50286" target="_blank">
           <NewsImage>
             <img src="/images/main/news2.png" alt="언론보도 이미지 2" />
           </NewsImage>
           <Badge>보도자료</Badge>
           <h2>동아ST, 메쥬와 심전도 원격 모니터링 플랫폼 ‘하이카디(HiCardi)’ 해외 ⋯</h2>
         </NewsItem>
-        <NewsItem>
+        <NewsItem href="https://www.medigatenews.com/news/2779338147" target="_blank">
           <NewsImage>
             <img src="/images/main/news3.png" alt="언론보도 이미지 3" />
           </NewsImage>
           <Badge>보도자료</Badge>
-          <h2>동아ST, 메쥬와 심전도 원격 모니터링 플랫폼 ‘하이카디(HiCardi)’ 해외 ⋯</h2>
+          <h2>메쥬 하이카디 &quot;단순 홀터 기기 아닌, 모든 진료과 환자 모니터링·질병 예측 장비&quot;</h2>
         </NewsItem>
         <MoreLink to="news">
           <span>자세히 보기</span>

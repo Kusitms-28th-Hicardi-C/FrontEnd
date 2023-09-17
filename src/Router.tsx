@@ -28,6 +28,7 @@ import BrandIntroductionPage from './pages/BrandIntroductionPage';
 import HicardiHalterPage from './pages/HicardiHalterPage';
 import SearchPage from './pages/SearchPage';
 import MonitoringPage from './pages/MonitoringPage';
+import Floating from './components/floating/Floating';
 
 const Router = () => {
   return (
@@ -63,6 +64,7 @@ const Router = () => {
         <Route path="/mornitoring" element={<MonitoringPage />} />
       </Routes>
       <Footer />
+      <Floating />
     </BrowserRouter>
   );
 };

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-
 import { FaSearch } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 interface HeaderSearchProps {
   searchRange?: string;
   value?: string;
+  onChange?: (text: string) => void;
 }
 
 const HeaderSearchBlock = styled.header`
@@ -70,17 +71,31 @@ const SearchInput = styled.div`
   }
 `;
 
-const HeaderSearch = ({ searchRange, value }: HeaderSearchProps) => {
+const HeaderSearch = ({ searchRange, value, onChange }: HeaderSearchProps) => {
   const navigate = useNavigate();
+  const [query, setQuery] = useState('');
 
   return (
     <HeaderSearchBlock>
       {searchRange === 'blog' && <h2>하이카디가 궁금하면 무엇이든 물어보세요</h2>}
       <SearchInput>
-        <input type="text" placeholder="키워드를 입력하세요" value={value} />
+        <input
+          type="text"
+          placeholder="키워드를 입력하세요"
+          onChange={(e) => {
+            setQuery(e.target.value);
+            if (onChange) {
+              onChange(e.target.value);
+            }
+          }}
+          value={value}
+        />
         <i
           onClick={() => {
-            navigate('/search');
+            if (searchRange) {
+              return navigate(`/search?query=${query}&range=${searchRange}`);
+            }
+            navigate(`/search?query=${query}`);
           }}
         >
           <FaSearch />

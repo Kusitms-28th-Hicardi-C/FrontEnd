@@ -84,6 +84,11 @@ const Dropdown = ({ children, mobile, ...rest }: DropdownProps) => {
 const MobileDropdown = styled(Dropdown)`
   top: 105%;
   left: 0;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue2};
+    transition: 0.15s;
+  }
 `;
 
 const MobileInfoDropdown = styled(Dropdown)`
@@ -125,10 +130,14 @@ const NavInfoSpan = styled.span<NavInfoSpanProps>`
   ${(props) => {
     if (props.active === 'true') {
       return css`
-        color: #20c5ff;
+        color: ${({ theme }) => theme.colors.blue2};
       `;
     }
   }}
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue2};
+    transition: 0.15s;
+  }
 `;
 
 const IconList = styled.div`
@@ -174,16 +183,18 @@ const DropdownBlock = styled.ul`
   background-color: ${({ theme }) => theme.colors.white};
   font-weight: 600;
   box-shadow: 0px 0px 10px 3px #0000001a;
+  padding: 0.3rem 0;
 
   a {
     display: block;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
 
     span {
       display: inline-block;
       width: 150px;
       color: ${({ theme }) => theme.colors.black};
-      padding: 0.125rem 0.75rem;
+      padding: 0.3rem 0.5rem;
+      text-align: center;
     }
 
     &:hover {
@@ -428,7 +439,7 @@ const Navbar = () => {
                       onChange={(e) => setSearchInput(e.target.value)}
                     />
                     <Link
-                      to={`/search?query=${searchInput}`}
+                      to={`/search?query=${searchInput}&range=all`}
                       onClick={() => {
                         setSearchInput('');
                         setIsVisibleSearchMenu(!isVisibleSearchMenu);
