@@ -24,7 +24,7 @@ const ReviewList = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
   margin: 0 auto;
   margin-bottom: 3rem;
   width: 100%;
@@ -50,7 +50,7 @@ const ReviewItem = styled.li`
   transition: transform 0.2s ease-out;
   line-height: 1.5;
   list-style-type: none;
-  font-size: 1.125rem;
+  font-size: 1.1rem;
 
   display: flex;
   flex-direction: column;
@@ -71,7 +71,8 @@ const ReviewItem = styled.li`
 
   p {
     font-weight: 400;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    white-space: nowrap;
   }
 
   span {
@@ -85,11 +86,7 @@ const ReviewItem = styled.li`
   }
 
   @media screen and (max-width: 850px) {
-    font-size: 0.75rem;
-  }
-
-  @media screen and (max-width: 850px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
     min-width: 300px;
   }
 `;
