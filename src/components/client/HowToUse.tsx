@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import video1 from '../../assets/client/video1.svg';
 import video2 from '../../assets/client/video2.svg';
 import video3 from '../../assets/client/video3.svg';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Banner = styled.div`
   display: flex;
@@ -16,7 +19,7 @@ const Title = styled.div`
   margin-bottom: 1rem;
 `;
 
-const VideoBox = styled.div`
+const VideoBox = styled(motion.div)`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -44,10 +47,12 @@ interface HowToUseProps {
 }
 
 const HowToUse = ({ howToUseRef }: HowToUseProps) => {
+  const { ref, animation } = useObserver();
+
   return (
     <Banner ref={howToUseRef}>
       <Title>사용법</Title>
-      <VideoBox>
+      <VideoBox ref={ref} animate={animation} variants={ContainerAnimation}>
         <Video>
           <img src={video1} alt="video1" />
           <Text>하이카디 착용/연결/작동 방법</Text>
