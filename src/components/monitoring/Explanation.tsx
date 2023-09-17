@@ -25,8 +25,8 @@ const ExplanationTextBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 1.5rem;
-  margin-left: 3rem;
+  gap: 1rem;
+  margin-left: 2rem;
 `;
 
 const ExplanationText = styled.div`
@@ -36,7 +36,7 @@ const ExplanationText = styled.div`
 `;
 
 const ExplanationBigText = styled(ExplanationText)`
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   span {
     font-weight: 700;
   }
