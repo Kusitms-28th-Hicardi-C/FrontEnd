@@ -65,7 +65,7 @@ const PostTable = ({ list, type }: PostTableProps) => {
         <span></span>
       </PostTableHead>
       <PostTableBody>
-        {list.slice(0, 4).map((item, index) => (
+        {list.map((item, index) => (
           <PostTableRow key={item.id}>
             <span className="number">{index + 1}</span>
             <span className="date">{item.date}</span>

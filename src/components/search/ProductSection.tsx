@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import productList from '../../data/product.json';
 import { product } from '../../interfaces/product';
@@ -98,16 +99,35 @@ const ProductItem = ({ product }: ProductItemProps) => {
 };
 
 const ProductSection = () => {
+  const [searchParams] = useSearchParams();
+  const [filteredProductList, setFilteredProductList] = useState<
+    {
+      id: number;
+      name: string;
+      description: string;
+      price: number;
+      category: string;
+      imageUrl: string;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    setFilteredProductList(productList.filter((product) => product.name.includes(searchParams.get('query') || '')));
+  }, [searchParams]);
+
   return (
     <>
-      <WhiteBox>
-        <Heading h1="제품명" span="(검색결과 2건)" />
-        <ProductList>
-          <ProductItem product={productList[0]} />
-          <ProductItem product={productList[1]} />
-        </ProductList>
-        <Pagination />
-      </WhiteBox>
+      {filteredProductList.length === 0 ? null : (
+        <WhiteBox>
+          <Heading h1="제품명" span={`(검색결과 ${filteredProductList.length}건)`} />
+          <ProductList>
+            {filteredProductList.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))}
+          </ProductList>
+          <Pagination />
+        </WhiteBox>
+      )}
     </>
   );
 };

@@ -135,7 +135,7 @@ const ContentText = styled.div`
 `;
 
 const Intro = () => {
-  const [categoryIndex, setCategoryIndex] = useState(1);
+  const [categoryIndex, setCategoryIndex] = useState(0);
   const categories = ['원격 모니터링', '높은 정확도', '요양급여 적용', '넓은 사용범위', '병원 부담 감소'];
 
   return (

@@ -2,16 +2,9 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { IoIosArrowForward, IoIosArrowDown } from 'react-icons/io';
-
 import Button from '../common/Button/Button';
 import { product } from '../../interfaces/product';
 import productList from '../../data/product.json';
-
-interface DropdownMenuItemProps {
-  onClick: React.MouseEventHandler<HTMLLIElement>;
-  children: React.ReactNode;
-}
 
 const ProductDetailBlock = styled.div`
   display: grid;
@@ -88,80 +81,10 @@ const Price = styled.span`
   font-weight: 700;
 `;
 
-const DropdownBlock = styled.ul`
-  position: relative;
-
-  li {
-    padding: 1rem 1.5rem;
-    cursor: pointer;
-  }
-`;
-
-const DropdownDefaultItem = styled.li`
-  position: absolute;
-  z-index: 99;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 0.2px solid ${({ theme }) => theme.colors.gray3};
-  border-radius: 32px;
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.white};
-  cursor: pointer;
-`;
-
-const DropdownMenu = styled.div`
-  position: absolute;
-  top: 16px;
-  width: 100%;
-  background-color: ${({ theme }) => theme.colors.blue4};
-  border-radius: 16px;
-`;
-
-const DropdownMenuItemBlock = styled.li`
-  font-weight: 300;
-
-  & + & {
-    border-top: 0.2px solid ${({ theme }) => theme.colors.gray3};
-  }
-
-  &:nth-child(2) {
-    border-top: 0;
-  }
-`;
-
-const DropdownMenuItem = ({ onClick, children }: DropdownMenuItemProps) => {
-  return <DropdownMenuItemBlock onClick={onClick}>{children}</DropdownMenuItemBlock>;
-};
-
-const Dropdown = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  const clickAndSetVisible = () => {
-    setIsVisible(!isVisible);
-  };
-
-  return (
-    <DropdownBlock>
-      <DropdownDefaultItem onClick={clickAndSetVisible}>
-        [필수] 옵션을 선택해 주세요.
-        {isVisible ? <IoIosArrowDown /> : <IoIosArrowForward />}
-      </DropdownDefaultItem>
-      {isVisible && (
-        <DropdownMenu>
-          <DropdownMenuItem onClick={clickAndSetVisible}>{/* Spacer */}</DropdownMenuItem>
-          <DropdownMenuItem onClick={clickAndSetVisible}>[필수] 옵션을 선택해 주세요.</DropdownMenuItem>
-          <DropdownMenuItem onClick={clickAndSetVisible}>[필수] 옵션을 선택해 주세요.</DropdownMenuItem>
-        </DropdownMenu>
-      )}
-    </DropdownBlock>
-  );
-};
-
 const ImageBottomSpacer = styled.div``;
 
 const ProductContentBottom = styled.div`
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
 `;
 
 const Amount = styled.div`
@@ -212,10 +135,8 @@ const ProductDetail = () => {
       <ProductContent>
         <Badge>{product?.category}</Badge>
         <h2>{product?.name}</h2>
-        {/* <h3>Smart Patch</h3> */}
         <p>{product?.description}</p>
         <Price>{product?.price.toLocaleString()}원</Price>
-        <Dropdown />
       </ProductContent>
       <ImageBottomSpacer></ImageBottomSpacer>
       <ProductContentBottom>
