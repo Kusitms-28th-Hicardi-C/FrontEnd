@@ -4,6 +4,7 @@ import Support from '../components/main/Support';
 import Review from '../components/main/Review';
 import SmallBar from '../components/main/SmallBar';
 import News from '../components/main/News';
+import Floating from '../components/floating/Floating';
 
 const MainPage = () => {
   return (
@@ -14,6 +15,7 @@ const MainPage = () => {
       <Review />
       <SmallBar />
       <News />
+      <Floating />
     </>
   );
 };
