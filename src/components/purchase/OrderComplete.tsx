@@ -3,7 +3,7 @@ import Header from '../common/Title/Header';
 import Index from './Index';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { idState, nameState } from '../../states/user';
+import { emailState, idState, nameState } from '../../states/user';
 
 const CompleteBlock = styled.div`
   width: 100vw;
@@ -85,7 +85,7 @@ const OrderComplete = () => {
 
   const id = useRecoilValue(idState);
   const name = useRecoilValue(nameState);
-  const email = useRecoilValue(idState);
+  const email = useRecoilValue(emailState);
 
   return (
     <CompleteBlock>
