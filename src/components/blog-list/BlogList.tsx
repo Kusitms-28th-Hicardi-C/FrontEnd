@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import blogList from '../../data/blog.json';
 import { post } from '../../interfaces/post';
-import { useBlogList } from '../../hooks/blog/useBlogList';
+// import { useBlogList } from '../../hooks/blog/useBlogList';
 
 interface BlogItemProps {
   id: number;
@@ -117,8 +117,8 @@ const BlogItem = ({ id, title, category, imageUrl, date }: BlogItemProps) => {
 };
 
 const BlogList = () => {
-  const { blogLists } = useBlogList();
-  console.log(blogLists);
+  // const { blogLists } = useBlogList();
+  // console.log(blogLists);
 
   return (
     <BlogListBlock>

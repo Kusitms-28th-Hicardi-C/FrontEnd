@@ -18,9 +18,22 @@ const HeaderSearchBlock = styled.header`
     font-weight: 700;
     margin-bottom: 1.5rem;
   }
+
+  @media screen and (max-width: 600px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
 `;
 
 const SearchInput = styled.div`
+  position: relative;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -39,13 +52,21 @@ const SearchInput = styled.div`
   }
 
   i {
-    position: relative;
-    right: 48px;
+    position: absolute;
+    right: 24px;
     height: 100%;
     display: flex;
     align-items: center;
     font-size: 1.5rem;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 450px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 350px;
   }
 `;
 

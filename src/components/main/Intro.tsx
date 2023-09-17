@@ -6,7 +6,7 @@ import Button from '../common/Button/Button';
 import mainInfoList from '../../data/main-info.json';
 
 interface ContentProps {
-  mobileImageUrl: string;
+  mobileimageurl: string;
 }
 
 const IntroBlock = styled.section`
@@ -55,7 +55,7 @@ const Content = styled.div<ContentProps>`
   @media screen and (max-width: 700px) {
     height: 300px;
     ${(props) => css`
-      background-image: url(${props.mobileImageUrl});
+      background-image: url(${props.mobileimageurl});
     `}
 
     background-repeat: no-repeat;
@@ -175,24 +175,24 @@ const Intro = () => {
         })}
       </Categories>
       <MobileBlueWrapper>
-        <Content mobileImageUrl={mainInfoList[categoryIndex].mobileImageUrl}>
+        <Content mobileimageurl={mainInfoList[categoryIndex].mobileImageUrl}>
           <ContentText>
             <div className="content-text-inner">
               <h3>{mainInfoList[categoryIndex].title}</h3>
               <div className="description">
                 <p>
-                  {mainInfoList[categoryIndex].text.map((line) => (
-                    <>
+                  {mainInfoList[categoryIndex].text.map((line, index) => (
+                    <span key={index}>
                       {line}
                       <br />
-                    </>
+                    </span>
                   ))}
                   <b>
-                    {mainInfoList[categoryIndex].boldText.map((line) => (
-                      <>
+                    {mainInfoList[categoryIndex].boldText.map((line, index) => (
+                      <span key={index}>
                         {line}
                         <br />
-                      </>
+                      </span>
                     ))}
                   </b>
                 </p>

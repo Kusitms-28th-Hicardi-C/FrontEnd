@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const HeadingBlock = styled.div`
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   margin-bottom: 2rem;
 
@@ -11,6 +11,15 @@ const HeadingBlock = styled.div`
     padding-bottom: 1rem;
     border-bottom: 2px solid ${({ theme }) => theme.colors.black};
     color: ${({ theme }) => theme.colors.blue1};
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 700px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 0 2rem;
   }
 `;
 
