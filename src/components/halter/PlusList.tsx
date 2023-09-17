@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import hicardiPlusList from '../../data/hicardi-plus.json';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   width: 45%;
@@ -19,7 +22,7 @@ const PlusListTitle = styled.div`
   }
 `;
 
-const PlusListBox = styled.div`
+const PlusListBox = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -37,13 +40,15 @@ const PlusListItem = styled.div`
 `;
 
 const PlusList = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Container>
       <PlusListTitle>
         <p>하이카디 플러스로</p>
         <p>15가지 유형의 부정맥을 탐색하세요</p>
       </PlusListTitle>
-      <PlusListBox>
+      <PlusListBox ref={ref} animate={animation} variants={ContainerAnimation}>
         {hicardiPlusList.map((item: string, index: number) => (
           <PlusListItem key={index}>{item}</PlusListItem>
         ))}

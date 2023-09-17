@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { ContainerAnimation } from '../../styles/animation';
+import useObserver from '../../hooks/useObserver';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   width: 55%;
@@ -34,7 +37,7 @@ const ContentBox = styled.div`
   text-align: center;
 `;
 
-const Content = styled.div`
+const Content = styled(motion.div)`
   padding: 2.4rem 4rem;
   width: 70%;
   background: ${({ theme }) => theme.colors.box3};
@@ -56,6 +59,8 @@ const ContentRight = styled(Content)`
 `;
 
 const Patient = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Container>
       <img src="/images/monitoring/warning.svg" alt="warning" />
@@ -64,13 +69,13 @@ const Patient = () => {
         <span>아직도 사용하고 계신가요?</span>
       </Title>
       <ContentBox>
-        <ContentLeft>
+        <ContentLeft animate={animation} variants={ContainerAnimation}>
           호흡, 혈압 등 <span>일부 정보만 확인할 수 있음</span>
         </ContentLeft>
-        <ContentRight>
+        <ContentRight ref={ref} animate={animation} variants={ContainerAnimation}>
           심전도 모니터링 없는 <span>진료 사각지대 발생</span>
         </ContentRight>
-        <ContentLeft>
+        <ContentLeft animate={animation} variants={ContainerAnimation}>
           중환자실과 수술실이 아니라면 <span>비효율적</span>
         </ContentLeft>
       </ContentBox>

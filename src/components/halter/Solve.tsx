@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +17,7 @@ const SolveTitle = styled.div`
   margin-bottom: 1rem;
 `;
 
-const SolveBox = styled.div`
+const SolveBox = styled(motion.div)`
   display: flex;
   justify-content: center;
   img {
@@ -29,8 +32,8 @@ const SolveTextBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: 1.5rem;
-  margin-left: 3rem;
+  gap: 1rem;
+  margin-left: 2rem;
 `;
 
 const SolveText = styled.div`
@@ -40,7 +43,7 @@ const SolveText = styled.div`
 `;
 
 const SolveBigText = styled(SolveText)`
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   span {
     font-weight: 700;
   }
@@ -51,10 +54,19 @@ const SolveSmallText = styled(SolveText)`
 `;
 
 const Solve = () => {
+  const animationRefs = [];
+  const refs = [];
+
+  for (let i = 0; i < 3; i++) {
+    const { ref, animation } = useObserver();
+    animationRefs.push(animation);
+    refs.push(ref);
+  }
+
   return (
     <Container>
       <SolveTitle>이제, 하이카디가 해결할게요!</SolveTitle>
-      <SolveBox>
+      <SolveBox ref={refs[0]} animate={animationRefs[0]} variants={ContainerAnimation}>
         <SolveTextBox>
           <SolveBigText>
             <p>
@@ -71,7 +83,7 @@ const Solve = () => {
         <img src="/images/halter/solve1.svg" alt="solve1" />
       </SolveBox>
 
-      <SolveBox>
+      <SolveBox ref={refs[1]} animate={animationRefs[1]} variants={ContainerAnimation}>
         <img src="/images/halter/solve2.svg" alt="solve2" />
         <SolveTextBox>
           <SolveBigText>
@@ -88,7 +100,7 @@ const Solve = () => {
         </SolveTextBox>
       </SolveBox>
 
-      <SolveBox>
+      <SolveBox ref={refs[2]} animate={animationRefs[2]} variants={ContainerAnimation}>
         <SolveTextBox>
           <SolveBigText>
             <p>

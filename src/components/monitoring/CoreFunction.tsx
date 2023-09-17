@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Button from '../common/Button/Button';
 import { useState } from 'react';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   display: flex;
@@ -20,7 +22,7 @@ const ButtonBox = styled.div`
   gap: 1rem;
 `;
 
-const ContentBox = styled.div`
+const ContentBox = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,7 +74,7 @@ const CoreFunction = () => {
       </ButtonBox>
 
       {active === 0 && (
-        <ContentBox>
+        <ContentBox initial="hidden" animate="visible" variants={TextAnimation} key={1}>
           <img src="/images/monitoring/core-function1.svg" alt="core-function1" />
           <ContentText>
             <ContentTitle>
@@ -92,7 +94,7 @@ const CoreFunction = () => {
       )}
 
       {active === 1 && (
-        <ContentBox>
+        <ContentBox initial="hidden" animate="visible" variants={TextAnimation} key={2}>
           <img src="/images/monitoring/core-function2.svg" alt="core-function2" />
           <ContentText>
             <ContentTitle>
@@ -111,7 +113,7 @@ const CoreFunction = () => {
       )}
 
       {active === 2 && (
-        <ContentBox>
+        <ContentBox initial="hidden" animate="visible" variants={TextAnimation} key={3}>
           <img src="/images/monitoring/core-function3.svg" alt="core-function3" />
           <ContentText>
             <ContentTitle>

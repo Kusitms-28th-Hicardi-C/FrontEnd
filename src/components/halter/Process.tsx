@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +22,7 @@ const ProcessTitle = styled.div`
   }
 `;
 
-const ProcessBlock = styled.div`
+const ProcessBlock = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -42,13 +45,15 @@ const SpeechBubbleImage = styled.img`
 `;
 
 const Process = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Container>
       <ProcessTitle>
         <p>하이카디 플러스 홀터는</p>
         <span>더 쉽고, 더 간단하니까</span>
       </ProcessTitle>
-      <ProcessBlock>
+      <ProcessBlock ref={ref} animate={animation} variants={ContainerAnimation}>
         <ProcessBox>
           <img src="/images/halter/process1.svg" alt="process1" /> 앱 설치하기
         </ProcessBox>

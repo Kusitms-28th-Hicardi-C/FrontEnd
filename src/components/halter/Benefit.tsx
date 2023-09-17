@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { ContainerAnimation } from '../../styles/animation';
+import useObserver from '../../hooks/useObserver';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   width: 70%;
@@ -16,7 +19,7 @@ const BenefitTitle = styled.div`
   margin-bottom: 3rem;
 `;
 
-const BenefitIndex = styled.ul`
+const BenefitIndex = styled(motion.div)`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -37,10 +40,12 @@ const BenefitItem = styled(BenefitIndex)`
 `;
 
 const Benefit = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Container>
       <BenefitTitle>HiCardi® Telemetry 보험급여</BenefitTitle>
-      <BenefitIndex>
+      <BenefitIndex ref={ref} animate={animation} variants={ContainerAnimation}>
         <li>수가코드</li>
         <li>분류번호</li>
         <li>명칭/산정명칭</li>
@@ -48,7 +53,7 @@ const Benefit = () => {
         <li>단가(의원)</li>
         <li>단가(병원)</li>
       </BenefitIndex>
-      <BenefitItem>
+      <BenefitItem ref={ref} animate={animation} variants={ContainerAnimation}>
         <li>E6544</li>
         <li>나725다(1)</li>
         <li>심전도침상감시 [1일당]</li>
