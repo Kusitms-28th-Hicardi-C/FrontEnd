@@ -46,6 +46,7 @@ const ReviewItem = styled.li`
   box-shadow: 24px 24px 41px 8px #0000001a;
   cursor: pointer;
   transition: transform 0.2s ease-out;
+  line-height: 1.4;
 
   &:hover {
     transform: translateY(-5px);
