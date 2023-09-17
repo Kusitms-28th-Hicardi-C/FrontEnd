@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Index from './Index';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { emailState, idState, nameState } from '../../states/user';
 
 const Content = styled.div`
   display: flex;
@@ -64,6 +66,9 @@ const Button = styled.button`
 
 const Complete = () => {
   const navigate = useNavigate();
+  const id = useRecoilValue(idState);
+  const name = useRecoilValue(nameState);
+  const email = useRecoilValue(emailState);
 
   const handleCompleteClick = () => {
     navigate('/');
@@ -75,17 +80,17 @@ const Complete = () => {
       <Content>
         <div>회원가입이 완료되었습니다</div>
         <div>
-          <span>이채영</span> 님은 [일반회원] 회원이십니다.
+          <span>{name}</span> 님은 [일반회원] 회원이십니다.
         </div>
         <Information>
           <div>
-            <span>아이디</span> hongildong
+            <span>아이디</span> {id}
           </div>
           <div>
-            <span>이름</span>홍길동
+            <span>이름</span> {name}
           </div>
           <div>
-            <span>이메일</span> hongildong@gmail.com
+            <span>email</span> {email}@naver.com
           </div>
         </Information>
       </Content>

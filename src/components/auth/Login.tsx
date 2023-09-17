@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import AuthInput from '../common/Input/AuthInput';
+import { useUserLogin } from '../../hooks/auth/useLogin';
+import { useState } from 'react';
 
 const Container = styled.div`
   width: 30%;
@@ -67,22 +68,49 @@ const Find = styled.div`
   }
 `;
 
+const AuthInput = styled.input`
+  width: 100%;
+  outline: none;
+  border-radius: 10px;
+  padding: 1.1rem 1.5rem;
+  font-size: 1rem;
+  background: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.gray4};
+`;
+
 const Login = () => {
   const navigate = useNavigate();
+  const [id, setId] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleLoginClick = () => {
     navigate('/');
+    loginMutation.mutate();
   };
   const handleSignupClick = () => {
     navigate('/signup/agreement');
   };
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    if (name === 'id') {
+      setId(value);
+    } else if (name === 'password') {
+      setPassword(value);
+    }
+  };
+
+  const login = {
+    loginId: id,
+    password: password,
+  };
+  const loginMutation = useUserLogin(login);
 
   return (
     <Container>
       <Title>로그인</Title>
       <LoginForm>
-        <AuthInput type="text" placeholder="아이디" />
-        <AuthInput type="password" placeholder="비밀번호" />
+        <AuthInput type="text" name="id" placeholder="아이디" onChange={handleInputChange} />
+        <AuthInput type="password" name="password" placeholder="비밀번호" onChange={handleInputChange} />
       </LoginForm>
       <ButtonBox>
         <LoginButton type="submit" onClick={handleLoginClick}>
