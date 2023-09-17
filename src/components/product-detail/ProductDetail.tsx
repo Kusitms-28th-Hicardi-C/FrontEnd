@@ -7,6 +7,8 @@ import { product } from '../../interfaces/product';
 import productList from '../../data/product.json';
 import { TextAnimation } from '../../styles/animation';
 import { motion } from 'framer-motion';
+import { useSetRecoilState } from 'recoil';
+import { productImageState, productPriceState, productTitleState } from '../../states/product';
 
 const ProductDetailBlock = styled(motion.div)`
   display: grid;
@@ -111,6 +113,9 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
   const [product, setProduct] = useState<product | null>(null);
+  const setProductImage = useSetRecoilState(productImageState);
+  const setProductTitle = useSetRecoilState(productTitleState);
+  const setProductPrice = useSetRecoilState(productPriceState);
 
   const handlePurchaseClick = () => {
     navigate('purchase/information');
@@ -126,6 +131,9 @@ const ProductDetail = () => {
     } else {
       const index = productList.findIndex((product) => product.id === Number(productId));
       setProduct(productList[index]);
+      setProductImage(productList[index].imageUrl);
+      setProductTitle(productList[index].name);
+      setProductPrice(productList[index].price.toLocaleString());
     }
   }, []);
 

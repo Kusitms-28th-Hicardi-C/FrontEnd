@@ -9,7 +9,9 @@ import Address from '../common/Input/Address';
 import CheckBox from '../common/Input/CheckBox';
 import { useNavigate, useParams } from 'react-router-dom';
 import Box from '../common/Box';
-import picture from '../../assets/purchase/picture.svg';
+import { useRecoilValue } from 'recoil';
+import { productImageState, productPriceState, productTitleState } from '../../states/product';
+import Select from '../common/Select';
 
 const DeliveryAddressBox = styled.div`
   display: flex;
@@ -94,6 +96,20 @@ const OrderAmount = styled.div`
   font-weight: 800;
 `;
 
+const PhoneNumber = ['010', '011', '016', '017', '018', '019'];
+
+const PhoneSelect = styled(Select)`
+  width: 8rem;
+`;
+
+const SelectBox = styled(Select)`
+  width: 20rem;
+`;
+
+const SmallInput = styled(Input)`
+  width: 10rem;
+`;
+
 const PurchaseInformation = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
@@ -104,6 +120,10 @@ const PurchaseInformation = () => {
   const handleNextClick = () => {
     navigate(`/products/${productId}/purchase/checkPayment`);
   };
+
+  const productImage = useRecoilValue(productImageState);
+  const productTitle = useRecoilValue(productTitleState);
+  const productPrice = useRecoilValue(productPriceState);
 
   return (
     <>
@@ -124,28 +144,41 @@ const PurchaseInformation = () => {
       </Content>
       <Content>
         <SubTitle>휴대전화</SubTitle>
-        <WidthInput type="number" placeholder="" />
+        <PhoneSelect>
+          {PhoneNumber.map((number, index) => (
+            <option key={index} value={number}>
+              {number}
+            </option>
+          ))}
+        </PhoneSelect>
+        <span>-</span> <SmallInput type="number" />
+        <span>-</span> <SmallInput type="number" />
       </Content>
       <Content>
         <SubTitle>이메일</SubTitle>
-        <WidthInput type="number" placeholder="" />
+        <Input type="text" /> <span>@</span>
+        <SelectBox>
+          <option value="naver.com">naver.com</option>
+          <option value="hanmail.net">hanmail.net</option>
+          <option value="gmail.com">gmail.com</option>
+          <option value="nate.com">nate.com</option>
+        </SelectBox>
       </Content>
       <Check>
         <CheckBox> 기본 배송지로 저장</CheckBox>
       </Check>
 
       <Title>주문상품</Title>
-      {/* TODO: theme box 색상 적용하고 싶은데 안 됨 */}
       <Box background="#F8F9FB">
         <Product>
-          <img src={picture} alt="picture" />
+          <img src={productImage} alt="picture" />
           <BoxContent>
-            <ProductName>하이카디플러스 HiCardi+</ProductName>
+            <ProductName>{productTitle}</ProductName>
             <ProductOption>[옵션: 갤럭시A13 (+275,000)]</ProductOption>
           </BoxContent>
         </Product>
         <div>1</div>
-        <OrderAmount>1,000,000</OrderAmount>
+        <OrderAmount>{productPrice} 원</OrderAmount>
       </Box>
       <Box background="#F2F4F6">
         <Description>배송비</Description>
@@ -153,7 +186,7 @@ const PurchaseInformation = () => {
       </Box>
       <Box background="#D3EFFF">
         <Description>주문총액</Description>
-        <OrderAmount>1,000,000 원</OrderAmount>
+        <OrderAmount>{productPrice} 원</OrderAmount>
       </Box>
 
       <ButtonContainer>
