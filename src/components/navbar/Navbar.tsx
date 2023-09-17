@@ -444,6 +444,7 @@ const Navbar = () => {
                       value={searchInput}
                       onChange={(e) => setSearchInput(e.target.value)}
                       onKeyDown={(e) => {
+                        if (e.keyCode === 229) return;
                         if (e.key === 'Enter') {
                           navigate(`/search?query=${searchInput}&range=all`);
                           setSearchInput('');

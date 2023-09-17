@@ -91,6 +91,7 @@ const HeaderSearch = ({ searchRange, value, onChange }: HeaderSearchProps) => {
             console.log(query);
           }}
           onKeyDown={(e) => {
+            if (e.keyCode === 229) return;
             if (e.key === 'Enter') {
               if (searchRange) {
                 navigate(`/search?query=${query}&range=${searchRange}`);
