@@ -25,6 +25,13 @@ const ButtonBlock = styled.button<ButtonBlock>`
   @media screen and (max-width: 700px) {
     font-size: 0.875rem;
   }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.blue2};
+    box-shadow: 0px 0px 10px 3px #0000003a;
+    transition: all 0.15s ease-in-out;
+    color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 const Button = ({ children, active, onClick, ...rest }: ButtonProps) => {

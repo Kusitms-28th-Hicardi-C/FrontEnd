@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Banner = styled.div`
   background: linear-gradient(to bottom, #01a4ff, #00c2ff);
@@ -14,7 +17,7 @@ const Title = styled.div`
   font-weight: 800;
 `;
 
-const Box = styled.div`
+const Box = styled(motion.div)`
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -52,10 +55,12 @@ const SmallText = styled.div`
 `;
 
 const UsageInquiry = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Banner>
       <Title>이용 문의</Title>
-      <Box>
+      <Box ref={ref} animate={animation} variants={ContainerAnimation}>
         <Left>
           <Content>하이카디에 관해 </Content>
           <Content>궁금한 점이 있으신가요? </Content>
@@ -64,7 +69,7 @@ const UsageInquiry = () => {
           <BigText>1:1 문의 남기기</BigText>
         </Right>
       </Box>
-      <Box>
+      <Box ref={ref} animate={animation} variants={ContainerAnimation}>
         <Left>
           <Content>상담원 연결이 필요하신가요?</Content>
         </Left>

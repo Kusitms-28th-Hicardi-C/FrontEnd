@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useUserLogin } from '../../hooks/auth/useLogin';
 import { useState } from 'react';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -106,7 +108,7 @@ const Login = () => {
   const loginMutation = useUserLogin(login);
 
   return (
-    <Container>
+    <Container initial="hidden" animate="visible" variants={TextAnimation}>
       <Title>로그인</Title>
       <LoginForm>
         <AuthInput type="text" name="id" placeholder="아이디" onChange={handleInputChange} />

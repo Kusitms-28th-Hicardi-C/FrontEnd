@@ -3,8 +3,10 @@ import styled from 'styled-components';
 
 import articleList from '../../data/news.json';
 import Pagination from '../common/Pagination';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
-const ArticleListBlock = styled.div`
+const ArticleListBlock = styled(motion.div)`
   width: 70%;
   margin: 0 auto;
   padding-bottom: 5rem;
@@ -49,7 +51,7 @@ const ArticleTableRow = styled(Link)`
 
 const ArticleTitle = styled.span`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 
   b {
@@ -61,7 +63,7 @@ const ArticleTitle = styled.span`
 
 const ArticleList = () => {
   return (
-    <ArticleListBlock>
+    <ArticleListBlock initial="hidden" animate="visible" variants={TextAnimation}>
       <ArticleTableHead>
         <span>번호</span>
         <span>일시</span>

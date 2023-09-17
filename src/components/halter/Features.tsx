@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import featureList from '../../data/halter-feature.json';
+import { motion } from 'framer-motion';
+import { ContainerAnimation } from '../../styles/animation';
+import useObserver from '../../hooks/useObserver';
 
 const Container = styled.div`
   display: flex;
@@ -18,7 +21,7 @@ const FeaturesTitle = styled.div`
   }
 `;
 
-const FeatureBox = styled.div`
+const FeatureBox = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
@@ -51,12 +54,14 @@ const FeatureNumber = styled.div`
 `;
 
 const Features = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Container>
       <FeaturesTitle>
         하이카디 <span>홀터</span> 솔루션만의 <span>특장점</span>
       </FeaturesTitle>
-      <FeatureBox>
+      <FeatureBox ref={ref} animate={animation} variants={ContainerAnimation}>
         {featureList.map((feature) => (
           <Feature key={feature.id}>
             <FeatureNumber>{feature.id}</FeatureNumber>

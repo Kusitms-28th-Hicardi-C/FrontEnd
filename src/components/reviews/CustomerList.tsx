@@ -2,10 +2,13 @@ import styled from 'styled-components';
 import Button from '../common/Button/Button';
 import Title from '../common/Title/Title';
 import { useState } from 'react';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const CustomerListBlock = styled.div`
   width: 70%;
   margin: 0 auto;
+  margin-bottom: 4rem;
 `;
 
 const ButtonBox = styled.div`
@@ -37,11 +40,11 @@ const GrayTitle = styled(Title)`
   font-weight: 400;
 `;
 
-const Content = styled.div`
+const Content = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 2rem 0 5rem 0;
+  padding: 2rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.gray3};
   margin-bottom: 1rem;
 `;
@@ -102,7 +105,7 @@ const CustomerList = () => {
       </ButtonBox>
 
       {(active === 0 || active === 1) && (
-        <Content>
+        <Content initial="hidden" animate="visible" variants={TextAnimation} key={0}>
           <GrayTitle>상급종합병원</GrayTitle>
           <AdvancedHospitalBox>
             {advancedHospitalList.map((advancedHospital: string, idx: number) => (
@@ -113,7 +116,7 @@ const CustomerList = () => {
       )}
 
       {(active === 0 || active === 2) && (
-        <Content>
+        <Content initial="hidden" animate="visible" variants={TextAnimation} key={1}>
           <GrayTitle>종합병원</GrayTitle>
           <HospitalBox>
             {hospitalList.map((hospital: string, idx: number) => (

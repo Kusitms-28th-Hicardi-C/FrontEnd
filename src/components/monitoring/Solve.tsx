@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +28,7 @@ const Title = styled.div`
   text-align: center;
 `;
 
-const InformationBlock = styled.div`
+const InformationBlock = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -61,6 +64,8 @@ const Description = styled.div`
 `;
 
 const Solve = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Container>
       <InformationTitle>
@@ -69,7 +74,7 @@ const Solve = () => {
           HiCardi는 <span>5가지 환자 모니터링 정보</span>를 제공해요.
         </p>
       </InformationTitle>
-      <InformationBlock>
+      <InformationBlock ref={ref} animate={animation} variants={ContainerAnimation}>
         <InformationBox>
           <CircleBackground>
             <img src="/images/monitoring/solve1.svg" alt="solve1" />
