@@ -5,7 +5,7 @@ interface SectionDescriptionProps {
 }
 
 const SectionDescriptionBlock = styled.p`
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   margin-bottom: 3rem;
 
   b {

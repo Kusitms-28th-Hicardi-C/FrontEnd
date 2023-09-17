@@ -15,6 +15,7 @@ const Question = styled.li`
   padding: 1.6rem 0;
   border-bottom: 2px solid ${({ theme }) => theme.colors.gray2};
   cursor: pointer;
+  font-weight: 700;
 
   &:first-child {
     padding-top: 1rem;

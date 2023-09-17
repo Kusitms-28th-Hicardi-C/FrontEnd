@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import download from '../../assets/client/download.svg';
+import { hicardiAxios as axios } from '../../apis/axios';
 
 interface ProductProps {
   productRef: React.RefObject<HTMLDivElement>;
@@ -43,12 +43,29 @@ const Button = styled.button`
 `;
 
 const Product = ({ productRef }: ProductProps) => {
+  async function download(): Promise<void> {
+    const { data } = await axios.get(`/test/download/productInformation.pdf`, {
+      responseType: 'blob',
+    });
+    const url = window.URL.createObjectURL(new Blob([data]));
+
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'productInformation.pdf');
+    document.body.appendChild(link);
+    link.click();
+  }
+
+  const handleDownloadButtonClick = () => {
+    download();
+  };
+
   return (
     <Banner ref={productRef}>
       <SubTitle>하이카디에 대해 더 궁금하신가요?</SubTitle>
       <Title>하이카디 제품 소개서</Title>
-      <Button>
-        <img src={download} alt="download" />
+      <Button onClick={handleDownloadButtonClick}>
+        <img src={'/images/supports/download.svg'} alt="download" />
         다운로드 하기
       </Button>
     </Banner>

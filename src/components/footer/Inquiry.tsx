@@ -56,7 +56,7 @@ const FooterImage = styled.div`
 
 const Text = styled.div`
   font-size: 1.7rem;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.5;
   color: ${({ theme }) => theme.colors.white};
   transform: translateX(-3rem);
