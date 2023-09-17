@@ -6,6 +6,9 @@ import Box from '../common/Box';
 import Select from '../common/Select';
 import CheckBox from '../common/Input/CheckBox';
 import { useNavigate, useParams } from 'react-router-dom';
+import { emailState, nameState } from '../../states/user';
+import { useRecoilValue } from 'recoil';
+import { productPriceState } from '../../states/product';
 
 const CheckContent = styled.div`
   font-size: 1.2rem;
@@ -85,6 +88,10 @@ const CheckPayment = () => {
     navigate(`/products/${productId}/purchase/payment`);
   };
 
+  const name = useRecoilValue(nameState);
+  const email = useRecoilValue(emailState);
+  const productPrice = useRecoilValue(productPriceState);
+
   return (
     <>
       <Header>결제정보 확인</Header>
@@ -94,7 +101,7 @@ const CheckPayment = () => {
         <CheckContentBox>
           <CheckContent>
             <span>받는 사람</span>
-            김준석
+            {name}
           </CheckContent>
           <CheckContent>
             <span>주소</span>
@@ -104,7 +111,8 @@ const CheckPayment = () => {
             <span>전화번호</span>010-1234-5678
           </CheckContent>
           <CheckContent>
-            <span>이메일</span>anonymous@gmail.com
+            <span>이메일</span>
+            {email}@gmail.com
           </CheckContent>
         </CheckContentBox>
       </Box>
@@ -112,7 +120,7 @@ const CheckPayment = () => {
         <Title>결제 정보</Title>
         <Box background="#F8F9FB">
           <Description>주문상품</Description>
-          <OrderAmount>1,000,000 원</OrderAmount>
+          <OrderAmount>{productPrice} 원</OrderAmount>
         </Box>
         <Box background="#F2F4F6">
           <Description>배송비</Description>
@@ -125,7 +133,7 @@ const CheckPayment = () => {
         <BoxBlock>
           <Box background="#666666">
             <WhiteDescription>결제총액</WhiteDescription>
-            <WhiteDescription>1,000,000 원</WhiteDescription>
+            <WhiteDescription>{productPrice} 원</WhiteDescription>
           </Box>
         </BoxBlock>
       </ContentBox>
@@ -142,7 +150,7 @@ const CheckPayment = () => {
       <CheckBox>구매 조건을 모두 확인했으며, 결제 진행에 동의합니다.</CheckBox>
 
       <ButtonBox>
-        <Button onClick={handlePurchaseClick}>1,000,000원 결제하기</Button>
+        <Button onClick={handlePurchaseClick}>{productPrice}원 결제하기</Button>
       </ButtonBox>
     </>
   );

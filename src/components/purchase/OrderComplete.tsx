@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import Header from '../common/Title/Header';
 import Index from './Index';
 import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { idState, nameState } from '../../states/user';
 
 const CompleteBlock = styled.div`
   width: 100vw;
@@ -81,6 +83,10 @@ const OrderComplete = () => {
     navigate('/');
   };
 
+  const id = useRecoilValue(idState);
+  const name = useRecoilValue(nameState);
+  const email = useRecoilValue(idState);
+
   return (
     <CompleteBlock>
       <Header>주문 완료</Header>
@@ -89,13 +95,13 @@ const OrderComplete = () => {
         <div>주문이 완료되었습니다.</div>
         <Information>
           <div>
-            <span>아이디</span> hongildong
+            <span>아이디</span> {id}
           </div>
           <div>
-            <span>이름</span>홍길동
+            <span>이름</span> {name}
           </div>
           <div>
-            <span>이메일</span> hongildong@gmail.com
+            <span>이메일</span> {email}@naver.com
           </div>
         </Information>
       </Content>
