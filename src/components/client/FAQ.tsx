@@ -89,10 +89,11 @@ const QuestionContainer = styled.div`
 `;
 
 const QuestionTitle = styled.div`
-  width: 30%;
+  width: 35%;
   font-size: 1.8rem;
   font-weight: 800;
   color: ${({ theme }) => theme.colors.blue3};
+  padding-top: 1rem;
 `;
 
 const QuestionBox = styled.ul`
@@ -103,6 +104,7 @@ const QuestionBox = styled.ul`
 
 const Question = styled.li`
   font-size: 1.2rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -129,31 +131,18 @@ const Answer = styled.div`
   line-height: 1.4;
 `;
 
-interface FAQItem {
-  question: string;
-  answer: string;
-}
-
 const FAQ = ({ faqRef }: FAQProps) => {
-  const [selectedSection, setSelectedSection] = useState('전체');
-  const [expandedQuestions, setExpandedQuestions] = useState<{ [key: string]: number[] }>({});
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [toggleOnQuestions, setToggleOnQuestions] = useState<number[]>([]);
+  const [searchInput, setSearchInput] = useState('');
 
-  const handleSectionClick = (sectionName: string) => {
-    setSelectedSection(sectionName);
-  };
-  const handleQuestionClick = (sectionName: string, questionIndex: number) => {
-    if (expandedQuestions[sectionName]?.includes(questionIndex)) {
-      setExpandedQuestions({
-        ...expandedQuestions,
-        [sectionName]: expandedQuestions[sectionName].filter((index) => index !== questionIndex),
-      });
-    } else {
-      setExpandedQuestions({
-        ...expandedQuestions,
-        [sectionName]: [...(expandedQuestions[sectionName] || []), questionIndex],
-      });
-    }
-  };
+  const faqCategories = [
+    { key: 'all', name: '전체' },
+    { key: 'feature', name: '제품 기능' },
+    { key: 'way', name: '이용 방법' },
+    { key: 'caution', name: '이용 시 주의사항' },
+    { key: 'doctor', name: '의료진 Q&A' },
+  ];
 
   return (
     <Container ref={faqRef}>
@@ -165,54 +154,60 @@ const FAQ = ({ faqRef }: FAQProps) => {
             <SearchContent>정리했어요 </SearchContent>
           </SearchContentBox>
           <SearchInputBox>
-            <SearchInput placeholder="키워드를 입력하세요" />
+            <SearchInput
+              placeholder="키워드를 입력하세요"
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
             <img src={search} alt="search" />
           </SearchInputBox>
         </SearchBox>
-
         <ButtonBox>
-          <Button active={selectedSection === '전체'} onClick={() => handleSectionClick('전체')}>
-            전체
-          </Button>
-          {faqList.map((section, sectionIndex) => (
+          {faqCategories.map((category, index) => (
             <Button
-              key={sectionIndex}
-              active={selectedSection === Object.keys(section)[0]}
-              onClick={() => handleSectionClick(Object.keys(section)[0])}
+              key={index}
+              active={activeCategory === category.key}
+              onClick={() => setActiveCategory(category.key)}
             >
-              {Object.keys(section)[0]}
+              {category.name}
             </Button>
           ))}
         </ButtonBox>
       </SearchTop>
-
-      {faqList.map((section, sectionIndex) => {
-        const sectionName = Object.keys(section)[0];
-        if (selectedSection === '전체' || selectedSection === sectionName) {
-          const sectionData = Object.values(section)[0];
-          return (
-            <QuestionContainer key={sectionIndex}>
-              <QuestionTitle>{sectionName}</QuestionTitle>
-              <QuestionBox>
-                {sectionData.map((item: FAQItem, itemIndex: number) => (
+      {faqCategories
+        .filter((category) => category.key === activeCategory || activeCategory === 'all')
+        .filter((category) => category.key !== 'all')
+        .map((category, index) => (
+          <QuestionContainer key={index}>
+            <QuestionTitle>{category.name}</QuestionTitle>
+            <QuestionBox>
+              {faqList
+                .filter((faq) => faq.category === category.key)
+                .filter((faq) => faq.question.includes(searchInput) || faq.answer.includes(searchInput))
+                .map((faq) => (
                   <>
-                    <Question key={itemIndex} onClick={() => handleQuestionClick(sectionName, itemIndex)}>
+                    <Question
+                      key={faq.id}
+                      onClick={() => {
+                        if (toggleOnQuestions.indexOf(faq.id) === -1) {
+                          setToggleOnQuestions([...toggleOnQuestions, faq.id]);
+                        } else {
+                          setToggleOnQuestions(toggleOnQuestions.filter((questionId) => questionId !== faq.id));
+                        }
+                      }}
+                    >
                       <div>
                         <span>Q.</span>
-                        {item.question}
+                        {faq.question}
                       </div>
                       <img src={arrow} alt="arrow" />
                     </Question>
-                    {expandedQuestions[sectionName]?.includes(itemIndex) && <Answer>{item.answer}</Answer>}
+                    {toggleOnQuestions.indexOf(faq.id) !== -1 ? <Answer>{faq.answer}</Answer> : null}
                   </>
                 ))}
-              </QuestionBox>
-            </QuestionContainer>
-          );
-        } else {
-          return null;
-        }
-      })}
+            </QuestionBox>
+          </QuestionContainer>
+        ))}
     </Container>
   );
 };

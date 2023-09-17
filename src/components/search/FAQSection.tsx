@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import FAQList from '../../data/fag-for-searching.json';
+import FAQList from '../../data/faq.json';
 import WhiteBox from './WhiteBox';
 import Heading from './Heading';
 import arrow from '../../assets/client/arrow.svg';
 
 const Question = styled.li`
+  margin-top: 1rem;
   font-size: 1.2rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,6 +44,7 @@ const FAQSection = () => {
   const [filteredFAQList, setFilteredFAQList] = useState<
     { id: number; category: string; question: string; answer: string }[]
   >([]);
+  const [toggleOnQuestions, setToggleOnQuestions] = useState<number[]>([]);
 
   useEffect(() => {
     setFilteredFAQList(
@@ -60,14 +63,22 @@ const FAQSection = () => {
           <Heading h1="FAQ" span={`(검색결과 ${filteredFAQList.length}건)`} />
           {filteredFAQList.map((faq) => (
             <ul key={faq.id}>
-              <Question>
+              <Question
+                onClick={() => {
+                  if (toggleOnQuestions.indexOf(faq.id) === -1) {
+                    setToggleOnQuestions([...toggleOnQuestions, faq.id]);
+                  } else {
+                    setToggleOnQuestions(toggleOnQuestions.filter((questionId) => questionId !== faq.id));
+                  }
+                }}
+              >
                 <div>
                   <span>Q.</span>
                   {faq.question}
                 </div>
                 <img src={arrow} alt="arrow" />
               </Question>
-              {<Answer>{faq.answer}</Answer>}
+              {toggleOnQuestions.indexOf(faq.id) !== -1 ? <Answer>{faq.answer}</Answer> : null}
             </ul>
           ))}
         </WhiteBox>
@@ -77,45 +88,3 @@ const FAQSection = () => {
 };
 
 export default FAQSection;
-
-// import { useSearchParams } from 'react-router-dom';
-// import { useEffect, useState } from 'react';
-
-// import Pagination from '../common/Pagination';
-// import Heading from './Heading';
-// import PostTable from './PostTable';
-// import WhiteBox from './WhiteBox';
-
-// import newsList from '../../data/news.json';
-
-// const NewsSection = () => {
-//   const [searchParams] = useSearchParams();
-
-//   const [filteredNewsList, setFilteredNewsList] = useState<
-//     { id: number; title: string; subtitle: string; content: string; press: string; date: string; imageUrl: string }[]
-//   >([]);
-
-//   useEffect(() => {
-//     setFilteredNewsList(
-//       newsList.filter(
-//         (news) =>
-//           news.title.includes(searchParams.get('query') || '') ||
-//           news.subtitle.includes(searchParams.get('query') || '') ||
-//           news.content.includes(searchParams.get('query') || '') ||
-//           news.press.includes(searchParams.get('query') || ''),
-//       ),
-//     );
-//   }, []);
-
-//   return (
-//     <>
-//       <WhiteBox>
-//         <Heading h1="뉴스" span={`(검색결과 ${filteredNewsList.length}건)`} />
-//         <PostTable list={filteredNewsList} type="news" />
-//         <Pagination />
-//       </WhiteBox>
-//     </>
-//   );
-// };
-
-// export default NewsSection;

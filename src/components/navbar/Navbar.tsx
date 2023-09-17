@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { FaUser, FaSearch } from 'react-icons/fa';
@@ -262,6 +262,10 @@ const SearchInput = styled.div`
     color: ${({ theme }) => theme.colors.blue1};
   }
 
+  a:visited {
+    color: ${({ theme }) => theme.colors.blue1};
+  }
+
   i {
     color: ${({ theme }) => theme.colors.blue1};
   }
@@ -282,6 +286,8 @@ const Navbar = () => {
 
   const location = useLocation();
   const [navInfoIsActive, setNavInfoIsActive] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.pathname.indexOf('/brand') === 0) {
@@ -437,6 +443,14 @@ const Navbar = () => {
                       placeholder="키워드를 입력하세요"
                       value={searchInput}
                       onChange={(e) => setSearchInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.keyCode === 229) return;
+                        if (e.key === 'Enter') {
+                          navigate(`/search?query=${searchInput}&range=all`);
+                          setSearchInput('');
+                          setIsVisibleSearchMenu(!isVisibleSearchMenu);
+                        }
+                      }}
                     />
                     <Link
                       to={`/search?query=${searchInput}&range=all`}
