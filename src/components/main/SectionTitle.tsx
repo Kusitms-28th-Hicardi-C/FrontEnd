@@ -5,9 +5,14 @@ interface SectionTitleProps {
 }
 
 const SectionTitleBlock = styled.h2`
+  text-align: center;
   font-size: 1.5rem;
   line-height: 1.5;
   margin-bottom: 0.5rem;
+
+  @media screen and (max-width: 500px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const SectionTitle = ({ children, ...rest }: SectionTitleProps) => {

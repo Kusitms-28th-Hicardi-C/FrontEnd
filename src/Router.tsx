@@ -60,7 +60,7 @@ const Router = () => {
         <Route path="/brand" element={<BrandIntroductionPage />} />
         <Route path="/halter" element={<HicardiHalterPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/monitoring" element={<MonitoringPage />} />
+        <Route path="/mornitoring" element={<MonitoringPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

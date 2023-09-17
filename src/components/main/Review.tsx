@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import SectionTitle from './SectionTitle';
 import SectionDescription from './SectionDescription';
 import quotes from '../../assets/signs/quotes.svg';
-import rightArrow from '../../assets/signs/right-arrow.svg';
 
 const ReviewBlock = styled.section`
-  background-image: linear-gradient(104.04deg, #01a4ff 4.31%, #00c2ff 94.48%);
-  color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.blue4};
+  color: #393939;
   text-align: center;
   padding-top: 3rem;
   padding-bottom: 4rem;
@@ -20,10 +19,22 @@ const ContentWrapper = styled.div`
 `;
 
 const ReviewList = styled.ul`
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 1.5rem;
+  margin: 0 auto;
   margin-bottom: 3rem;
+  width: 90%;
+
+  @media screen and (max-width: 960px) {
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+  }
 `;
 
 const ReviewItem = styled.li`
@@ -33,6 +44,12 @@ const ReviewItem = styled.li`
   border-radius: 16px;
   padding: 1.5rem 3rem;
   box-shadow: 24px 24px 41px 8px #0000001a;
+  cursor: pointer;
+  transition: transform 0.2s ease-out;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
 
   img {
     height: 1rem;
@@ -49,19 +66,42 @@ const ReviewItem = styled.li`
     font-size: 0.75rem;
     font-weight: 500;
   }
+
+  @media screen and (max-width: 960px) {
+    padding: 1rem 2rem;
+  }
+
+  @media screen and (max-width: 850px) {
+    font-size: 0.75rem;
+  }
+
+  @media screen and (max-width: 850px) {
+    font-size: 1rem;
+    min-width: 300px;
+  }
 `;
 
 const MoreLink = styled(Link)`
+  position: absolute;
+  bottom: -4rem;
+  right: 0;
   display: flex;
-  width: 100%;
   justify-content: end;
   align-items: center;
   gap: 0.5rem;
-  color: ${({ theme }) => theme.colors.white};
-  text-decoration: underline;
+  margin: 0 auto;
+
+  span {
+    color: ${({ theme }) => theme.colors.gray1};
+    text-decoration: underline;
+  }
 
   img {
     height: 1rem;
+  }
+
+  @media screen and (max-width: 850px) {
+    right: auto;
   }
 `;
 
@@ -117,11 +157,12 @@ const Review = () => {
             </p>
             <span>- 김*중 (임상병리사 10년차) -</span>
           </ReviewItem>
+
+          <MoreLink to="/reviews">
+            <span>자세히 보기</span>
+            <img src="/images/icons/right-arrow.svg" alt="오른쪽 화살표" />
+          </MoreLink>
         </ReviewList>
-        <MoreLink to="/reviews">
-          자세히 보기
-          <img src={rightArrow} alt="오른쪽 화살표" />
-        </MoreLink>
       </ContentWrapper>
     </ReviewBlock>
   );

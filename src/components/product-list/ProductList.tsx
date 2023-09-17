@@ -18,7 +18,7 @@ const ProductListBlock = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 900px) {
     width: 90%;
     grid-template-columns: repeat(1, 1fr);
   }
@@ -38,7 +38,7 @@ const ProductItem = styled(Link)`
     object-fit: contain;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 900px) {
     flex-direction: row;
 
     img {
@@ -51,6 +51,16 @@ const ProductItem = styled(Link)`
     img {
       max-width: 40%;
       padding-right: 0;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+
+    img {
+      max-width: 100%;
+      padding-right: 2rem;
+      padding-bottom: 0;
     }
   }
 `;
@@ -74,6 +84,10 @@ const ContentArea = styled.div`
   @media screen and (max-width: 768px) {
     padding: 3rem;
     padding-left: 1rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    padding-top: 1rem;
   }
 `;
 

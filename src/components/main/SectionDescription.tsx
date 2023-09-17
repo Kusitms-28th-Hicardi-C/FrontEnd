@@ -11,10 +11,15 @@ const SectionDescriptionBlock = styled.p`
   b {
     font-weight: 700;
   }
+
+  @media screen and (max-width: 500px) {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
 `;
 
-const SectionDescription = ({ children }: SectionDescriptionProps) => {
-  return <SectionDescriptionBlock>{children}</SectionDescriptionBlock>;
+const SectionDescription = ({ children, ...rest }: SectionDescriptionProps) => {
+  return <SectionDescriptionBlock {...rest}>{children}</SectionDescriptionBlock>;
 };
 
 export default SectionDescription;
