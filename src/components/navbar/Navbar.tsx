@@ -84,6 +84,11 @@ const Dropdown = ({ children, mobile, ...rest }: DropdownProps) => {
 const MobileDropdown = styled(Dropdown)`
   top: 105%;
   left: 0;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue2};
+    transition: 0.15s;
+  }
 `;
 
 const MobileInfoDropdown = styled(Dropdown)`
@@ -125,10 +130,14 @@ const NavInfoSpan = styled.span<NavInfoSpanProps>`
   ${(props) => {
     if (props.active === 'true') {
       return css`
-        color: #20c5ff;
+        color: ${({ theme }) => theme.colors.blue2};
       `;
     }
   }}
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue2};
+    transition: 0.15s;
+  }
 `;
 
 const IconList = styled.div`
