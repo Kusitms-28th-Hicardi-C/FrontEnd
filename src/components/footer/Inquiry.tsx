@@ -3,31 +3,54 @@ import { useNavigate } from 'react-router-dom';
 
 import { MdArrowForwardIos } from 'react-icons/md';
 
-import hand from '../../assets/client/hand.svg';
+const InquiryBlock = styled.div`
+  background: ${({ theme }) => theme.colors.blue1};
+`;
 
 const Container = styled.div`
-  background: ${({ theme }) => theme.colors.blue1};
-  width: 100%;
-  padding: 0 3rem;
+  width: 70%;
+  margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  @media screen and (max-width: 1020px) {
+    width: 70%;
+    padding: 2rem 0;
+  }
+
+  @media screen and (max-width: 992px) {
+    width: 700px;
+    padding: 2rem 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  @media screen and (max-width: 620px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+`;
+
+const FooterImage = styled.div`
+  width: 250px;
+  height: 300px;
+
   img {
-    width: 20rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media screen and (max-width: 1020px) {
+    display: none;
   }
 
   @media screen and (max-width: 868px) {
-    padding: 2rem 3rem;
-
-    img {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    flex-direction: column;
-    justify-content: center;
+    display: none;
   }
 `;
 
@@ -37,12 +60,19 @@ const Text = styled.div`
   color: ${({ theme }) => theme.colors.white};
   transform: translateX(-3rem);
 
-  @media screen and (max-width: 868px) {
-    font-size: 1.5rem;
+  @media screen and (max-width: 1020px) {
     transform: translateX(0);
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1150px) {
+    font-size: 1.75rem;
+  }
+
+  @media screen and (max-width: 1087px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 620px) {
     margin-bottom: 2rem;
   }
 `;
@@ -76,7 +106,7 @@ const InquiryButton = styled.button`
     margin-left: 3rem;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 620px) {
     display: block;
     margin-left: 0;
     width: 300px;
@@ -91,20 +121,24 @@ const Inquiry = () => {
   };
 
   return (
-    <Container>
-      <img src={hand} alt="hand" />
-      <Text>
-        더 스마트한 병원을 위한 솔루션,
-        <br />
-        Hicardi+로 시작하세요
-      </Text>
-      <InquiryButton onClick={handleInquiryClick}>
-        <span>문의하기</span>
-        <i>
-          <MdArrowForwardIos />
-        </i>
-      </InquiryButton>
-    </Container>
+    <InquiryBlock>
+      <Container>
+        <FooterImage>
+          <img src="/images/main/footer-image.png" alt="hand" />
+        </FooterImage>
+        <Text>
+          더 스마트한 병원을 위한 솔루션,
+          <br />
+          Hicardi+로 시작하세요
+        </Text>
+        <InquiryButton onClick={handleInquiryClick}>
+          <span>문의하기</span>
+          <i>
+            <MdArrowForwardIos />
+          </i>
+        </InquiryButton>
+      </Container>
+    </InquiryBlock>
   );
 };
 
