@@ -30,6 +30,12 @@ const SupportBlock = styled.section`
 
 const SupportImages = styled(motion.div)`
   text-align: center;
+  > img {
+    &:hover {
+      transform: translateY(-2.5rem);
+      transition: transform 0.8s ease-in-out;
+    }
+  }
 
   .gradation {
     position: absolute;
