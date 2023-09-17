@@ -5,8 +5,10 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../common/Button/Button';
 import { product } from '../../interfaces/product';
 import productList from '../../data/product.json';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
-const ProductDetailBlock = styled.div`
+const ProductDetailBlock = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
@@ -128,7 +130,7 @@ const ProductDetail = () => {
   }, []);
 
   return (
-    <ProductDetailBlock>
+    <ProductDetailBlock initial="hidden" animate="visible" variants={TextAnimation}>
       <ProductImage>
         <img src={product?.imageUrl} alt="하이카르디+" />
       </ProductImage>

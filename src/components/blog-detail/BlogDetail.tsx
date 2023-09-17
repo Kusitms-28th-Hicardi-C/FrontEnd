@@ -4,8 +4,10 @@ import styled from 'styled-components';
 
 import { post } from '../../interfaces/post';
 import blogList from '../../data/blog.json';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
-const BlogDetailBlock = styled.div`
+const BlogDetailBlock = styled(motion.div)`
   max-width: 700px;
   margin: 0 auto;
   padding: 3rem;
@@ -43,6 +45,8 @@ const BlogDetailBlock = styled.div`
   p {
     text-align: start;
     margin-bottom: 1.5rem;
+    line-height: 1.5;
+    font-size: 1.05rem;
   }
 
   @media screen and (max-width: 992px) {
@@ -83,7 +87,7 @@ const BlogDetail = () => {
   }, []);
 
   return (
-    <BlogDetailBlock>
+    <BlogDetailBlock initial="hidden" animate="visible" variants={TextAnimation}>
       <h1>{post?.title}</h1>
       <h5>{post?.category}</h5>
       <SmallTextAndLink>

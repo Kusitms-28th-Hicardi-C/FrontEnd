@@ -1,11 +1,14 @@
 import styled from 'styled-components';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   background: ${({ theme }) => theme.colors.blue4};
   padding: 4rem 30%;
 `;
 
-const SideEffectBlock = styled.div`
+const SideEffectBlock = styled(motion.div)`
   display: flex;
   gap: 1.5rem;
 `;
@@ -56,12 +59,14 @@ const SideEffectBottom = styled(SideEffectBox)`
 `;
 
 const SideEffect = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Container>
       <SideEffectTitle>
         기존 홀터 장비의 <span>복잡한 구조와 부작용 문제</span>
       </SideEffectTitle>
-      <SideEffectBlock>
+      <SideEffectBlock ref={ref} animate={animation} variants={ContainerAnimation}>
         <SideEffectCircle>
           <p>환자</p>
           <img src="/images/halter/patient.svg" alt="환자" />
@@ -72,7 +77,7 @@ const SideEffect = () => {
         </SideEffectTop>
       </SideEffectBlock>
 
-      <SideEffectBlock>
+      <SideEffectBlock ref={ref} animate={animation} variants={ContainerAnimation}>
         <SideEffectBottom>
           <p>• 부정맥 전문의가 아니면 분석이 어려워요</p>
           <p>• 처방할 수 있는 검사수에 한계가 있어요</p>

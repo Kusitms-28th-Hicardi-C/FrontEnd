@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +17,7 @@ const ProcessTitle = styled.div`
   font-weight: 700;
 `;
 
-const ProcessContainer = styled.div`
+const ProcessContainer = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -59,10 +62,12 @@ const ProcessIndex = styled.p`
 `;
 
 const Process = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <Container>
       <ProcessTitle>하이카디 실시간 모니터링 Process</ProcessTitle>
-      <ProcessContainer>
+      <ProcessContainer ref={ref} animate={animation} variants={ContainerAnimation}>
         <ProcessBox1>
           <ProcessIndex>1</ProcessIndex>
           <span>부착</span>

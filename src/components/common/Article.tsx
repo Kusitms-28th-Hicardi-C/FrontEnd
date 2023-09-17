@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 interface ArticleProps {
   title?: string;
@@ -11,7 +13,7 @@ interface ArticleProps {
   press?: string;
 }
 
-const ArticleBlock = styled.div`
+const ArticleBlock = styled(motion.div)`
   width: 50%;
   margin: 0 auto;
   padding: 3rem 0;
@@ -45,6 +47,8 @@ const ArticleBlock = styled.div`
   p {
     text-align: start;
     margin-bottom: 1.5rem;
+    line-height: 1.5;
+    font-size: 1.05rem;
   }
 
   @media screen and (max-width: 992px) {
@@ -83,7 +87,7 @@ const SmallText = styled.div`
 
 const Article = ({ title, content, subtitle, imageUrl, date, press, type }: ArticleProps) => {
   return (
-    <ArticleBlock>
+    <ArticleBlock initial="hidden" animate="visible" variants={TextAnimation}>
       <h1>{title}</h1>
       <h5>{subtitle}</h5>
       {type === '블로그' ? (
