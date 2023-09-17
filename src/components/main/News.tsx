@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import SectionTitle from './SectionTitle';
 import SectionDescription from './SectionDescription';
 import { Link } from 'react-router-dom';
+import useObserver from '../../hooks/useObserver';
+import { motion } from 'framer-motion';
+import { ContainerAnimation } from '../../styles/animation';
 
 const NewsBlock = styled.section`
   background-color: #f8f9fb;
@@ -25,7 +28,7 @@ const StyledSectionDescription = styled(SectionDescription)`
   }
 `;
 
-const NewsList = styled.div`
+const NewsList = styled(motion.div)`
   position: relative;
   display: flex;
   justify-content: center;
@@ -115,11 +118,13 @@ const MoreLink = styled(Link)`
 `;
 
 const News = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <NewsBlock>
       <StyledSectionTitle>언론에 소개된 Hicardi+</StyledSectionTitle>
       <StyledSectionDescription>하이카디 보도자료를 만나보세요</StyledSectionDescription>
-      <NewsList>
+      <NewsList ref={ref} animate={animation} variants={ContainerAnimation}>
         <NewsItem href="https://www.news1.kr/articles/5133530" target="_blank">
           <NewsImage>
             <img src="/images/main/news1.png" alt="언론보도 이미지 1" />

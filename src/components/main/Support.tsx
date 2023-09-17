@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import SectionTitle from './SectionTitle';
 import SectionDescription from './SectionDescription';
 import { Link } from 'react-router-dom';
+import useObserver from '../../hooks/useObserver';
+import { motion } from 'framer-motion';
+import { ContainerAnimation } from '../../styles/animation';
 
 const SupportBlock = styled.section`
   position: relative;
@@ -25,7 +28,7 @@ const SupportBlock = styled.section`
   }
 `;
 
-const SupportImages = styled.div`
+const SupportImages = styled(motion.div)`
   text-align: center;
 
   .gradation {
@@ -72,11 +75,13 @@ const SupportImages = styled.div`
 `;
 
 const Support = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <SupportBlock>
       <SectionTitle>국내 최고 의료기관의 든든한 선택</SectionTitle>
       <SectionDescription>이미 많은 의료기관에서 하이카디를 이용하고 있습니다.</SectionDescription>
-      <SupportImages>
+      <SupportImages ref={ref} animate={animation} variants={ContainerAnimation}>
         <img src="/images/main/support.png" alt="병원 의료기관 지원사" />
         <div className="gradation">
           <img src="/images/supports/gradation.png" alt="gradation" />

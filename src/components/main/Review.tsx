@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
 import SectionTitle from './SectionTitle';
 import SectionDescription from './SectionDescription';
 import quotes from '../../assets/signs/quotes.svg';
+import { ContainerAnimation } from '../../styles/animation';
+import useObserver from '../../hooks/useObserver';
 
-const ReviewBlock = styled.section`
+const ReviewBlock = styled.div`
   background-color: ${({ theme }) => theme.colors.blue4};
   color: #393939;
   text-align: center;
@@ -18,7 +20,7 @@ const ContentWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const ReviewList = styled.ul`
+const ReviewList = styled(motion.div)`
   position: relative;
   display: flex;
   justify-content: center;
@@ -107,12 +109,14 @@ const MoreLink = styled(Link)`
 `;
 
 const Review = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <ReviewBlock>
       <ContentWrapper>
         <SectionTitle>하이카디를 이용한 의료진들의 생생한 후기</SectionTitle>
         <SectionDescription>모니터링 성능을 10%에서 90%까지 개선했어요</SectionDescription>
-        <ReviewList>
+        <ReviewList ref={ref} animate={animation} variants={ContainerAnimation}>
           <ReviewItem>
             <img src={quotes} alt="따옴표" />
             <p>

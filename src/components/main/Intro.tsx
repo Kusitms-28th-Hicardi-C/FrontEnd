@@ -4,6 +4,8 @@ import { useState } from 'react';
 import SectionTitle from './SectionTitle';
 import Button from '../common/Button/Button';
 import mainInfoList from '../../data/main-info.json';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 interface ContentProps {
   mobileimageurl: string;
@@ -75,7 +77,7 @@ const Content = styled.div<ContentProps>`
   }
 `;
 
-const ContentText = styled.div`
+const ContentText = styled(motion.div)`
   display: flex;
   justify-content: center;
   width: 50%;
@@ -176,7 +178,7 @@ const Intro = () => {
       </Categories>
       <MobileBlueWrapper>
         <Content mobileimageurl={mainInfoList[categoryIndex].mobileImageUrl}>
-          <ContentText>
+          <ContentText initial="hidden" animate="visible" variants={TextAnimation} key={categoryIndex}>
             <div className="content-text-inner">
               <h3>{mainInfoList[categoryIndex].title}</h3>
               <div className="description">
