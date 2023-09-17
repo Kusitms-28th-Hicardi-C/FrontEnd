@@ -82,13 +82,24 @@ const HeaderSearch = ({ searchRange, value, onChange }: HeaderSearchProps) => {
         <input
           type="text"
           placeholder="키워드를 입력하세요"
+          value={value}
           onChange={(e) => {
             setQuery(e.target.value);
             if (onChange) {
               onChange(e.target.value);
             }
+            console.log(query);
           }}
-          value={value}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              if (searchRange) {
+                navigate(`/search?query=${query}&range=${searchRange}`);
+              } else {
+                navigate(`/search?query=${query}&range=all`);
+              }
+              setQuery('');
+            }
+          }}
         />
         <i
           onClick={() => {

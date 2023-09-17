@@ -53,6 +53,10 @@ const PostTableRow = styled.div`
     color: ${({ theme }) => theme.colors.blue2};
     font-weight: 600;
   }
+
+  a:visited {
+    color: ${({ theme }) => theme.colors.blue2};
+  }
 `;
 
 const PostTable = ({ list, type }: PostTableProps) => {
