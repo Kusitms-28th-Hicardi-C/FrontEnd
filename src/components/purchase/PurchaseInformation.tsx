@@ -9,7 +9,8 @@ import Address from '../common/Input/Address';
 import CheckBox from '../common/Input/CheckBox';
 import { useNavigate, useParams } from 'react-router-dom';
 import Box from '../common/Box';
-import picture from '../../assets/purchase/picture.svg';
+import { useRecoilValue } from 'recoil';
+import { productImageState, productPriceState, productTitleState } from '../../states/product';
 
 const DeliveryAddressBox = styled.div`
   display: flex;
@@ -105,6 +106,10 @@ const PurchaseInformation = () => {
     navigate(`/products/${productId}/purchase/checkPayment`);
   };
 
+  const productImage = useRecoilValue(productImageState);
+  const productTitle = useRecoilValue(productTitleState);
+  const productPrice = useRecoilValue(productPriceState);
+
   return (
     <>
       <Header>구매정보 입력</Header>
@@ -135,17 +140,16 @@ const PurchaseInformation = () => {
       </Check>
 
       <Title>주문상품</Title>
-      {/* TODO: theme box 색상 적용하고 싶은데 안 됨 */}
       <Box background="#F8F9FB">
         <Product>
-          <img src={picture} alt="picture" />
+          <img src={productImage} alt="picture" />
           <BoxContent>
-            <ProductName>하이카디플러스 HiCardi+</ProductName>
+            <ProductName>{productTitle}</ProductName>
             <ProductOption>[옵션: 갤럭시A13 (+275,000)]</ProductOption>
           </BoxContent>
         </Product>
         <div>1</div>
-        <OrderAmount>1,000,000</OrderAmount>
+        <OrderAmount>{productPrice} 원</OrderAmount>
       </Box>
       <Box background="#F2F4F6">
         <Description>배송비</Description>
@@ -153,7 +157,7 @@ const PurchaseInformation = () => {
       </Box>
       <Box background="#D3EFFF">
         <Description>주문총액</Description>
-        <OrderAmount>1,000,000 원</OrderAmount>
+        <OrderAmount>{productPrice} 원</OrderAmount>
       </Box>
 
       <ButtonContainer>
