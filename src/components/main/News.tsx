@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import SectionTitle from './SectionTitle';
 import SectionDescription from './SectionDescription';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import useObserver from '../../hooks/useObserver';
+import { motion } from 'framer-motion';
+import { ContainerAnimation } from '../../styles/animation';
 
 const NewsBlock = styled.section`
   background-color: #f8f9fb;
@@ -12,6 +15,7 @@ const NewsBlock = styled.section`
 const StyledSectionTitle = styled(SectionTitle)`
   color: ${({ theme }) => theme.colors.blue2};
   margin-bottom: 0.5rem;
+  font-weight: 600;
 `;
 
 const StyledSectionDescription = styled(SectionDescription)`
@@ -25,7 +29,7 @@ const StyledSectionDescription = styled(SectionDescription)`
   }
 `;
 
-const NewsList = styled.div`
+const NewsList = styled(motion.div)`
   position: relative;
   display: flex;
   justify-content: center;
@@ -42,7 +46,7 @@ const NewsList = styled.div`
   }
 `;
 
-const NewsItem = styled.a`
+const NewsItem = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 1.5rem;
   border-radius: 16px;
@@ -115,26 +119,29 @@ const MoreLink = styled(Link)`
 `;
 
 const News = () => {
+  const { ref, animation } = useObserver();
+  const navigate = useNavigate();
+
   return (
     <NewsBlock>
       <StyledSectionTitle>언론에 소개된 Hicardi+</StyledSectionTitle>
       <StyledSectionDescription>하이카디 보도자료를 만나보세요</StyledSectionDescription>
-      <NewsList>
-        <NewsItem href="https://www.news1.kr/articles/5133530" target="_blank">
+      <NewsList ref={ref} animate={animation} variants={ContainerAnimation}>
+        <NewsItem onClick={() => navigate('/news/article/1')}>
           <NewsImage>
             <img src="/images/main/news1.png" alt="언론보도 이미지 1" />
           </NewsImage>
           <Badge>보도자료</Badge>
           <h2>원주 의료기기사 ㈜메쥬, 전남대 병원에 하이카디 공급</h2>
         </NewsItem>
-        <NewsItem href="http://www.bizwnews.com/news/articleView.html?idxno=50286" target="_blank">
+        <NewsItem onClick={() => navigate('/news/article/9')}>
           <NewsImage>
             <img src="/images/main/news2.png" alt="언론보도 이미지 2" />
           </NewsImage>
           <Badge>보도자료</Badge>
           <h2>동아ST, 메쥬와 심전도 원격 모니터링 플랫폼 ‘하이카디(HiCardi)’ 해외 ⋯</h2>
         </NewsItem>
-        <NewsItem href="https://www.medigatenews.com/news/2779338147" target="_blank">
+        <NewsItem onClick={() => navigate('/news/article/7')}>
           <NewsImage>
             <img src="/images/main/news3.png" alt="언론보도 이미지 3" />
           </NewsImage>

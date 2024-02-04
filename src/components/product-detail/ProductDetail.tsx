@@ -5,8 +5,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Button from '../common/Button/Button';
 import { product } from '../../interfaces/product';
 import productList from '../../data/product.json';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
+import { useSetRecoilState } from 'recoil';
+import { productImageState, productPriceState, productTitleState } from '../../states/product';
 
-const ProductDetailBlock = styled.div`
+const ProductDetailBlock = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
@@ -109,6 +113,9 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { productId } = useParams();
   const [product, setProduct] = useState<product | null>(null);
+  const setProductImage = useSetRecoilState(productImageState);
+  const setProductTitle = useSetRecoilState(productTitleState);
+  const setProductPrice = useSetRecoilState(productPriceState);
 
   const handlePurchaseClick = () => {
     navigate('purchase/information');
@@ -124,11 +131,14 @@ const ProductDetail = () => {
     } else {
       const index = productList.findIndex((product) => product.id === Number(productId));
       setProduct(productList[index]);
+      setProductImage(productList[index].imageUrl);
+      setProductTitle(productList[index].name);
+      setProductPrice(productList[index].price.toLocaleString());
     }
   }, []);
 
   return (
-    <ProductDetailBlock>
+    <ProductDetailBlock initial="hidden" animate="visible" variants={TextAnimation}>
       <ProductImage>
         <img src={product?.imageUrl} alt="하이카르디+" />
       </ProductImage>

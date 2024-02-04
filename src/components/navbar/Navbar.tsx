@@ -292,7 +292,7 @@ const Navbar = () => {
   useEffect(() => {
     if (location.pathname.indexOf('/brand') === 0) {
       setNavInfoIsActive(true);
-    } else if (location.pathname.indexOf('/mornitoring') === 0) {
+    } else if (location.pathname.indexOf('/monitoring') === 0) {
       setNavInfoIsActive(true);
     } else if (location.pathname.indexOf('/halter') === 0) {
       setNavInfoIsActive(true);
@@ -347,7 +347,7 @@ const Navbar = () => {
                   <span>브랜드 소개</span>
                 </Link>
                 <Link
-                  to="/mornitoring"
+                  to="/monitoring"
                   onClick={() => {
                     setIsVisibleMobileMenu(false);
                     setIsVisibleMobileInfoMenu(false);
@@ -395,7 +395,7 @@ const Navbar = () => {
                   <Link to="/brand">
                     <span>브랜드 소개</span>
                   </Link>
-                  <Link to="/mornitoring">
+                  <Link to="/monitoring">
                     <span>심전도 모니터링</span>
                   </Link>
                   <Link to="/halter">

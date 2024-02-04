@@ -10,6 +10,7 @@ const HeadingBlock = styled.div`
   justify-content: start;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 2rem;
 
   h1 {
     display: inline-block;

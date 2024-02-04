@@ -5,8 +5,10 @@ import productList from '../../data/product.json';
 import { product } from '../../interfaces/product';
 import { useRecoilValue } from 'recoil';
 import { productCategoryState } from '../../states/product';
+import { TextAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
-const ProductListBlock = styled.div`
+const ProductListBlock = styled(motion.div)`
   width: 70%;
   margin: 0 auto;
   padding-bottom: 3rem;
@@ -115,7 +117,7 @@ const ProductList = () => {
   const category = useRecoilValue(productCategoryState);
 
   return (
-    <ProductListBlock>
+    <ProductListBlock initial="hidden" animate="visible" variants={TextAnimation} key={category}>
       {productList
         .filter((product) => category === '전체' || product.category === category)
         .map((product: product) => (

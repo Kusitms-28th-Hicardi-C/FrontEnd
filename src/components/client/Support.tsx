@@ -3,6 +3,9 @@ import howToUseIcon from '../../assets/client/howToUse.svg';
 import questionMarkIcon from '../../assets/client/questionMark.svg';
 import productIcon from '../../assets/client/product.svg';
 import { RefObject } from 'react';
+import useObserver from '../../hooks/useObserver';
+import { ContainerAnimation } from '../../styles/animation';
+import { motion } from 'framer-motion';
 
 interface SupportProps {
   howToUseRef: React.RefObject<HTMLDivElement>;
@@ -30,7 +33,7 @@ const SubTitle = styled.div`
   font-size: 1.2rem;
 `;
 
-const ButtonBox = styled.div`
+const ButtonBox = styled(motion.div)`
   display: flex;
   gap: 3rem;
 `;
@@ -53,6 +56,8 @@ const CircleButton = styled.button`
 `;
 
 const Support = ({ howToUseRef, faqRef, productRef }: SupportProps) => {
+  const { ref, animation } = useObserver();
+
   const handleMoveScroll = (ref: RefObject<HTMLElement>) => {
     if (ref.current) {
       ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -63,18 +68,18 @@ const Support = ({ howToUseRef, faqRef, productRef }: SupportProps) => {
     <Banner>
       <Title>고객 지원</Title>
       <SubTitle>하이카디 사용법 영상과 메뉴얼을 확인하세요.</SubTitle>
-      <ButtonBox>
+      <ButtonBox ref={ref} animate={animation} variants={ContainerAnimation}>
         <CircleButton onClick={() => handleMoveScroll(howToUseRef)}>
           <img src={howToUseIcon} alt="howToUse" />
           사용법
         </CircleButton>
-        <CircleButton onClick={() => handleMoveScroll(faqRef)}>
-          <img src={questionMarkIcon} alt="questionMark" />
-          FAQ
-        </CircleButton>
         <CircleButton onClick={() => handleMoveScroll(productRef)}>
           <img src={productIcon} alt="product" />
           제품 소개서
+        </CircleButton>
+        <CircleButton onClick={() => handleMoveScroll(faqRef)}>
+          <img src={questionMarkIcon} alt="questionMark" />
+          FAQ
         </CircleButton>
       </ButtonBox>
     </Banner>

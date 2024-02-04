@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router';
 
 const BannerBlock = styled.div`
   position: relative;
@@ -73,6 +74,7 @@ const SlideNextArrow = styled.button`
 `;
 
 const BannerItem = styled.div`
+  cursor: pointer;
   img {
     width: 100%;
   }
@@ -119,6 +121,7 @@ const ArrowSpacer = styled.div`
 
 const Banner = () => {
   const slickRef = useRef<Slider>(null);
+  const navigate = useNavigate();
 
   const slideToPrev = () => {
     if (slickRef.current) {
@@ -146,19 +149,19 @@ const Banner = () => {
           arrows={false}
           pauseOnHover={false}
         >
-          <BannerItem>
+          <BannerItem onClick={() => navigate('/brand')}>
             <img className="desktop-banner" src="/images/banners/banner1.svg" alt="banner 1" />
             <img className="mobile-banner" src="/images/banners/banner-mobile1.svg" alt="banner 1" />
           </BannerItem>
-          <BannerItem>
+          <BannerItem onClick={() => navigate('/monitoring')}>
             <img className="desktop-banner" src="/images/banners/banner2.svg" alt="banner 2" />
             <img className="mobile-banner" src="/images/banners/banner-mobile2.svg" alt="banner 1" />
           </BannerItem>
-          <BannerItem>
+          <BannerItem onClick={() => navigate('/halter')}>
             <img className="desktop-banner" src="/images/banners/banner3.svg" alt="banner 3" />
             <img className="mobile-banner" src="/images/banners/banner-mobile3.svg" alt="banner 1" />
           </BannerItem>
-          <BannerItem>
+          <BannerItem onClick={() => navigate('/monitoring')}>
             <img className="desktop-banner" src="/images/banners/banner4.svg" alt="banner 4" />
             <img className="mobile-banner" src="/images/banners/banner-mobile4.svg" alt="banner 1" />
           </BannerItem>

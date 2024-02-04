@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
+import { motion } from 'framer-motion';
 import SectionTitle from './SectionTitle';
-import SectionDescription from './SectionDescription';
 import quotes from '../../assets/signs/quotes.svg';
+import { ContainerAnimation } from '../../styles/animation';
+import useObserver from '../../hooks/useObserver';
 
-const ReviewBlock = styled.section`
+const ReviewBlock = styled.div`
   background-color: ${({ theme }) => theme.colors.blue4};
   color: #393939;
   text-align: center;
@@ -14,21 +15,22 @@ const ReviewBlock = styled.section`
 `;
 
 const ContentWrapper = styled.div`
-  max-width: 960px;
+  width: 70%;
   margin: 0 auto;
 `;
 
-const ReviewList = styled.ul`
+const ReviewList = styled(motion.div)`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   margin: 0 auto;
   margin-bottom: 3rem;
-  width: 90%;
+  width: 100%;
+  height: 100%;
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 1250px) {
     justify-content: space-between;
   }
 
@@ -42,11 +44,21 @@ const ReviewItem = styled.li`
   color: ${({ theme }) => theme.colors.blue1};
   text-align: center;
   border-radius: 16px;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 0;
   box-shadow: 24px 24px 41px 8px #0000001a;
   cursor: pointer;
   transition: transform 0.2s ease-out;
-  line-height: 1.4;
+  line-height: 1.5;
+  list-style-type: none;
+  font-size: 1.1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 17.5rem;
 
   &:hover {
     transform: translateY(-5px);
@@ -58,8 +70,9 @@ const ReviewItem = styled.li`
   }
 
   p {
-    font-weight: 800;
-    margin-bottom: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    white-space: nowrap;
   }
 
   span {
@@ -68,16 +81,12 @@ const ReviewItem = styled.li`
     font-weight: 500;
   }
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 1250px) {
     padding: 1rem 2rem;
   }
 
   @media screen and (max-width: 850px) {
-    font-size: 0.75rem;
-  }
-
-  @media screen and (max-width: 850px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
     min-width: 300px;
   }
 `;
@@ -106,13 +115,21 @@ const MoreLink = styled(Link)`
   }
 `;
 
+const SectionDescription = styled.div`
+  font-size: 1.125rem;
+  color: #7f8f99;
+  margin-bottom: 2rem;
+`;
+
 const Review = () => {
+  const { ref, animation } = useObserver();
+
   return (
     <ReviewBlock>
       <ContentWrapper>
         <SectionTitle>하이카디를 이용한 의료진들의 생생한 후기</SectionTitle>
         <SectionDescription>모니터링 성능을 10%에서 90%까지 개선했어요</SectionDescription>
-        <ReviewList>
+        <ReviewList ref={ref} animate={animation} variants={ContainerAnimation}>
           <ReviewItem>
             <img src={quotes} alt="따옴표" />
             <p>
@@ -134,8 +151,6 @@ const Review = () => {
               환자의 자세를 실시간으로
               <br />
               확인할 수 있어서
-              <br />
-              부착이 쉽고 간편했고,
               <br />
               위중도를 바로
               <br />
