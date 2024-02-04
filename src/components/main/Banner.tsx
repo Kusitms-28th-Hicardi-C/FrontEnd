@@ -154,15 +154,15 @@ const Banner = () => {
             <img className="mobile-banner" src="/images/banners/banner-mobile1.svg" alt="banner 1" />
           </BannerItem>
           <BannerItem onClick={() => navigate('/monitoring')}>
-            <img className="desktop-banner" src="/images/banners/banner2.svg" alt="banner 1" />
+            <img className="desktop-banner" src="/images/banners/banner2.svg" alt="banner 2" />
             <img className="mobile-banner" src="/images/banners/banner-mobile2.svg" alt="banner 1" />
           </BannerItem>
           <BannerItem onClick={() => navigate('/halter')}>
-            <img className="desktop-banner" src="/images/banners/banner3.svg" alt="banner 1" />
+            <img className="desktop-banner" src="/images/banners/banner3.svg" alt="banner 3" />
             <img className="mobile-banner" src="/images/banners/banner-mobile3.svg" alt="banner 1" />
           </BannerItem>
           <BannerItem onClick={() => navigate('/monitoring')}>
-            <img className="desktop-banner" src="/images/banners/banner4.svg" alt="banner 1" />
+            <img className="desktop-banner" src="/images/banners/banner4.svg" alt="banner 4" />
             <img className="mobile-banner" src="/images/banners/banner-mobile4.svg" alt="banner 1" />
           </BannerItem>
         </Slider>

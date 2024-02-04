@@ -75,9 +75,13 @@ const BlogItemBlock = styled(Link)`
 `;
 
 const BlogImage = styled.div`
+  aspect-ratio: 1.64 / 1;
+  overflow: hidden;
+
   img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
     border-radius: 32px;
   }
 
