@@ -147,43 +147,19 @@ const Banner = () => {
           pauseOnHover={false}
         >
           <BannerItem>
-            <img
-              className="desktop-banner"
-              src="https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/banner.svg"
-              alt="banner 1"
-            />
-            <img
-              className="mobile-banner"
-              src="https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/mobileBanner1.svg"
-              alt="banner 1"
-            />
+            <img className="desktop-banner" src="/images/banners/banner1.svg" alt="banner 1" />
+            <img className="mobile-banner" src="/images/banners/banner-mobile1.svg" alt="banner 1" />
           </BannerItem>
           <BannerItem>
-            <img
-              className="desktop-banner"
-              src="https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/banner2.svg"
-              alt="banner 2"
-            />
-            <img
-              className="mobile-banner"
-              src="https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/mobileBanner2.svg"
-              alt="banner 1"
-            />
+            <img className="desktop-banner" src="/images/banners/banner2.svg" alt="banner 2" />
+            <img className="mobile-banner" src="/images/banners/banner-mobile2.svg" alt="banner 1" />
           </BannerItem>
           <BannerItem>
-            <img
-              className="desktop-banner"
-              src="https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/banner3.svg"
-              alt="banner 3"
-            />
+            <img className="desktop-banner" src="/images/banners/banner3.svg" alt="banner 3" />
             <img className="mobile-banner" src="/images/banners/banner-mobile3.svg" alt="banner 1" />
           </BannerItem>
           <BannerItem>
-            <img
-              className="desktop-banner"
-              src="https://kusitms-cp-bucket.s3.ap-northeast-2.amazonaws.com/banner4.svg"
-              alt="banner 4"
-            />
+            <img className="desktop-banner" src="/images/banners/banner4.svg" alt="banner 4" />
             <img className="mobile-banner" src="/images/banners/banner-mobile4.svg" alt="banner 1" />
           </BannerItem>
         </Slider>
